@@ -1,5 +1,6 @@
 'use client';
 
+import { LanguageSelector } from "@/components/LanguageSelector";
 import {
   Menubar,
   MenubarContent,
@@ -8,12 +9,14 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar"
 import { Separator } from "@/components/ui/separator";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export default function Home() {
+  const t = useTranslations('HomePage');
   return (
     <main className="w-full h-screen bg-white">
-      <Menubar>
+      <Menubar className="justify-between">
         <MenubarMenu>
           <MenubarTrigger className="font-lexend">Pablo Belló</MenubarTrigger>
           <MenubarContent className="ml-2 mt-1">
@@ -28,9 +31,10 @@ export default function Home() {
             </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
+        <LanguageSelector locales="en"/>
       </Menubar>
       <div className="flex flex-col items-center justify-center h-screen w-full">
-        <h1>Welcome to my Portfolio</h1>
+        <h1>{t('title')}</h1>
       </div>
       <div>
         <Separator className="bg-neutral-200" />
