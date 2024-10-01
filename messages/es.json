@@ -1,5 +1,9 @@
 {
   "HomePage": {
     "title": "Hola mundo!"
+  },
+  "NotFoundPage": {
+    "message": "La página que buscas no existe.",
+    "homeButton": "Volver a Inicio"
   }
 }
