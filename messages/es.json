@@ -1,9 +1,31 @@
 {
   "HomePage": {
-    "title": "Hola mundo!"
+    "title": "¡Hola mundo!"
   },
   "NotFoundPage": {
-    "message": "La página que buscas no existe.",
-    "homeButton": "Volver a Inicio"
+    "message": "La página que estás buscando no existe.",
+    "homeButton": "Volver al inicio"
+  },
+  "Footer": {
+    "sections": {
+      "title": "Secciones",
+      "home": "Inicio",
+      "aboutMe": "Sobre mí",
+      "projects": "Proyectos",
+      "contact": "Contacto"
+    },
+    "social": {
+      "title": "Redes sociales",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "email": "Email"
+    },
+    "bio": {
+      "title": "Biografía",
+      "bio1": "Soy un desarrollador joven y motivado, actualmente trabajando y siempre aprendiendo. Aunque mi experiencia sigue creciendo, ya he tenido la oportunidad de trabajar en proyectos reales que me han desafiado y ayudado a crecer rápidamente.",
+      "bio2": "Basado en la Unión Europea, me encanta viajar y jugar videojuegos en mi tiempo libre. Mi pasión por la tecnología me mantiene motivado para mejorar cada día, y estoy emocionado por las oportunidades que vienen."
+    },
+    "info": "Trabajando en remoto desde España"
   }
 }

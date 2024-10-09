@@ -1,6 +1,5 @@
 'use client';
 
-import { LanguageSelector } from "@/components/LanguageSelector";
 import {
   Menubar,
   MenubarContent,
@@ -13,6 +12,8 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+
+// TODO: Smooth scrolling
 
 const SCROLL_THRESHOLD = 100;
 
@@ -43,7 +44,7 @@ export default function Home() {
       <Separator className="bg-neutral-200" />
       <section id={id} className="section h-screen w-full py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl mb-4">{title}</h2>
+          <h2>{title}</h2>
           <p className="text-lg">{children}</p>
         </div>
       </section>
@@ -60,25 +61,24 @@ export default function Home() {
       >
         <Menubar className="justify-between">
           <MenubarMenu>
-            <MenubarTrigger className="font-lexend">Pablo Belló</MenubarTrigger>
+            <MenubarTrigger className="font-lexend">✣</MenubarTrigger>
             <MenubarContent className="ml-2 mt-1">
-              <MenubarItem asChild>
+              <MenubarItem asChild className="MenubarItem">
                 <Link href="#about-me">ABOUT ME</Link>
               </MenubarItem>
-              <MenubarItem asChild>
+              <MenubarItem asChild className="MenubarItem">
                 <Link href="#projects">PROJECTS</Link>
               </MenubarItem>
-              <MenubarItem asChild>
+              <MenubarItem asChild className="MenubarItem">
                 <Link href="#contact">CONTACT</Link>
               </MenubarItem>
             </MenubarContent>
           </MenubarMenu>
-          <LanguageSelector locales="en" />
         </Menubar>
       </motion.div>
 
       <section id="title" className="flex flex-col items-center justify-center min-h-screen w-full py-20">
-        <h1 className="text-4xl">{t('title')}</h1>
+        <h2 className="text-4xl">{t('title')}</h2>
       </section>
 
       <Section id="about-me" title="ABOUT ME">
@@ -92,46 +92,12 @@ export default function Home() {
       <Section id="contact" title="CONTACT">
         [placeholder for contact content]
       </Section>
-      <footer className="bg-neutral-100 py-10 shadow-2xl shadow-neutral-500">
-      <div className="container mx-auto px-4 text-center">
-        {/* Separator para mantener consistencia visual */}
-        <Separator className="bg-neutral-300 mb-6" />
 
-        {/* Links de navegación */}
-        <div className="flex justify-center space-x-6 mb-6">
-          <Link href="#title" className="text-sm text-neutral-700 hover:text-neutral-900">
-            Home
-          </Link>
-          <Link href="#about-me" className="text-sm text-neutral-700 hover:text-neutral-900">
-            About Me
-          </Link>
-          <Link href="#projects" className="text-sm text-neutral-700 hover:text-neutral-900">
-            Projects
-          </Link>
-          <Link href="#contact" className="text-sm text-neutral-700 hover:text-neutral-900">
-            Contact
-          </Link>
-        </div>
+      {/* <div className="h-10 w-full bg-transparent relative">
+        <div className="absolute inset-0 backdrop-blur-lg bg-gradient-to-t from-neutral-950 via-neutral-300 via-75% to-white"></div>
+      </div> */}
 
-        {/* Redes sociales o contacto (Placeholder para íconos o enlaces sociales) */}
-        <div className="flex justify-center space-x-6 mb-6">
-          <Link href="https://www.linkedin.com" className="text-sm text-neutral-700 hover:text-neutral-900">
-            LinkedIn
-          </Link>
-          <Link href="https://www.github.com" className="text-sm text-neutral-700 hover:text-neutral-900">
-            GitHub
-          </Link>
-          <Link href="mailto:someone@example.com" className="text-sm text-neutral-700 hover:text-neutral-900">
-            Email
-          </Link>
-        </div>
-
-        {/* Créditos */}
-        <p className="text-sm text-neutral-600">
-          © {new Date().getFullYear()} Pablo Belló. All rights reserved.
-        </p>
-      </div>
-    </footer>
+      {/* <div className="h-[32rem] w-full bg-red-500 -z-20"></div> */}
     </main>
   );
 }

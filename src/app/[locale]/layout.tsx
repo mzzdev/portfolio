@@ -1,13 +1,21 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Lexend_Mega } from "next/font/google";
+import { JetBrains_Mono, Lexend_Mega, Inter } from "next/font/google";
 import "@/styles/globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import Footer from "@/components/Footer";
 
-const jbmono = JetBrains_Mono({ subsets: ["latin"] });
+const jbmono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jbmono",
+ });
 const lexend = Lexend_Mega({
   subsets: ["latin"],
   variable: "--font-lexend",
+});
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -22,15 +30,14 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: {locale: string};
 }) {
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
  
   return (
     <html lang={locale} className="scroll-smooth">
-      <body className={`min-h-screen ${jbmono.className} antialiased ${lexend.variable}`}>
+      <body className={`min-h-screen ${jbmono.className} antialiased ${lexend.variable} ${inter.variable}`}>
         <NextIntlClientProvider messages={messages}>
           {children}
+          <Footer/>
         </NextIntlClientProvider>
       </body>
     </html>

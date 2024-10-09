@@ -20,6 +20,7 @@ const config = {
     extend: {
       fontFamily: {
         lexend: ["var(--font-lexend)"],
+        inter: ["var(--font-inter)"],
       },
       keyframes: {
         "accordion-down": {

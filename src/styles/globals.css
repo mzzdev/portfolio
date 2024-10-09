@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .MenubarItem {
+    @apply font-inter leading-tight font-semibold tracking-tight;
+  }
+}
+@layer components {
+  h2 {
+    @apply text-3xl mb-4 font-inter leading-tight font-semibold tracking-tight;
+  }
+}
+
+::selection {
+  color: black;
+  background: #f0f0f0;
+}
