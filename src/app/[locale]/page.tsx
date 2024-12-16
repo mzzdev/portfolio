@@ -10,7 +10,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 // TODO: Smooth scrolling
@@ -22,6 +22,32 @@ export default function Home() {
 
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+
+  const [highlightStyle, setHighlightStyle] = useState({
+    left: 0,
+    top: 0,
+    display: "none",
+  });
+
+  const titleRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (event: React.MouseEvent) => {
+    if (titleRef.current) {
+      const rect = titleRef.current.getBoundingClientRect();
+      const mouseX = event.clientX - rect.left; // Posición relativa al contenedor
+      const mouseY = event.clientY - rect.top;
+
+      setHighlightStyle({
+        left: mouseX,
+        top: mouseY,
+        display: "block",
+      });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setHighlightStyle({ ...highlightStyle, display: "none" });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,8 +103,23 @@ export default function Home() {
         </Menubar>
       </motion.div>
 
-      <section id="title" className="flex flex-col items-center justify-center min-h-screen w-full py-20">
-        <h2 className="text-4xl">{t('title')}</h2>
+      <section
+        id="title"
+        className="flex flex-col items-center justify-center min-h-screen w-full py-20 relative select-none"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        ref={titleRef}
+      >
+        <h2 className="text-[10vw] font-bold text-transparent relative" style={{WebkitTextStroke: "2px gray"}}>{t("title")}</h2>
+        <div
+          className="absolute pointer-events-none w-[500px] h-[500px] -translate-x-2/4 -translate-y-2/4 mix-blend-color-dodge rounded-[50%]"
+          style={{
+            background: "radial-gradient(circle, rgb(195, 0, 255) 0%, transparent 60%)",
+            left: `${highlightStyle.left}px`,
+            top: `${highlightStyle.top}px`,
+            display: highlightStyle.display,
+          }}
+        ></div>
       </section>
 
       <Section id="about-me" title="ABOUT ME">
@@ -92,12 +133,6 @@ export default function Home() {
       <Section id="contact" title="CONTACT">
         [placeholder for contact content]
       </Section>
-
-      {/* <div className="h-10 w-full bg-transparent relative">
-        <div className="absolute inset-0 backdrop-blur-lg bg-gradient-to-t from-neutral-950 via-neutral-300 via-75% to-white"></div>
-      </div> */}
-
-      {/* <div className="h-[32rem] w-full bg-red-500 -z-20"></div> */}
     </main>
   );
 }
