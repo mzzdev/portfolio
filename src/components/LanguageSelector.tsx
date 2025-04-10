@@ -1,4 +1,4 @@
-import { useRouter, usePathname } from "@/navigation"; // <-- next-intl navigation
+import { useRouter, usePathname } from "@/i18n/routing";
 import { Button } from "@/components/ui/button"
 import { US, ES } from 'country-flag-icons/react/3x2';
 
