@@ -7,13 +7,26 @@
     @apply font-inter leading-tight font-semibold tracking-tight;
   }
 }
+
 @layer components {
   h2 {
     @apply text-3xl mb-4 font-inter leading-tight font-semibold tracking-tight;
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 ::selection {
   color: black;
-  background: #f0f0f0;
+  background: #e5e5e5;
+}
+
+h2 {
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }

@@ -69,7 +69,7 @@ export default function Footer() {
 function FooterSection({ title, children }: { title: string, children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="uppercase text-lg font-bold mb-2 border-b border-gray-600 pb-2">{title}</h3>
+      <h3 className="uppercase text-lg font-bold mb-6 border-b border-gray-600 pb-1">{title}</h3>
       <Separator />
       <div className="flex flex-col space-y-2 text-sm">
         {children}

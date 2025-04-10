@@ -33,8 +33,8 @@ export default async function LocaleLayout({
   const messages = await getMessages();
  
   return (
-    <html lang={locale} className="scroll-smooth">
-      <body className={`min-h-screen ${jbmono.className} antialiased ${lexend.variable} ${inter.variable}`}>
+    <html lang={locale}>
+      <body className={`antialiased leading-tight font-semibold tracking-tight overflow-y-scroll ${jbmono.className} ${lexend.variable} ${inter.variable}`}>
         <NextIntlClientProvider messages={messages}>
           {children}
           <Footer/>
