@@ -15,7 +15,7 @@ export default function NotFoundPage() {
         whileInView={{ filter: "blur(0)", opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: .5, delay: 0, ease: "easeInOut" }}
-        className='overflow-hidden absolute inset-0 z-0 flex items-center justify-center text-[45vw] font-mono font-bold tracking-widest bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-white dark:from-neutral-500 dark:to-black select-none'
+        className='overflow-hidden absolute inset-0 z-0 flex items-center justify-center text-[45vw] font-mono font-bold tracking-widest bg-clip-text text-transparent bg-linear-to-b from-neutral-200 to-white dark:from-neutral-500 dark:to-black select-none'
         style={{ zIndex: 1 }}
       >404</motion.p>
       <motion.div 
@@ -24,7 +24,7 @@ export default function NotFoundPage() {
         viewport={{ once: true }}
         transition={{ duration: .25, delay: 0, ease: "backInOut" }}
         className='flex flex-col z-10 items-center justify-center absolute bottom-0 mb-8'>
-        <p className='relative text-black dark:text-white tracking-tight font-bold text-xl mt-10 rounded-lg backdrop-blur-sm'>{t('message')}</p>
+        <p className='relative text-black dark:text-white tracking-tight font-bold text-xl mt-10 rounded-lg backdrop-blur-xs'>{t('message')}</p>
         <Link href={'/'} className='mt-4'>
           <Button
             variant="outline"
