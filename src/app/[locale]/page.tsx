@@ -12,6 +12,7 @@ import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
+import { TextHoverEffect } from "@/components/ui/text-hover-effect"
 
 export default function Home() {
   const t = useTranslations('HomePage');
@@ -61,16 +62,12 @@ export default function Home() {
 
       <section
         id="title"
-        className="flex flex-col items-center justify-center min-h-screen w-full py-20 relative select-none"
+        className="h-screen w-full select-none"
       >
-        <h2 className="text-[10vw] text-white font-bold relative font-lexend"
-        // style={{
-        //     WebkitTextStroke: "1px black"
-        //   }} 
-          >{t("title")}</h2>
+        <TextHoverEffect text={t('title')} />
       </section>
 
-      <Section id="about-me" title="ABOUT ME">
+      {/* <Section id="about-me" title="ABOUT ME">
         [placeholder for about me content]
       </Section>
 
@@ -80,7 +77,7 @@ export default function Home() {
 
       <Section id="contact" title="CONTACT">
         [placeholder for contact content]
-      </Section>
+      </Section> */}
     </main>
   );
 }

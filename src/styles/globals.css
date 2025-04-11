@@ -65,7 +65,7 @@
 
 @layer components {
   h2 {
-    @apply text-3xl mb-4 font-inter leading-tight font-semibold tracking-tight;
+    @apply text-3xl mb-4 font-inter leading-tight tracking-tight;
   }
 }
 
@@ -76,12 +76,4 @@ html {
 ::selection {
   color: black;
   background: #e5e5e5;
-}
-
-h2 {
-  text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
 }
