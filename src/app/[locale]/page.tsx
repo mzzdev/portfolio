@@ -41,7 +41,7 @@ export default function Home() {
         initial={{ y: 0 }}
         animate={{ y: showNavbar ? 0 : -100 }}
         transition={{ duration: 0.3 }}
-        className="sticky top-0 z-50 font-lexend tracking-wide select-none"
+        className="fixed top-0 z-50 font-lexend tracking-wide select-none w-full"
       >
         <Menubar className="items-center">
           <MenubarMenu>
