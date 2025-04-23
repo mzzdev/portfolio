@@ -1,6 +1,6 @@
 {
   "HomePage": {
-    "title": "t3st"
+    "title": "pbv"
   },
   "NotFoundPage": {
     "message": "La página que estás buscando no existe.",
@@ -18,14 +18,18 @@
       "title": "Redes sociales",
       "github": "GitHub",
       "linkedin": "LinkedIn",
-      "twitter": "Twitter",
-      "email": "Email"
+      "twitter": "Twitter / X",
+      "instagram": "Instagram"
     },
-    "bio": {
-      "title": "Biografía",
-      "bio1": "Soy un desarrollador joven y motivado, actualmente trabajando y siempre aprendiendo. Aunque mi experiencia sigue creciendo, ya he tenido la oportunidad de trabajar en proyectos reales que me han desafiado y ayudado a crecer rápidamente.",
-      "bio2": "Basado en la Unión Europea, me encanta viajar y jugar videojuegos en mi tiempo libre. Mi pasión por la tecnología me mantiene motivado para mejorar cada día, y estoy emocionado por las oportunidades que vienen."
+    "languages": {
+      "en": "Inglés",
+      "es": "Español"
     },
-    "info": "Trabajando en remoto desde España"
+    "about": {
+      "title": "Sobre mí",
+      "bio1": "PBV diseña y desarrolla aplicaciones web, interfaces y aplicaciones full-stack.",
+      "bio2": "PBV reside en España y trabaja a distancia."
+    },
+    "info": "PBV"
   }
 }

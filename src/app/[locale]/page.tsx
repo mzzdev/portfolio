@@ -56,7 +56,7 @@ export default function Home() {
               ))}
             </MenubarContent>
           </MenubarMenu>
-          <p onClick={() => window.scrollTo({ top: 0 })}>mzzdev.com</p>
+          <p onClick={() => window.scrollTo({ top: 0 })}>pbvdev.com</p>
         </Menubar>
       </motion.div>
 

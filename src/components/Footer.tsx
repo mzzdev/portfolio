@@ -24,43 +24,32 @@ export default function Footer() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const linkClasses = "hover:underline pointer-events-auto";
-  const textNeutralClasses = "text-neutral-500";
-
   return (
-    <footer className={`bg-black text-white py-10 px-4 w-full sticky bottom-0 ${isFooterVisible ? "z-0" : "-z-10"} pointer-events-none`}>
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <FooterSection title={t('sections.title')}>
-          <FooterLink href="#title" text={t('sections.home')} />
-          <FooterLink href="#about-me" text={t('sections.aboutMe')} />
-          <FooterLink href="#projects" text={t('sections.projects')} />
-          <FooterLink href="#contact" text={t('sections.contact')} />
-        </FooterSection>
-
+    <footer className={`bg-black text-white pt-10 pb-4 px-4 w-full sticky bottom-0 ${isFooterVisible ? "z-0" : "-z-10"} pointer-events-none`}>
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
         <FooterSection title={t('social.title')}>
-          <FooterLink href="https://www.github.com" text={t('social.github')} />
-          <FooterLink href="https://www.linkedin.com" text={t('social.linkedin')} />
-          <FooterLink href="https://www.twitter.com" text={t('social.twitter')} />
-          <FooterLink href="mailto:someone@example.com" text={t('social.email')} />
+          <FooterLink href="https://github.com" text={t('social.github')} />
+          <FooterLink href="https://linkedin.com" text={t('social.linkedin')} />
+          <FooterLink href="https://twitter.com" text={t('social.twitter')} />
+          <FooterLink href="https://instagram.com" text={t('social.instagram')} />
         </FooterSection>
 
-        <FooterSection title={t('bio.title')}>
-          <p className="text-sm leading-relaxed text-justify">{t('bio.bio1')}</p>
-          <p className="text-sm leading-relaxed text-justify mt-4">{t('bio.bio2')}</p>
+        <FooterSection title={t('about.title')}>
+          <p className="text-sm leading-relaxed text-justify">{t('about.bio1')}</p>
+          <p className="text-sm leading-relaxed text-justify">{t('about.bio2')}</p>
         </FooterSection>
       </div>
 
       <div className="mt-10 text-center text-2xl font-bold">
-        <a href="mailto:someone@example.com" className={linkClasses}>someone@example.com</a>
+        <a href="mailto:pablo@pbvdev.com" className="hover:underline pointer-events-auto">pablo@pbvdev.com</a>
       </div>
 
-      <div className="flex justify-center items-center mt-6 text-center space-x-8 text-sm pointer-events-auto">
-        <LanguageSelector locales="en" />
+      <div className="flex justify-center items-center mt-4 text-center space-x-8 pointer-events-auto text-sm">
+        <LanguageSelector />
       </div>
 
-      <div className="mt-10 flex justify-between items-center text-sm">
-        <p className={textNeutralClasses}>{t('info')}</p>
-        <p className={textNeutralClasses}>{new Date().getFullYear()} Pablo Belló</p>
+      <div className="flex justify-center items-center mt-4 text-sm">
+        <p className="text-neutral-500">{'\u00A9'} {new Date().getFullYear()} {t('info')}</p>
       </div>
     </footer>
   );

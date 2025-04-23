@@ -18,14 +18,18 @@
       "title": "Social",
       "github": "GitHub",
       "linkedin": "LinkedIn",
-      "twitter": "Twitter",
-      "email": "Email"
+      "twitter": "Twitter / X",
+      "instagram": "Instagram"
     },
-    "bio": {
-      "title": "Bio",
-      "bio1": "I'm a young and motivated developer, currently working and always learning. Although my experience is still growing, I've already had the chance to work on real-world projects that have challenged me and helped me grow quickly.",
-      "bio2": "Based in the EU, I love to travel and play video games in my free time. My passion for technology keeps me motivated to improve every day, and I'm excited for the opportunities ahead."
+    "languages": {
+      "en": "English",
+      "es": "Spanish"
     },
-    "info": "Working remote from Spain"
+    "about": {
+      "title": "About",
+      "bio1": "PBV designs and develops web applications, interfaces and full-stack applications.",
+      "bio2": "PBV is based in Spain and works remotely."
+    },
+    "info": "PBV"
   }
 }
