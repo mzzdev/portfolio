@@ -4,28 +4,14 @@ import Link from "next/link";
 import { LanguageSelector } from "./LanguageSelector";
 import { Separator } from "@/components/ui/separator";
 import { useTranslations } from "next-intl";
-import { useState, useEffect } from "react";
+import React from "react";
 
-export default function Footer() {
+
+export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElement> }) {
   const t = useTranslations('Footer');
 
-  const [isFooterVisible, setIsFooterVisible] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-
-      setIsFooterVisible(scrollTop + windowHeight >= documentHeight);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <footer className={`bg-black text-white pt-10 pb-4 px-4 w-full sticky bottom-0 ${isFooterVisible ? "z-0" : "-z-10"} pointer-events-none`}>
+    <footer ref={footerRef} className="bg-black text-white pt-10 pb-4 px-4 w-full fixed bottom-0 z-0">
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
         <FooterSection title={t('social.title')}>
           <FooterLink href="https://github.com" text={t('social.github')} />

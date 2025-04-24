@@ -3,7 +3,6 @@ import { JetBrains_Mono, Lexend_Mega, Inter } from "next/font/google";
 import "@/styles/globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import Footer from "@/components/Footer";
 
 const jbmono = JetBrains_Mono({
   subsets: ["latin"],
@@ -25,11 +24,12 @@ export const metadata: Metadata = {
 
 export default async function LocaleLayout({
   children,
-  params: {locale}
+  params
 }: {
   children: React.ReactNode;
   params: {locale: string};
 }) {
+  const { locale } = await params;
   const messages = await getMessages();
  
   return (
@@ -37,7 +37,6 @@ export default async function LocaleLayout({
       <body className={`antialiased leading-tight font-semibold tracking-tight overflow-y-scroll ${jbmono.className} ${lexend.variable} ${inter.variable}`}>
         <NextIntlClientProvider messages={messages}>
           {children}
-          <Footer/>
         </NextIntlClientProvider>
       </body>
     </html>
