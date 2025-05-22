@@ -87,9 +87,9 @@ export default function Home() {
         </section>
 
         <Section id="projects" title={t('sections.projects')} >
-          {["1", "2", "3", "4", "5", "6"].map((item) => (
+          {["dope", "ahh", "boy", "from", "the", "projects"].map((item) => (
             <div key={item} className="h-full w-full hover:bg-neutral-200 hover:underline transition-all duration-300 hover:duration-0">
-              <Link href={`#${item.replace(" ", "-")}`} className="group flex justify-between p-4 items-center leading-tight tracking-tight uppercase">
+              <Link href="" className="group flex justify-between p-4 items-center leading-tight tracking-tight uppercase">
                 {item}
                 <div className="opacity-0 group-hover:opacity-100 duration-300 hover:duration-0">
                   <MoveRight className="w-4 animate-pulse" />
@@ -108,7 +108,7 @@ export default function Home() {
           <div className="w-1/2 h-full hover:bg-neutral-200 hover:underline transition-all duration-300">
             <Link
               href="resume.pdf"
-              className="leading-tight tracking-tight font-lexend h-full w-full flex items-center justify-center"
+              className="leading-tight tracking-tight uppercase h-full w-full flex items-center justify-center"
             >
               {t('sections.wwm.resume')}
             </Link>
@@ -121,7 +121,7 @@ export default function Home() {
                 e.preventDefault();
                 window.scrollTo({ top: document.documentElement.scrollHeight });
               }}
-              className="leading-tight tracking-tight font-lexend h-full w-full flex items-center justify-center"
+              className="leading-tight tracking-tight uppercase h-full w-full flex items-center justify-center"
             >
               {t('sections.wwm.contact')}
             </Link>
