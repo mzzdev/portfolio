@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Lexend_Mega, Inter } from "next/font/google";
+import { JetBrains_Mono, Lexend_Mega } from "next/font/google";
 import "@/styles/globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -12,14 +12,10 @@ const lexend = Lexend_Mega({
   subsets: ["latin"],
   variable: "--font-lexend",
 });
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
 
 export const metadata: Metadata = {
-  title: "Pablo Belló",
-  description: "Pablo Belló",
+  title: "PBV",
+  description: "PBV Portfolio",
 };
 
 export default async function LocaleLayout({
@@ -34,7 +30,7 @@ export default async function LocaleLayout({
  
   return (
     <html lang={locale}>
-      <body className={`antialiased leading-tight font-semibold tracking-tight overflow-y-scroll ${jbmono.className} ${lexend.variable} ${inter.variable}`}>
+      <body className={`antialiased leading-tight font-semibold tracking-tight overflow-y-scroll ${jbmono.className} ${lexend.variable}`}>
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>

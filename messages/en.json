@@ -1,25 +1,23 @@
 {
   "HomePage": {
-    "title": "pbv"
-  },
-  "NotFoundPage": {
-    "message": "The page you are looking for does not exist.",
-    "homeButton": "Back to Home"
-  },
-  "Footer": {
+    "title": "pbv",
     "sections": {
       "title": "Sections",
       "home": "Home",
-      "aboutMe": "About me",
       "projects": "Projects",
-      "contact": "Contact"
-    },
+      "wwm": {
+        "title": "Work with me",
+        "resume": "Resume",
+        "contact": "Contact"
+      }
+    }
+  },
+  "Footer": {
     "social": {
-      "title": "Social",
-      "github": "GitHub",
+      "title": "Contact",
       "linkedin": "LinkedIn",
-      "twitter": "Twitter / X",
-      "instagram": "Instagram"
+      "github": "GitHub",
+      "email": "Email"
     },
     "languages": {
       "en": "English",
@@ -28,8 +26,12 @@
     "about": {
       "title": "About",
       "bio1": "PBV designs and develops web applications, interfaces and full-stack applications.",
-      "bio2": "PBV is based in Spain and works remotely."
+      "bio2": "PBV is based in Spain and also works remotely."
     },
     "info": "PBV"
+  },
+  "NotFoundPage": {
+    "message": "The page you are looking for does not exist.",
+    "homeButton": "Back to Home"
   }
 }

@@ -14,6 +14,7 @@ import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import { TextHoverEffect } from "@/components/ui/text-hover-effect"
 import Footer from "@/components/Footer"
+import { MoveRight } from "lucide-react"
 
 export default function Home() {
   const t = useTranslations('HomePage');
@@ -61,13 +62,13 @@ export default function Home() {
           transition={{ duration: 0.3 }}
           className="fixed top-0 z-50 font-lexend tracking-wide select-none w-full"
         >
-          <Menubar className="items-center">
+          <Menubar className="items-center border-b-[1px] border-black">
             <MenubarMenu>
               <MenubarTrigger className="hover:bg-neutral-200">✣</MenubarTrigger>
-              <MenubarContent className="ml-2 mt-1 font-lexend">
-                {["about me", "projects", "contact"].map((item) => (
-                  <MenubarItem asChild key={item} className="MenubarItem">
-                    <Link href={`#${item.replace(" ", "-")}`} className="font-lexend">
+              <MenubarContent className="ml-4 mt-3 p-0 border-[1px] rounded-none shadow-none">
+                {["projects", "work with me"].map((item) => (
+                  <MenubarItem asChild key={item} className="MenubarItem px-1 py-2 rounded-none">
+                    <Link href={`#${item.replace(" ", "-")}`} className="leading-tight tracking-tight uppercase font-bold focus:bg-neutral-200 hover:underline duration-300 hover:duration-0">
                       {item}
                     </Link>
                   </MenubarItem>
@@ -80,24 +81,54 @@ export default function Home() {
 
         <section
           id="title"
-          className="h-screen w-full select-none"
+          className="h-screen w-full select-none border-black border-b-[1px]"
         >
           <TextHoverEffect text={t('title')} />
         </section>
 
-        {/* <Section id="about-me" title="ABOUT ME">
-          [placeholder for about me content]
+        <Section id="projects" title={t('sections.projects')} >
+          {["1", "2", "3", "4", "5", "6"].map((item) => (
+            <div key={item} className="h-full w-full hover:bg-neutral-200 hover:underline transition-all duration-300 hover:duration-0">
+              <Link href={`#${item.replace(" ", "-")}`} className="group flex justify-between p-4 items-center leading-tight tracking-tight uppercase">
+                {item}
+                <div className="opacity-0 group-hover:opacity-100 duration-300 hover:duration-0">
+                  <MoveRight className="w-4 animate-pulse" />
+                </div>
+              </Link>
+            </div>
+          ))}
         </Section>
 
-        <Section id="projects" title="PROJECTS">
-          [placeholder for projects content]
+        <Section
+          id="wwm"
+          title={t('sections.wwm.title')}
+          contentClassName="flex flex-col"
+          bodyClassName="flex h-full w-full p-0"
+        >
+          <div className="w-1/2 h-full hover:bg-neutral-200 hover:underline transition-all duration-300">
+            <Link
+              href="resume.pdf"
+              className="leading-tight tracking-tight font-lexend h-full w-full flex items-center justify-center"
+            >
+              {t('sections.wwm.resume')}
+            </Link>
+          </div>
+          <Separator className="bg-black" orientation="vertical" />
+          <div className="w-1/2 h-full hover:bg-neutral-200 hover:underline transition-all duration-300">
+            <Link
+              href=""
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: document.documentElement.scrollHeight });
+              }}
+              className="leading-tight tracking-tight font-lexend h-full w-full flex items-center justify-center"
+            >
+              {t('sections.wwm.contact')}
+            </Link>
+          </div>
         </Section>
-
-        <Section id="contact" title="CONTACT">
-          [placeholder for contact content]
-        </Section> */}
       </main>
-      
+
       <div id="placeholder" ref={placeholderRef} className="relative -z-10"></div>
 
       <Footer footerRef={footerRef} />
@@ -105,16 +136,28 @@ export default function Home() {
   );
 }
 
-function Section({ id, title, children }: { id: string, title: string, children: React.ReactNode }) {
+function Section({ id, title, children, className, contentClassName, bodyClassName, }: {
+  id: string
+  title: string
+  children: React.ReactNode
+  className?: string
+  contentClassName?: string
+  bodyClassName?: string
+}) {
   return (
-    <>
-      <Separator className="bg-neutral-200" />
-      <section id={id} className="section h-screen w-full py-20">
-        <div className="container mx-auto px-4">
-          <h2>{title}</h2>
-          <p className="text-lg">{children}</p>
-        </div>
-      </section>
-    </>
+    <section
+      id={id}
+      className={`section h-[50vh] w-full px-4 pt-4 last:pb-4 bg-neutral-200 ${className}`}
+    >
+      <div
+        className={`h-full w-full border-black border-[1px] bg-white ${contentClassName}`}
+      >
+        <h2 className="font-jbmono text-3xl p-4 leading-tight tracking-tight uppercase">
+          {title}
+        </h2>
+        <Separator className="bg-black" />
+        <div className={`text-lg ${bodyClassName}`}>{children}</div>
+      </div>
+    </section>
   );
 }

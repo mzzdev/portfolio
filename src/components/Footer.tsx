@@ -4,20 +4,18 @@ import Link from "next/link";
 import { LanguageSelector } from "./LanguageSelector";
 import { Separator } from "@/components/ui/separator";
 import { useTranslations } from "next-intl";
-import React from "react";
-
+import { MoveRight } from "lucide-react";
 
 export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElement> }) {
   const t = useTranslations('Footer');
 
   return (
     <footer ref={footerRef} className="bg-black text-white pt-10 pb-4 px-4 w-full fixed bottom-0 z-0">
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 pointer-events-none" id="contact">
         <FooterSection title={t('social.title')}>
-          <FooterLink href="https://github.com" text={t('social.github')} />
           <FooterLink href="https://linkedin.com" text={t('social.linkedin')} />
-          <FooterLink href="https://twitter.com" text={t('social.twitter')} />
-          <FooterLink href="https://instagram.com" text={t('social.instagram')} />
+          <FooterLink href="https://github.com" text={t('social.github')} />
+          <FooterLink href="mailto:pablo@pbvdev.com" text={t('social.email')} />
         </FooterSection>
 
         <FooterSection title={t('about.title')}>
@@ -55,8 +53,11 @@ function FooterSection({ title, children }: { title: string, children: React.Rea
 
 function FooterLink({ href, text }: { href: string, text: string }) {
   return (
-    <Link href={href} className="hover:underline pointer-events-auto">
+    <Link href={href} className="group flex justify-between items-center py-1 hover:underline pointer-events-auto hover:bg-neutral-800 transition-all duration-300 hover:duration-0 mb-0">
       {text}
+        <div className="pr-1 opacity-0 group-hover:opacity-100 duration-300 hover:duration-0">
+          <MoveRight className="w-4 animate-pulse" />
+        </div>
     </Link>
   );
 }

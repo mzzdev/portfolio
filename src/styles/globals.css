@@ -4,7 +4,7 @@
 
 @theme {
   --font-lexend: var(--font-lexend);
-  --font-inter: var(--font-inter);
+  --font-jbmono: var(--font-jbmono);
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
@@ -29,51 +29,11 @@
   }
 }
 
-@utility container {
-  margin-inline: auto;
-  padding-inline: 2rem;
-  @media (width >= --theme(--breakpoint-sm)) {
-    max-width: none;
-  }
-  @media (width >= 1400px) {
-    max-width: 1400px;
-  }
-}
-
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
-}
-
-/* antes MenubarItem */
-@utility menubarItem { 
-  @apply font-inter leading-tight font-semibold tracking-tight;
-}
-
-@layer components {
-  h2 {
-    @apply text-3xl mb-4 font-inter leading-tight tracking-tight;
-  }
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 ::selection {
   color: black;
-  background: #e5e5e5;
+  background-color: #e5e5e5;
 }
