@@ -37,3 +37,8 @@ html {
   color: black;
   background-color: #e5e5e5;
 }
+
+.unloadTransition {
+  opacity: 0 !important;
+  transition: opacity .6s cubic-bezier(.19,1,.22,1)
+}
