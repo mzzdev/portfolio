@@ -64,7 +64,7 @@ export default function Home() {
         >
           <Menubar className="items-center border-b-[1px] border-black">
             <MenubarMenu>
-              <MenubarTrigger className="hover:bg-neutral-200">✣</MenubarTrigger>
+              <MenubarTrigger className="hover:bg-neutral-200">&#128946;</MenubarTrigger>
               <MenubarContent className="ml-4 mt-3 p-0 border-[1px] rounded-none shadow-none">
                 {["projects", "work with me"].map((item) => (
                   <MenubarItem asChild key={item} className="MenubarItem px-1 py-2 rounded-none">
@@ -89,7 +89,7 @@ export default function Home() {
         <Section id="projects" title={t('sections.projects')} >
           {["dope", "ahh", "boy", "from", "the", "projects"].map((item) => (
             <div key={item} className="h-full w-full hover:bg-neutral-200 hover:underline transition-all duration-300 hover:duration-0">
-              <Link href="" className="group flex justify-between p-4 items-center leading-tight tracking-tight uppercase">
+              <Link href="" className="group flex justify-between p-4 items-center leading-tight tracking-tight uppercase shadow-[0_1px_0_#e5e5e5]">
                 {item}
                 <div className="opacity-0 group-hover:opacity-100 duration-300 hover:duration-0">
                   <MoveRight className="w-4 animate-pulse" />
@@ -152,7 +152,7 @@ function Section({ id, title, children, className, contentClassName, bodyClassNa
       <div
         className={`h-full w-full border-black border-[1px] bg-white ${contentClassName}`}
       >
-        <h2 className="font-jbmono text-3xl p-4 leading-tight tracking-tight uppercase">
+        <h2 className="font-jbmono text-3xl p-4 leading-tight tracking-tight uppercase pointer-events-none">
           {title}
         </h2>
         <Separator className="bg-black" />

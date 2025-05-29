@@ -25,14 +25,14 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
       </div>
 
       <div className="mt-10 text-center text-2xl font-bold">
-        <a href="mailto:pablo@pbvdev.com" className="hover:underline pointer-events-auto">pablo@pbvdev.com</a>
+        <a href="mailto:pablo@pbvdev.com" className="hover:underline">pablo@pbvdev.com</a>
       </div>
 
-      <div className="flex justify-center items-center mt-4 text-center space-x-8 pointer-events-auto text-sm">
+      <div className="flex justify-center items-center mt-4 text-center space-x-8 text-sm">
         <LanguageSelector />
       </div>
 
-      <div className="flex justify-center items-center mt-4 text-sm">
+      <div className="flex justify-center items-center mt-4 text-sm pointer-events-none">
         <p className="text-neutral-500">{'\u00A9'} {new Date().getFullYear()} {t('info')}</p>
       </div>
     </footer>

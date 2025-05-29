@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { US, ES } from "country-flag-icons/react/3x2";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import getUnicodeFlagIcon from 'country-flag-icons/unicode'
 
 export function LanguageSelector() {
   const t = useTranslations("Footer.languages");
@@ -25,8 +24,9 @@ export function LanguageSelector() {
           title={t(locale)}
           variant="link"
           onClick={() => handleLocaleChange(locale)}
+          className="hover:cursor-pointer mx-2 p-0"
         >
-          <Flag className="w-5 h-auto hover:cursor-pointer" />
+          <Flag className="w-5 h-auto" />
         </Button>
       ))}
     </div>
