@@ -4,13 +4,13 @@ import { useEffect, useLayoutEffect, useRef } from "react"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { motion } from "framer-motion"
-import { gsap } from "gsap"
-import ScrollTrigger from 'gsap/ScrollTrigger'
-import { ScrollSmoother } from "gsap/ScrollSmoother"
+// import { gsap } from "gsap"
+// import ScrollTrigger from 'gsap/ScrollTrigger'
+// import { ScrollSmoother } from "gsap/ScrollSmoother"
 import { MoveRight } from "lucide-react"
 import Section from "@/components/Section"
 import { Separator } from "@/components/ui/separator"
-import { TextHoverEffect } from "@/components/ui/text-hover-effect"
+import { TitleEffect } from "@/components/ui/title-effect"
 import Footer from "@/components/Footer"
 import NavMenu from "@/components/NavMenu"
 
@@ -72,7 +72,7 @@ export default function Home() {
             id="title"
             className="h-screen w-full select-none border-black border-b-[1px]"
           >
-            <TextHoverEffect text={t('title')} />
+            <TitleEffect text={t('title')} />
           </section>
           <Section id="projects" title={t('sections.projects')} >
             {["dope", "ahh", "boy", "from", "the", "projects"].map((item) => (

@@ -35,7 +35,7 @@ export default function NavMenu() {
     >
       <Menubar className="items-center border-b-[1px] border-black">
         <MenubarMenu>
-          <MenubarTrigger className="hover:bg-neutral-200">&#128946;</MenubarTrigger>
+          <MenubarTrigger className="hover:bg-neutral-200">&#10033;</MenubarTrigger>
           <MenubarContent className="ml-4 mt-3 p-0 border-[1px] rounded-none shadow-none">
             {['projects', 'work with me'].map((item) => (
               <MenubarItem asChild key={item} className="MenubarItem px-1 py-2 rounded-none">
@@ -49,7 +49,7 @@ export default function NavMenu() {
             ))}
           </MenubarContent>
         </MenubarMenu>
-        <p onClick={() => window.scrollTo({ top: 0 })}>pbvdev.com</p>
+        <p onClick={() => window.scrollTo({ top: 0 })}>mzzdev.com</p>
       </Menubar>
     </motion.div>
   );
