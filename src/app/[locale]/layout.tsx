@@ -14,8 +14,7 @@ const lexend = Lexend_Mega({
 });
 
 export const metadata: Metadata = {
-  title: "PBV",
-  description: "PBV Portfolio",
+  title: "PBV"
 };
 
 export default async function LocaleLayout({
