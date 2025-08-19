@@ -1,0 +1,12 @@
+services:
+  nextjs:
+    image: nextapp:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio
+    ports:
+      - "4000:3000"
+    environment:
+      NODE_ENV: production
+    restart: always
