@@ -18,15 +18,9 @@ export const metadata: Metadata = {
   description: "PBV Portfolio - a mzz project",
 };
 
-export default async function LocaleLayout({
-  children,
-  params
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
+export default async function LocaleLayout({ children, params }: any) {
   const { locale } = await params;
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
 
   return (
     <html lang={locale}>
