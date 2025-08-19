@@ -1,5 +1,3 @@
-'use client';
-
 import Link from "next/link";
 import { LanguageSelector } from "./LanguageSelector";
 import { Separator } from "@/components/ui/separator";
@@ -10,29 +8,29 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
   const t = useTranslations('Footer');
 
   return (
-    <footer ref={footerRef} className="bg-black text-white pt-10 pb-4 px-4 w-full fixed bottom-0 z-0">
+    <footer ref={footerRef} className="bg-black text-white pt-12 pb-6 px-6 w-full fixed bottom-0 z-0">
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 pointer-events-none" id="contact">
         <FooterSection title={t('social.title')}>
           <FooterLink href="https://linkedin.com" text={t('social.linkedin')} />
-          <FooterLink href="https://github.com" text={t('social.github')} />
-          <FooterLink href="mailto:pablo@pbvdev.com" text={t('social.email')} />
+          <FooterLink href="https://github.com/mzzdev" text={t('social.github')} />
+          <FooterLink href="mailto:pablo@mzzdev.com" text={t('social.email')} />
         </FooterSection>
 
         <FooterSection title={t('about.title')}>
-          <p className="text-sm leading-relaxed text-justify">{t('about.bio1')}</p>
-          <p className="text-sm leading-relaxed text-justify">{t('about.bio2')}</p>
+          <p className="text-base leading-tight mb-6">{t('about.bio1')}</p>
+          <p className="text-base leading-tight">{t('about.bio2')}</p>
         </FooterSection>
       </div>
 
-      <div className="mt-10 text-center text-2xl font-bold">
-        <a href="mailto:pablo@pbvdev.com" className="hover:underline">pablo@pbvdev.com</a>
+      <div className="mt-12 text-center text-2xl font-bold">
+        <a href="mailto:pablo@mzzdev.com" className="hover:underline">pablo@mzzdev.com</a>
       </div>
 
-      <div className="flex justify-center items-center mt-4 text-center space-x-8 text-sm">
+      <div className="flex justify-center items-center mt-6 text-center space-x-8 text-base">
         <LanguageSelector />
       </div>
 
-      <div className="flex justify-center items-center mt-4 text-sm pointer-events-none">
+      <div className="flex justify-center items-center mt-6 text-base pointer-events-none">
         <p className="text-neutral-500">{'\u00A9'} {new Date().getFullYear()} {t('info')}</p>
       </div>
     </footer>
@@ -42,9 +40,9 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
 function FooterSection({ title, children }: { title: string, children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="uppercase text-lg font-bold mb-6 border-b border-gray-600 pb-1">{title}</h3>
+      <h3 className="uppercase text-xl font-bold mb-6 border-b border-gray-600 pb-2">{title}</h3>
       <Separator />
-      <div className="flex flex-col space-y-2 text-sm">
+      <div className="flex flex-col space-y-3 text-base">
         {children}
       </div>
     </div>
@@ -53,10 +51,10 @@ function FooterSection({ title, children }: { title: string, children: React.Rea
 
 function FooterLink({ href, text }: { href: string, text: string }) {
   return (
-    <Link href={href} className="group flex justify-between items-center py-1 hover:underline pointer-events-auto hover:bg-neutral-800 transition-all duration-300 hover:duration-0 mb-0">
+    <Link href={href} className="group flex justify-between items-center py-2 m-0 hover:underline pointer-events-auto hover:bg-neutral-800 transition-all duration-300 hover:duration-0 text-base">
       {text}
         <div className="pr-1 opacity-0 group-hover:opacity-100 duration-300 hover:duration-0">
-          <MoveRight className="w-4 animate-pulse" />
+          <MoveRight className="w-5 animate-pulse" />
         </div>
     </Link>
   );

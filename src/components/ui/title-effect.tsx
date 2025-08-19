@@ -69,7 +69,7 @@ export const TitleEffect = ({ text }: { text: string }) => {
             y="50%"
             textAnchor="middle"
             dominantBaseline="middle"
-            className="tracking-tighter text-2xl font-bold font-[helvetica]"
+            className="tracking-tighter text-5xl md:text-2xl font-bold font-[helvetica]"
           >
             {text}
           </text>

@@ -1,12 +1,9 @@
 'use client'
 
-import { useEffect, useLayoutEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { motion } from "framer-motion"
-// import { gsap } from "gsap"
-// import ScrollTrigger from 'gsap/ScrollTrigger'
-// import { ScrollSmoother } from "gsap/ScrollSmoother"
 import { MoveRight } from "lucide-react"
 import Section from "@/components/Section"
 import { Separator } from "@/components/ui/separator"
@@ -38,28 +35,8 @@ export default function Home() {
     }
   }, [])
 
-  // const smootherRef = useRef<ScrollSmoother | null>(null);
-
-  // useLayoutEffect(() => {
-  //   if (typeof window !== 'undefined') {
-  //     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
-  //     const smoother = ScrollSmoother.create({
-  //       smooth: 1,
-  //       effects: true,
-  //     });
-
-  //     return () => {
-  //       smoother.kill();
-  //     };
-  //   }
-  // }, []);
-
-
   return (
     <>
-      {/* <div id="smooth-wrapper" className="relative overflow-hidden">
-        <div id="smooth-content"> */}
       <NavMenu />
 
       <main className="bg-white relative z-10">
@@ -70,17 +47,17 @@ export default function Home() {
           className="bg-white">
           <section
             id="title"
-            className="h-screen w-full select-none border-black border-b-[1px]"
+            className="h-screen w-full select-none border-[#e5e5e5] border-b-[1px]"
           >
             <TitleEffect text={t('title')} />
           </section>
           <Section id="projects" title={t('sections.projects')} >
-            {["dope", "ahh", "boy", "from", "the", "projects"].map((item) => (
-              <div key={item} className="h-full w-full hover:bg-neutral-200 hover:underline transition-all duration-300 hover:duration-0">
-                <Link href="" className="group flex justify-between p-4 items-center leading-tight tracking-tight uppercase shadow-[0_1px_0_#e5e5e5]">
+            {["dope", "ahh", "boy", "from", "the", "projects", "test", "test2"].map((item, index, array) => (
+              <div key={item} className="h-16 w-full hover:bg-neutral-200 hover:underline transition-all duration-300 hover:duration-0">
+                <Link href="" className={`group flex justify-between px-6 py-4 items-center leading-tight tracking-tight uppercase text-base h-full ${index === array.length - 1 ? '' : 'shadow-[0_1px_0_#e5e5e5]'}`}>
                   {item}
                   <div className="opacity-0 group-hover:opacity-100 duration-300 hover:duration-0">
-                    <MoveRight className="w-4 animate-pulse" />
+                    <MoveRight className="w-5 animate-pulse" />
                   </div>
                 </Link>
               </div>
@@ -90,25 +67,26 @@ export default function Home() {
             id="wwm"
             title={t('sections.wwm.title')}
             contentClassName="flex flex-col"
-            bodyClassName="flex h-full w-full p-0"
+            bodyClassName="flex flex-col md:flex-row h-[25vh] w-full p-0"
           >
-            <div className="w-1/2 h-full hover:bg-neutral-200 hover:underline transition-all duration-300">
+            <div className="w-full md:w-1/2 h-full hover:bg-neutral-200 hover:underline transition-all duration-300">
               <Link
                 href="resume.pdf"
-                className="leading-tight tracking-tight uppercase h-full w-full flex items-center justify-center"
+                className="leading-tight tracking-tight uppercase h-full w-full flex items-center justify-center text-base py-6 md:py-0"
               >
                 {t('sections.wwm.resume')}
               </Link>
             </div>
-            <Separator className="bg-black" orientation="vertical" />
-            <div className="w-1/2 h-full hover:bg-neutral-200 hover:underline transition-all duration-300">
+            <Separator className="bg-[#e5e5e5] md:hidden" />
+            <Separator className="bg-[#e5e5e5] hidden md:block" orientation="vertical" />
+            <div className="w-full md:w-1/2 h-full hover:bg-neutral-200 hover:underline transition-all duration-300">
               <Link
                 href=""
                 onClick={(e) => {
                   e.preventDefault();
                   window.scrollTo({ top: document.documentElement.scrollHeight });
                 }}
-                className="leading-tight tracking-tight uppercase h-full w-full flex items-center justify-center"
+                className="leading-tight tracking-tight uppercase h-full w-full flex items-center justify-center text-base py-6 md:py-0"
               >
                 {t('sections.wwm.contact')}
               </Link>
@@ -116,8 +94,6 @@ export default function Home() {
           </Section>
         </motion.div>
       </main>
-      {/* </div>
-      </div> */}
 
       <div id="placeholder" ref={placeholderRef} className="relative -z-10"></div>
       <Footer footerRef={footerRef} />

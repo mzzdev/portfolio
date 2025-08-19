@@ -10,14 +10,16 @@ export default function Section({ id, title, children, contentClassName, bodyCla
   return (
     <section
       id={id}
-      className="section h-[50vh] w-full px-4 pt-4 last:pb-4 bg-neutral-200"
+      className="section w-full px-6 pt-4 last:pb-4 bg-transparent"
     >
-      <div className={`h-full w-full border-black border-[1px] bg-white ${contentClassName}`}>
-        <h2 className="font-jbmono text-3xl p-4 leading-tight tracking-tight uppercase pointer-events-none">
-          {title}
-        </h2>
-        <Separator className="bg-black" />
-        <div className={`text-lg ${bodyClassName}`}>{children}</div>
+      <div className="container mx-auto shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]">
+        <div className={`w-full min-h-[25vh] border-black border-[1px] bg-white ${contentClassName}`}>
+          <h2 className="font-jbmono text-2xl p-6 leading-tight tracking-tight uppercase pointer-events-none">
+            {title}
+          </h2>
+          <Separator className="bg-black" />
+          <div className={`text-base ${bodyClassName}`}>{children}</div>
+        </div>
       </div>
     </section>
   );
