@@ -19,16 +19,25 @@
       "github": "GitHub",
       "email": "Email"
     },
-    "languages": {
-      "en": "Inglés",
-      "es": "Español"
-    },
     "about": {
       "title": "Sobre mí",
       "bio1": "PBV diseña y desarrolla aplicaciones web, interfaces y aplicaciones full-stack.",
       "bio2": "PBV reside en España y también trabaja a distancia."
     },
     "info": "mzz"
+  },
+  "NavMenu": {
+    "title": "mzz",
+    "index": {
+      "projects": "Proyectos",
+      "workWithMe": "Trabaja conmigo",
+      "resume": "Currículum",
+      "contact": "Contacto"
+    },
+    "languages": {
+      "en": "Inglés",
+      "es": "Español"
+    }
   },
   "NotFoundPage": {
     "message": "La página que estás buscando no existe.",

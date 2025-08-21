@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { LanguageSelector } from "./LanguageSelector";
 import { Separator } from "@/components/ui/separator";
 import { useTranslations } from "next-intl";
 import { MoveRight } from "lucide-react";
@@ -8,7 +7,7 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
   const t = useTranslations('Footer');
 
   return (
-    <footer ref={footerRef} className="bg-black text-white pt-12 pb-6 px-6 w-full fixed bottom-0 z-0">
+    <footer ref={footerRef} className="bg-neutral-200 text-black pt-12 pb-6 px-6 w-full fixed bottom-0 z-0">
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 pointer-events-none" id="contact">
         <FooterSection title={t('social.title')}>
           <FooterLink href="https://linkedin.com" text={t('social.linkedin')} />
@@ -24,10 +23,6 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
 
       <div className="mt-12 text-center text-2xl font-bold">
         <a href="mailto:pablo@mzzdev.com" className="hover:underline">pablo@mzzdev.com</a>
-      </div>
-
-      <div className="flex justify-center items-center mt-6 text-center space-x-8 text-base">
-        <LanguageSelector />
       </div>
 
       <div className="flex justify-center items-center mt-6 text-base pointer-events-none">
@@ -51,7 +46,7 @@ function FooterSection({ title, children }: { title: string, children: React.Rea
 
 function FooterLink({ href, text }: { href: string, text: string }) {
   return (
-    <Link href={href} className="group flex justify-between items-center py-2 m-0 hover:underline pointer-events-auto hover:bg-neutral-800 transition-all duration-300 hover:duration-0 text-base">
+    <Link href={href} className="group flex justify-between items-center py-2 m-0 hover:underline pointer-events-auto hover:bg-neutral-300 transition-all duration-300 hover:duration-0 text-base">
       {text}
         <div className="pr-1 opacity-0 group-hover:opacity-100 duration-300 hover:duration-0">
           <MoveRight className="w-5 animate-pulse" />
