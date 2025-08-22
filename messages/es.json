@@ -33,10 +33,6 @@
       "workWithMe": "Trabaja conmigo",
       "resume": "Currículum",
       "contact": "Contacto"
-    },
-    "languages": {
-      "en": "Inglés",
-      "es": "Español"
     }
   },
   "NotFoundPage": {

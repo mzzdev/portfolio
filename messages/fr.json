@@ -1,0 +1,42 @@
+{
+  "HomePage": {
+    "title": "pablo belló",
+    "sections": {
+      "title": "Sections",
+      "home": "Accueil",
+      "projects": "Projets",
+      "wwm": {
+        "title": "Travaillez avec moi",
+        "resume": "CV",
+        "contact": "Contact"
+      }
+    }
+  },
+  "Footer": {
+    "social": {
+      "title": "Contact",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "email": "E-mail"
+    },
+    "about": {
+      "title": "À propos",
+      "bio1": "PBV conçoit et développe des applications web, des interfaces et des applications full-stack.",
+      "bio2": "PBV est basé en Espagne et travaille également à distance."
+    },
+    "info": "mzz"
+  },
+  "NavMenu": {
+    "title": "mzz",
+    "index": {
+      "projects": "Projets",
+      "workWithMe": "Travaillez avec moi",
+      "resume": "CV",
+      "contact": "Contact"
+    }
+  },
+  "NotFoundPage": {
+    "message": "La page que vous recherchez n'existe pas.",
+    "homeButton": "Retour à l'accueil"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "HomePage": {
+    "title": "pablo belló",
+    "sections": {
+      "title": "版块",
+      "home": "首页",
+      "projects": "项目",
+      "wwm": {
+        "title": "与我合作",
+        "resume": "简历",
+        "contact": "联系"
+      }
+    }
+  },
+  "Footer": {
+    "social": {
+      "title": "联系",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "email": "邮箱"
+    },
+    "about": {
+      "title": "关于",
+      "bio1": "PBV 设计和开发网络应用程序、界面和全栈应用程序。",
+      "bio2": "PBV 总部位于西班牙，也提供远程工作。"
+    },
+    "info": "mzz"
+  },
+  "NavMenu": {
+    "title": "mzz",
+    "index": {
+      "projects": "项目",
+      "workWithMe": "与我合作",
+      "resume": "简历",
+      "contact": "联系"
+    }
+  },
+  "NotFoundPage": {
+    "message": "您查找的页面不存在。",
+    "homeButton": "返回首页"
+  }
+}
