@@ -47,9 +47,13 @@ export default function NavMenu() {
       <Menubar key={menuKey} className="items-center border-b-[1px] border-black px-4 justify-between">
         <div className="flex items-center">
           <MenubarMenu>
-            <MenubarTrigger className="hover:bg-neutral-200 text-base">&#10033;</MenubarTrigger>
+            <MenubarTrigger className="hover:bg-neutral-200 text-base group">
+              <span className="inline-block transition-transform duration-200 group-data-[state=open]:rotate-90">
+                &#10033;
+              </span>
+            </MenubarTrigger>
             <MenubarContent className="ml-1 mt-3 p-0 border-[1px] rounded-none shadow-none">
-              {[t('index.projects'), t('index.workWithMe')].map((item) => (
+              {[t('index.projects'), t('index.about')].map((item) => (
                 <MenubarItem asChild key={item} className="MenubarItem px-4 py-3 rounded-none cursor-pointer">
                   <Link
                     href={`#${item.replace(' ', '-')}`}

@@ -2,41 +2,47 @@
   "HomePage": {
     "title": "pablo belló",
     "sections": {
-      "title": "Sections",
-      "home": "Home",
       "projects": "Projects",
-      "wwm": {
-        "title": "Work with me",
-        "resume": "Resume",
-        "contact": "Contact"
+      "about": {
+        "title": "About me",
+        "bio1": "Pablo Belló designs and develops web applications, user interfaces, and full-stack solutions.",
+        "bio2": "Based in Spain, they also work remotely.",
+        "resume": "Resume"
+      },
+      "contact": {
+        "title": "Contact",
+        "form": {
+          "name": "Name / Company",
+          "message": "Message",
+          "send": "SEND",
+          "nameError": "Please enter a name",
+          "emailError": "Please enter an email",
+          "emailMismatchError": "Please provide a valid email",
+          "messageError": "Please enter a message"
+        }
       }
     }
   },
   "Footer": {
-    "social": {
-      "title": "Contact",
-      "linkedin": "LinkedIn",
-      "github": "GitHub",
-      "email": "Email"
+    "social": "Social",
+    "disclaimer": {
+      "title": "Disclaimer",
+      "i1": "Best viewed in desktop.",
+      "i2": "Portfolio designed and developed by Pablo Belló.",
+      "i3": "Built with Next.js, React, TypeScript, Radix UI, and Tailwind CSS."
     },
-    "about": {
-      "title": "About",
-      "bio1": "PBV designs and develops web applications, interfaces and full-stack applications.",
-      "bio2": "PBV is based in Spain and also works remotely."
-    },
-    "info": "mzz"
+    "title": "mzz"
   },
   "NavMenu": {
     "title": "mzz",
     "index": {
+      "about": "About me",
       "projects": "Projects",
-      "workWithMe": "Work with me",
-      "resume": "Resume",
       "contact": "Contact"
     }
   },
   "NotFoundPage": {
-    "message": "The page you are looking for does not exist.",
-    "homeButton": "Back to Home"
+    "message": "The page you are looking for does not exist",
+    "homeButton": "Go back"
   }
 }
