@@ -12,8 +12,8 @@ export default function Section({ id, title, children, contentClassName, bodyCla
       id={id}
       className="section w-full px-6 pt-4 last:pb-4 bg-transparent"
     >
-      <div className="container mx-auto shadow-[0px_0px_8px_0px_rgba(0,_0,_0,_0.075)]">
-        <div className={`w-full min-h-[25vh] border-black border-[1px] bg-white ${contentClassName}`}>
+      <div className="container mx-auto">
+        <div className={`w-full min-h-[25vh] border-black border-[1px] bg-white shadow-[0px_0px_8px_0px_rgba(0,_0,_0,_0.075)] ${contentClassName}`}>
           <h2 className="font-jbmono text-2xl p-6 leading-tight tracking-tight uppercase pointer-events-none">
             {title}
           </h2>

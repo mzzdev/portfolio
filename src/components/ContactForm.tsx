@@ -1,20 +1,19 @@
-'use client'
-
 import { useState } from "react"
 import { useTranslations } from "next-intl"
 import * as Form from "@radix-ui/react-form"
+import { Check } from "lucide-react"
 
 export default function ContactForm() {
   const t = useTranslations('HomePage');
   
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
-  const [submitMessage, setSubmitMessage] = useState('')
+  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
+  const [isSuccess, setIsSuccess] = useState(false)
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setIsSubmitting(true)
-    setSubmitStatus('idle')
+    setMessage(null)
 
     const formData = new FormData(event.currentTarget)
     const data = {
@@ -32,19 +31,25 @@ export default function ContactForm() {
         body: JSON.stringify(data),
       })
 
-      const result = await response.json()
-
-      if (response.ok) {
-        setSubmitStatus('success')
-        setSubmitMessage(result.message || 'Message sent successfully!')
-        event.currentTarget.reset()
-      } else {
-        setSubmitStatus('error')
-        setSubmitMessage(result.error || 'Failed to send message.')
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: t('sections.contact.form.sendError') }))
+        throw new Error(errorData.error || t('sections.contact.form.sendError'))
       }
+
+      const result = await response.json()
+      setMessage({ type: 'success', text: result.message || t('sections.contact.form.sendSuccess1') })
+      setIsSuccess(true)
+      
+      const form = event.currentTarget
+      if (form) {
+        form.reset()
+      }
+
     } catch (error) {
-      setSubmitStatus('error')
-      setSubmitMessage('Network error. Please try again.')
+      setMessage({ 
+        type: 'error', 
+        text: error instanceof Error ? error.message : t('sections.contact.form.sendError')
+      })
     } finally {
       setIsSubmitting(false)
     }
@@ -52,7 +57,18 @@ export default function ContactForm() {
 
   return (
     <div className="flex-row justify-between px-6 py-4 items-center leading-tight tracking-tight uppercase text-base h-full">
-      <Form.Root className="space-y-6 w-full max-w-lg mx-auto" onSubmit={handleSubmit}>
+      {isSuccess ? (
+        <div className="w-full">
+          <div className="bg-neutral-100 text-black border border-neutral-200 p-8 text-center normal-case space-y-4">
+            <div className="text-4xl mb-4 flex items-center justify-center"><Check /></div>
+            <h3 className="text-lg font-semibold">{t('sections.contact.form.sendSuccess1')}</h3>
+            <p className="text-sm text-neutral-800">
+              {t('sections.contact.form.sendSuccess2')}
+            </p>
+          </div>
+        </div>
+      ) : (
+        <Form.Root className="space-y-6 w-full" onSubmit={handleSubmit}>
         <Form.Field name="name" className="w-full mb-4">
           <Form.Label className="block text-sm font-semibold text-black">
             {t('sections.contact.form.name')}
@@ -99,6 +115,7 @@ export default function ContactForm() {
             <textarea
               name="message"
               required
+              maxLength={2000}
               disabled={isSubmitting}
               className="mt-1 w-full border-1 border-[#e5e5e5] px-3 py-2 text-black focus:outline-none focus:border-black resize-none h-32 text-sm disabled:opacity-50"
             />
@@ -108,13 +125,9 @@ export default function ContactForm() {
           </Form.Message>
         </Form.Field>
 
-        {submitStatus !== 'idle' && (
-          <div className={`text-sm p-3 rounded ${
-            submitStatus === 'success' 
-              ? 'bg-green-50 text-green-800 border border-green-200' 
-              : 'bg-red-50 text-red-800 border border-red-200'
-          }`}>
-            {submitMessage}
+        {message && message.type === 'error' && (
+          <div className="text-sm p-3 rounded bg-red-50 text-red-800 border border-red-200">
+            {message.text}
           </div>
         )}
 
@@ -124,10 +137,11 @@ export default function ContactForm() {
             disabled={isSubmitting}
             className="w-full px-4 py-2 cursor-pointer hover:bg-neutral-200 hover:border-black hover:underline transition-all duration-300 border-1 border-[#e5e5e5] text-black text-base disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isSubmitting ? 'SENDING...' : t('sections.contact.form.send')}
+            {isSubmitting ? t('sections.contact.form.sending') : t('sections.contact.form.send')}
           </button>
         </Form.Submit>
       </Form.Root>
+      )}
     </div>
   )
 }

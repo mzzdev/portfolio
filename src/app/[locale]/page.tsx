@@ -89,9 +89,29 @@ export default function Home() {
                 </div>
               ))}
             </Section>
-            <Section id="contact" title={t('sections.contact.title')} >
-              <ContactForm />
-            </Section>
+            {/* <div className="flex-row flex w-full pb-4"> */}
+              <Section
+                id="contact"
+                title={t('sections.contact.title')}
+                contentClassName="w-full mx-auto max-w-xl shadow-[0px_0px_8px_0px_rgba(0,_0,_0,_0.075)]"
+              >
+                <ContactForm />
+              </Section>
+              {/* <Section
+                id="resume"
+                title={t('sections.about.resume')}
+                bodyClassName="flex flex-col md:flex-row h-[25vh] w-full p-0"
+              >
+                <div className="w-full h-full hover:bg-neutral-200 hover:underline transition-all duration-300">
+                  <Link
+                    href="resume.pdf"
+                    className="leading-tight tracking-tight uppercase h-full w-full flex items-center justify-center text-base py-6 md:py-0"
+                  >
+                    {t('sections.about.resume')}
+                  </Link>
+                </div>
+              </Section>
+            </div> */}
           </div>
         </motion.div>
       </main>
