@@ -2,41 +2,51 @@
   "HomePage": {
     "title": "pablo belló",
     "sections": {
-      "title": "Sections",
-      "home": "Accueil",
       "projects": "Projets",
-      "wwm": {
-        "title": "Travaillez avec moi",
-        "resume": "CV",
-        "contact": "Contact"
-      }
+      "about": {
+        "title": "À propos de moi",
+        "bio1": "Pablo Belló conçoit et développe des applications web, des interfaces utilisateur et des solutions full-stack.",
+        "bio2": "Basé en Espagne, il travaille également à distance.",
+        "bio3": "Travaille actuellement en tant que développeur full-stack @ "
+      },
+      "contact": {
+        "title": "Contact",
+        "form": {
+          "name": "Nom / Entreprise",
+          "message": "Message",
+          "send": "ENVOYER",
+          "sending": "ENVOI...",
+          "nameError": "Veuillez entrer un nom",
+          "emailError": "Veuillez entrer un e-mail",
+          "emailMismatchError": "Veuillez fournir un e-mail valide",
+          "messageError": "Veuillez entrer un message",
+          "sendError": "Erreur réseau. Veuillez réessayer.",
+          "sendSuccess1": "Message reçu !",
+          "sendSuccess2": "Merci de nous avoir contacté. Je vous répondrai dès que possible."
+        }
+      },
+      "resume": "CV"
     }
   },
   "Footer": {
-    "social": {
-      "title": "Contact",
-      "linkedin": "LinkedIn",
-      "github": "GitHub",
-      "email": "E-mail"
+    "social": "Réseaux sociaux",
+    "disclaimer": {
+      "title": "Avertissement",
+      "i1": "Conçu et développé par Pablo Belló.",
+      "i2": "Créé avec Next.js."
     },
-    "about": {
-      "title": "À propos",
-      "bio1": "PBV conçoit et développe des applications web, des interfaces et des applications full-stack.",
-      "bio2": "PBV est basé en Espagne et travaille également à distance."
-    },
-    "info": "mzz"
+    "title": "mzz"
   },
   "NavMenu": {
     "title": "mzz",
     "index": {
+      "about": "À propos de moi",
       "projects": "Projets",
-      "workWithMe": "Travaillez avec moi",
-      "resume": "CV",
       "contact": "Contact"
     }
   },
   "NotFoundPage": {
-    "message": "La page que vous recherchez n'existe pas.",
-    "homeButton": "Retour à l'accueil"
+    "message": "La page que vous recherchez n'existe pas",
+    "homeButton": "Retour"
   }
 }

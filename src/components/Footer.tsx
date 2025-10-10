@@ -6,8 +6,8 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
   const t = useTranslations('Footer');
 
   return (
-    <footer ref={footerRef} className="bg-neutral-100 text-black pt-12 pb-6 px-6 w-full fixed bottom-0 z-0">
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 pointer-events-none" id="contact">
+    <footer ref={footerRef} className="bg-neutral-100 text-black pt-8 pb-4 w-full h-auto fixed bottom-0 z-0">
+      <div className="md:w-4xl w-auto mx-[5vw] md:mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 pointer-events-none" id="contact">
         <FooterSection title={t('social')}>
           <FooterLink href="https://linkedin.com" text="LinkedIn" />
           <FooterLink href="https://github.com/mzzdev" text="GitHub" />
@@ -17,16 +17,18 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
         <FooterSection title={t('disclaimer.title')}>
           <p className="py-1">{t('disclaimer.i1')}</p>
           <p className="py-1">{t('disclaimer.i2')}</p>
-          <p className="py-1">{t('disclaimer.i3')}</p>
         </FooterSection>
       </div>
 
-      <div className="mt-12 text-center text-2xl font-bold">
-        <a href="mailto:pablo@mzzdev.com" className="hover:underline">pablo@mzzdev.com</a>
-      </div>
-
-      <div className="flex justify-center items-center mt-6 text-base pointer-events-none">
-        <p className="text-neutral-500">{'\u00A9'} {new Date().getFullYear()} {t('title')}</p>
+      <div className="mt-6 text-center flex flex-col gap-3">
+        <div>
+          <a href="mailto:pablo@mzzdev.com" className="hover:underline font-bold text-2xl inline-block">
+            pablo@mzzdev.com
+          </a>
+        </div>
+        <p className="text-neutral-500 text-base pointer-events-none">
+          {'\u00A9'} {new Date().getFullYear()} {t('title')}
+        </p>
       </div>
     </footer>
   );
@@ -35,7 +37,7 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
 function FooterSection({ title, children }: { title: string, children: React.ReactNode }) {
   return (
     <div className="uppercase">
-      <h3 className="text-xl font-bold mb-6 border-b border-black pb-2">{title}</h3>
+      <h3 className="text-xl font-bold mb-4 border-b border-black pb-1">{title}</h3>
       <div className="flex flex-col text-base">
         {children}
       </div>

@@ -4,13 +4,13 @@ import { useEffect, useRef } from "react"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { motion } from "framer-motion"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, ExternalLink } from "lucide-react"
 import Section from "@/components/Section"
-import { Separator } from "@/components/ui/separator"
 import { TitleEffect } from "@/components/ui/title-effect"
 import Footer from "@/components/Footer"
 import NavMenu from "@/components/NavMenu"
 import ContactForm from "@/components/ContactForm"
+import Image from 'next/image'
 
 export default function Home() {
   const t = useTranslations('HomePage');
@@ -53,29 +53,34 @@ export default function Home() {
             <TitleEffect text={t('title')} />
           </section>
 
-          <div className="bg-transparent relative z-10 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]">
+          <div className="bg-white relative z-10 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]">
             <Section
               id="about"
               title={t('sections.about.title')}
-              bodyClassName="flex flex-col md:flex-row h-[25vh] w-full p-0"
+              bodyClassName="flex flex-col md:flex-row min-h-[25vh] md:h-[25vh] w-full px-6 py-4 leading-tight tracking-tight uppercase text-base"
             >
-              <div className="w-full md:w-4/5 h-full px-6 py-4 leading-tight tracking-tight uppercase text-base">
-                <ul className="text-base leading-tight">
-                  <li className="mb-6"><span className="select-none">* </span>{t('sections.about.bio1')}</li>
-                  <li className="mb-6"><span className="select-none">* </span>{t('sections.about.bio2')}</li>
-                </ul>
-
-              </div>
-              <Separator className="bg-[#e5e5e5] md:hidden" />
-              <Separator className="bg-[#e5e5e5] hidden md:block" orientation="vertical" />
-              <div className="w-full md:w-1/5 h-full hover:bg-neutral-200 hover:underline transition-all duration-300">
-                <Link
-                  href="resume.pdf"
-                  className="leading-tight tracking-tight uppercase h-full w-full flex items-center justify-center text-base py-6 md:py-0"
-                >
-                  {t('sections.about.resume')}
-                </Link>
-              </div>
+              <ul className="text-base leading-tight">
+                <li className="mb-4 sm:mb-6">
+                  <span className="select-none">* </span>
+                  {t('sections.about.bio1')}
+                </li>
+                <li className="mb-4 sm:mb-6">
+                  <span className="select-none">* </span>
+                  {t('sections.about.bio2')}
+                </li>
+                <li className="mb-4 sm:mb-6">
+                  <span className="select-none">* </span>
+                  {t('sections.about.bio3')}
+                  <Link
+                    href="https://teknei.com"
+                    target="_blank"
+                    className="hover:bg-neutral-200 hover:underline transition-all duration-300"
+                  >
+                    Teknei
+                  </Link>
+                  .
+                </li>
+              </ul>
             </Section>
             <Section id="projects" title={t('sections.projects')} >
               {["dope", "ahh", "boy", "from", "the", "projects"].map((item, index, array) => (
@@ -89,29 +94,32 @@ export default function Home() {
                 </div>
               ))}
             </Section>
-            {/* <div className="flex-row flex w-full pb-4"> */}
-              <Section
-                id="contact"
-                title={t('sections.contact.title')}
-                contentClassName="w-full mx-auto max-w-xl shadow-[0px_0px_8px_0px_rgba(0,_0,_0,_0.075)]"
-              >
-                <ContactForm />
-              </Section>
-              {/* <Section
-                id="resume"
-                title={t('sections.about.resume')}
-                bodyClassName="flex flex-col md:flex-row h-[25vh] w-full p-0"
-              >
-                <div className="w-full h-full hover:bg-neutral-200 hover:underline transition-all duration-300">
-                  <Link
-                    href="resume.pdf"
-                    className="leading-tight tracking-tight uppercase h-full w-full flex items-center justify-center text-base py-6 md:py-0"
-                  >
-                    {t('sections.about.resume')}
+            <div className="flex flex-col md:flex-row gap-4 w-auto md:w-4xl mx-[5vw] md:mx-auto pb-4">
+              <div className="flex flex-col w-full md:w-1/2">
+                <Section
+                  id="contact"
+                  title={t('sections.contact.title')}
+                  noFixedWidth={true}
+                  contentClassName="flex flex-col h-full"
+                  bodyClassName="flex-1"
+                >
+                  <ContactForm />
+                </Section>
+              </div>
+              <div className="flex flex-col gap-4 w-full md:w-1/2">
+                <section id="resume" className="flex w-full min-h-[20vh] md:h-1/2 bg-white border-[1px] border-black shadow-[0px_0px_8px_0px_rgba(0,_0,_0,_0.075)]">
+                  <Link href="/resume.pdf" className="flex justify-center items-center w-full hover:bg-neutral-200 hover:underline transition-all duration-300">
+                    <p className="inline-flex items-center p-6 font-jbmono text-2xl leading-tight tracking-tight uppercase">
+                      {t('sections.resume')}
+                      <ExternalLink className="w-4" />
+                    </p>
                   </Link>
-                </div>
-              </Section>
-            </div> */}
+                </section>
+                <section id="signature" className="flex justify-center items-center w-full min-h-[20vh] md:h-1/2 bg-white border-[1px] border-black shadow-[0px_0px_8px_0px_rgba(0,_0,_0,_0.075)]">
+                  <Image src="sig.svg" alt="Signature" width={100} height={100} className="w-1/2 p-6 select-none" />
+                </section>
+              </div>
+            </div>
           </div>
         </motion.div>
       </main>

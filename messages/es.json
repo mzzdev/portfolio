@@ -2,41 +2,51 @@
   "HomePage": {
     "title": "pablo belló",
     "sections": {
-      "title": "Secciones",
-      "home": "Inicio",
       "projects": "Proyectos",
-      "wwm": {
-        "title": "Trabaja conmigo",
-        "resume": "Currículum",
-        "contact": "Contacto"
-      }
+      "about": {
+        "title": "Sobre mí",
+        "bio1": "Pablo Belló diseña y desarrolla aplicaciones web, interfaces de usuario y soluciones full-stack.",
+        "bio2": "Aunque vive en España, también trabaja de forma remota.",
+        "bio3": "Actualmente trabajando como desarrollador full-stack @ "
+      },
+      "contact": {
+        "title": "Contacto",
+        "form": {
+          "name": "Nombre / Empresa",
+          "message": "Mensaje",
+          "send": "ENVIAR",
+          "sending": "ENVIANDO...",
+          "nameError": "Por favor, introduce un nombre",
+          "emailError": "Por favor, introduce un email",
+          "emailMismatchError": "Por favor, proporciona un email válido",
+          "messageError": "Por favor, introduce un mensaje",
+          "sendError": "Error de red. Por favor, inténtalo de nuevo.",
+          "sendSuccess1": "¡Mensaje recibido!",
+          "sendSuccess2": "Gracias por ponerte en contacto. Te responderé lo antes posible."
+        }
+      },
+      "resume": "Currículum"
     }
   },
   "Footer": {
-    "social": {
-      "title": "Contacto",
-      "linkedin": "LinkedIn",
-      "github": "GitHub",
-      "email": "Email"
+    "social": "Social",
+    "disclaimer": {
+      "title": "Aviso legal",
+      "i1": "Diseñado y desarrollado por Pablo Belló.",
+      "i2": "Construido con Next.js."
     },
-    "about": {
-      "title": "Sobre mí",
-      "bio1": "PBV diseña y desarrolla aplicaciones web, interfaces y aplicaciones full-stack.",
-      "bio2": "PBV reside en España y también trabaja a distancia."
-    },
-    "info": "mzz"
+    "title": "mzz"
   },
   "NavMenu": {
     "title": "mzz",
     "index": {
+      "about": "Sobre mí",
       "projects": "Proyectos",
-      "workWithMe": "Trabaja conmigo",
-      "resume": "Currículum",
       "contact": "Contacto"
     }
   },
   "NotFoundPage": {
-    "message": "La página que estás buscando no existe.",
-    "homeButton": "Volver al inicio"
+    "message": "La página que estás buscando no existe",
+    "homeButton": "Volver"
   }
 }
