@@ -11,7 +11,6 @@
       .flow-line {
         fill: none;
         stroke: rgb(0, 0, 0);
-        stroke-width: ;
         stroke-dasharray: 0;
         stroke-linecap: round;
         stroke-linejoin: round;
@@ -32,5 +31,6 @@
     <path class="flow-line" d="M94 41 L111 41"></path>
     <path class="flow-line" d="M89 61 L111 41"></path>
     <path class="flow-line" d="M102 34 L104.472135955 24.11145618"></path>
+    <!-- <text x="0" y="0" font-family="Arial" font-size="10" fill="black">test</text> -->
   </g>
 </svg>

@@ -22,12 +22,12 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
 
       <div className="mt-6 text-center flex flex-col gap-3">
         <div>
-          <a href="mailto:pablo@mzzdev.com" className="hover:underline font-bold text-2xl inline-block">
+          <a href="mailto:pablo@mzzdev.com" className="hover:underline font-bold text-xl inline-block">
             pablo@mzzdev.com
           </a>
         </div>
-        <p className="text-neutral-500 text-base pointer-events-none">
-          {'\u00A9'} {new Date().getFullYear()} {t('title')}
+        <p className="text-neutral-500 text-sm pointer-events-none">
+          {'\u00A9'} {new Date().getFullYear()} {t('title')} - Pablo Belló. {t('copyright')}
         </p>
       </div>
     </footer>
@@ -47,10 +47,10 @@ function FooterSection({ title, children }: { title: string, children: React.Rea
 
 function FooterLink({ href, text }: { href: string, text: string }) {
   return (
-    <Link href={href} className="group flex justify-between items-center py-1 hover:underline pointer-events-auto hover:bg-neutral-200 transition-all duration-300 hover:duration-0 text-base">
+    <Link href={href} className="group flex justify-between items-center py-1 hover-subtle pointer-events-auto text-base">
       <span className="block">{text}</span>
-      <div className="pr-1 opacity-0 group-hover:opacity-100 duration-300 hover:duration-0">
-        <ArrowRight className="w-5 animate-pulse" />
+      <div className="pr-1 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:duration-0">
+        <ArrowRight className="w-5" />
       </div>
     </Link>
   );

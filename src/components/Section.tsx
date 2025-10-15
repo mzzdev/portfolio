@@ -1,32 +1,59 @@
 import { Separator } from "@/components/ui/separator"
 
-export default function Section({ 
-  id, 
-  title, 
-  children, 
-  contentClassName, 
-  bodyClassName,
-  noFixedWidth = false 
-}: {
+interface SectionProps {
   id: string
-  title: string
+  className?: string
   children: React.ReactNode
-  contentClassName?: string
-  bodyClassName?: string
-  noFixedWidth?: boolean
-}) {
+}
+
+interface SectionCardProps {
+  className?: string
+  children: React.ReactNode
+}
+
+interface SectionHeaderProps {
+  children: React.ReactNode
+}
+
+interface SectionBodyProps {
+  className?: string
+  children: React.ReactNode
+}
+
+export default function Section({ id, className = '', children }: SectionProps) {
   return (
     <section
       id={id}
-      className={`section bg-white ${noFixedWidth ? '' : 'md:w-4xl w-auto md:mx-auto mx-[5vw] pb-4'}`}
+      className={`section bg-white ${className || 'md:w-4xl w-auto md:mx-auto mx-[5vw] pb-4'}`}
     >
-      <div className={`w-full border-black border-[1px] bg-white shadow-[0px_0px_8px_0px_rgba(0,_0,_0,_0.075)] ${contentClassName}`}>
-        <h2 className="font-jbmono text-2xl p-6 leading-tight tracking-tight uppercase pointer-events-none">
-          {title}
-        </h2>
-        <Separator className="bg-black" />
-        <div className={`text-base ${bodyClassName}`}>{children}</div>
-      </div>
+      {children}
     </section>
   );
 }
+
+Section.Card = function SectionCard({ className = '', children }: SectionCardProps) {
+  return (
+    <div className={`w-full border-standard bg-white card-shadow ${className}`}>
+      {children}
+    </div>
+  );
+};
+
+Section.Header = function SectionHeader({ children }: SectionHeaderProps) {
+  return (
+    <>
+      <h2 className="font-jbmono text-xl uppercase p-6 pointer-events-none">
+        {children}
+      </h2>
+      <Separator className="bg-black" />
+    </>
+  );
+};
+
+Section.Body = function SectionBody({ className = '', children }: SectionBodyProps) {
+  return (
+    <div className={`text-base ${className}`}>
+      {children}
+    </div>
+  );
+};

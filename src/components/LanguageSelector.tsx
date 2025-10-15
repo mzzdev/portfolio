@@ -26,12 +26,12 @@ export function LanguageMenuItems() {
       {languages.map(({ locale, Flag, nativeName }) => (
         <MenubarItem
           key={locale}
-          className="px-4 py-3 rounded-none cursor-pointer focus:bg-neutral-200 duration-300 hover:duration-0"
+          className="px-4 py-3 rounded-none cursor-pointer hover-subtle focus:bg-neutral-200"
           onClick={() => handleLocaleChange(locale)}
         >
           <div className="flex items-center space-x-2">
             <Flag className="w-4 h-auto" />
-            <span className="leading-tight tracking-tight uppercase font-bold text-base">
+            <span className="text-base-upper font-bold">
               {nativeName}
             </span>
           </div>

@@ -1,13 +1,18 @@
 {
-  "HomePage": {
-    "title": "pablo belló",
+  "Home": {
     "sections": {
-      "projects": "Projects",
+      "projectsTitle": "Projects",
       "about": {
         "title": "About me",
         "bio1": "Pablo Belló designs and develops web applications, user interfaces, and full-stack solutions.",
         "bio2": "Based in Spain, they also work remotely.",
         "bio3": "Currently working as a full-stack developer @ "
+      },
+      "projects": {
+        "portfolio": {
+          "title": "Portfolio Website",
+          "description": "My personal portfolio (this website) showcasing my projects and skills."
+        }
       },
       "contact": {
         "title": "Contact",
@@ -25,7 +30,7 @@
           "sendSuccess2": "Thank you for reaching out. I will get back to you as soon as possible."
         }
       },
-      "resume": "CV"
+      "resume": "Resume"
     }
   },
   "Footer": {
@@ -35,7 +40,8 @@
       "i1": "Designed and developed by Pablo Belló.",
       "i2": "Built with Next.js."
     },
-    "title": "mzz"
+    "title": "mzz",
+    "copyright": "All rights reserved."
   },
   "NavMenu": {
     "title": "mzz",
@@ -46,7 +52,7 @@
     }
   },
   "NotFoundPage": {
-    "message": "The page you are looking for does not exist.",
+    "message": "The page you are looking for does not exist",
     "homeButton": "Go back"
   }
 }

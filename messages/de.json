@@ -1,13 +1,18 @@
 {
-  "HomePage": {
-    "title": "pablo belló",
+  "Home": {
     "sections": {
-      "projects": "Projekte",
+      "projectsTitle": "Projekte",
       "about": {
         "title": "Über mich",
         "bio1": "Pablo Belló entwirft und entwickelt Webanwendungen, Benutzeroberflächen und Full-Stack-Lösungen.",
         "bio2": "Mit Sitz in Spanien arbeitet er auch remote.",
         "bio3": "Derzeit tätig als Full-Stack-Entwickler @ "
+      },
+      "projects": {
+        "portfolio": {
+          "title": "Portfolio-Website",
+          "description": "Mein persönliches Portfolio (diese Website) zeigt meine Projekte und Fähigkeiten."
+        }
       },
       "contact": {
         "title": "Kontakt",
@@ -35,7 +40,8 @@
       "i1": "Entworfen und entwickelt von Pablo Belló.",
       "i2": "Erstellt mit Next.js."
     },
-    "title": "mzz"
+    "title": "mzz",
+    "copyright": "Alle Rechte vorbehalten."
   },
   "NavMenu": {
     "title": "mzz",

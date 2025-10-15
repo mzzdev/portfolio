@@ -1,13 +1,18 @@
 {
-  "HomePage": {
-    "title": "pablo belló",
+  "Home": {
     "sections": {
-      "projects": "项目",
+      "projectsTitle": "项目",
       "about": {
         "title": "关于我",
         "bio1": "Pablo Belló 设计和开发网络应用程序、用户界面和全栈解决方案。",
         "bio2": "总部位于西班牙，也提供远程工作。",
         "bio3": "目前担任全栈开发人员 @ "
+      },
+      "projects": {
+        "portfolio": {
+          "title": "作品集网站",
+          "description": "我的个人作品集（本网站）展示我的项目和技能。"
+        }
       },
       "contact": {
         "title": "联系",
@@ -35,7 +40,8 @@
       "i1": "由 Pablo Belló 设计和开发。",
       "i2": "使用 Next.js 构建。"
     },
-    "title": "mzz"
+    "title": "mzz",
+    "copyright": "保留所有权利。"
   },
   "NavMenu": {
     "title": "mzz",

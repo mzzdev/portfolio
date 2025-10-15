@@ -31,7 +31,7 @@ export default function NotFoundPage() {
         <p className="relative text-black uppercase tracking-tight font-bold text-xl mt-10 rounded-lg backdrop-blur-xs">{t("message")}</p>
 
         <Link href="/">
-          <Button variant="outline" className="mt-4 w-full px-4 py-2 hover:bg-neutral-200 hover:border-black hover:underline cursor-pointer transition-all duration-300 rounded-none border-1 border-[#e5e5e5] uppercase text-black text-sm">
+          <Button variant="outline" className="mt-4 w-full px-4 py-2 hover-subtle cursor-pointer rounded-none border-input uppercase text-black text-sm">
             {t("homeButton")}
           </Button>
         </Link>

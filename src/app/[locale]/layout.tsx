@@ -15,8 +15,8 @@ const lexend = Lexend_Mega({
 });
 
 export const metadata: Metadata = {
-  title: "PBV",
-  description: "PBV Portfolio - a mzz project",
+  title: "pablo belló",
+  description: "pablo belló portfolio - a mzz project",
 };
 
 export default async function LocaleLayout({ children, params }: any) {
@@ -25,7 +25,7 @@ export default async function LocaleLayout({ children, params }: any) {
 
   return (
     <html lang={locale}>
-      <body className={`antialiased leading-tight font-semibold tracking-tight overflow-y-scroll ${jbmono.className} ${lexend.variable}`}>
+      <body className={`${jbmono.className} ${lexend.variable}`}>
         <NextIntlClientProvider messages={messages}>
           <LanguageDetector currentLocale={locale} />
           {children}

@@ -76,7 +76,7 @@ export default function NavMenu() {
       transition={{ duration: 0.3 }}
       className="fixed top-0 z-50 font-lexend tracking-wide select-none w-full"
     >
-      <Menubar key={menuKey} className="items-center border-b-[1px] border-black px-4 justify-between">
+      <Menubar key={menuKey} className="items-center border-bottom-standard px-4 justify-between">
         <div className="flex items-center">
           <MenubarMenu>
             <MenubarTrigger className="hover:bg-neutral-200 text-base group">
@@ -84,14 +84,14 @@ export default function NavMenu() {
                 &#10033;
               </span>
             </MenubarTrigger>
-            <MenubarContent className="ml-1 mt-3 p-0 border-[1px] rounded-none shadow-none">
+            <MenubarContent className="ml-1 mt-3 p-0 border-standard rounded-none shadow-none">
               {sections.map((sectionId) => (
                 <MenubarItem 
                   key={sectionId} 
-                  className="MenubarItem px-4 py-3 rounded-none cursor-pointer"
+                  className="MenubarItem px-4 py-3 rounded-none cursor-pointer hover-subtle"
                   onClick={() => scrollToSection(sectionId)}
                 >
-                  <span className="leading-tight tracking-tight uppercase font-bold text-base hover:underline duration-300 hover:duration-0">
+                  <span className="text-base-upper font-bold">
                     {getSectionLabel(sectionId)}
                   </span>
                 </MenubarItem>
@@ -108,7 +108,7 @@ export default function NavMenu() {
           <MenubarTrigger className="hover:bg-neutral-200 text-base">
             <Globe className="w-4" />
           </MenubarTrigger>
-          <MenubarContent className="mr-4 mt-3 p-0 border-[1px] rounded-none shadow-none">
+          <MenubarContent className="mr-4 mt-3 p-0 border-standard rounded-none shadow-none">
             <LanguageMenuItems />
           </MenubarContent>
         </MenubarMenu>

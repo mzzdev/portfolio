@@ -4,7 +4,7 @@ import * as Form from "@radix-ui/react-form"
 import { Check } from "lucide-react"
 
 export default function ContactForm() {
-  const t = useTranslations('HomePage');
+  const t = useTranslations('Home');
   
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
@@ -56,12 +56,12 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="flex-row justify-between px-6 py-4 items-center leading-tight tracking-tight uppercase text-base h-full">
+    <div className="flex-row justify-between px-6 py-4 items-center text-base-upper h-full">
       {isSuccess ? (
         <div className="w-full">
           <div className="bg-neutral-100 text-black border border-neutral-200 p-8 text-center normal-case space-y-4">
             <div className="text-4xl mb-4 flex items-center justify-center"><Check /></div>
-            <h3 className="text-lg font-semibold">{t('sections.contact.form.sendSuccess1')}</h3>
+            <h3 className="text-lg">{t('sections.contact.form.sendSuccess1')}</h3>
             <p className="text-sm text-neutral-800">
               {t('sections.contact.form.sendSuccess2')}
             </p>
@@ -70,7 +70,7 @@ export default function ContactForm() {
       ) : (
         <Form.Root className="space-y-6 w-full" onSubmit={handleSubmit}>
         <Form.Field name="name" className="w-full mb-4">
-          <Form.Label className="block text-sm font-semibold text-black">
+          <Form.Label className="block text-sm text-black">
             {t('sections.contact.form.name')}
           </Form.Label>
           <Form.Control asChild>
@@ -78,7 +78,7 @@ export default function ContactForm() {
               name="name"
               required
               disabled={isSubmitting}
-              className="mt-1 w-full border-1 border-[#e5e5e5] px-3 py-2 text-black focus:outline-none focus:border-black resize-none text-sm disabled:opacity-50"
+              className="mt-1 w-full border-input px-3 py-2 text-black focus:outline-none focus:border-black resize-none text-sm disabled:opacity-50"
             />
           </Form.Control>
           <Form.Message match="valueMissing" className="mt-1 text-xs text-red-600">
@@ -87,7 +87,7 @@ export default function ContactForm() {
         </Form.Field>
 
         <Form.Field name="email" className="w-full mb-4">
-          <Form.Label className="block text-sm font-semibold text-black">
+          <Form.Label className="block text-sm text-black">
             Email
           </Form.Label>
           <Form.Control asChild>
@@ -96,7 +96,7 @@ export default function ContactForm() {
               type="email"
               required
               disabled={isSubmitting}
-              className="mt-1 w-full border-1 border-[#e5e5e5] px-3 py-2 text-black focus:outline-none focus:border-black resize-none text-sm disabled:opacity-50"
+              className="mt-1 w-full border-input px-3 py-2 text-black focus:outline-none focus:border-black resize-none text-sm disabled:opacity-50"
             />
           </Form.Control>
           <Form.Message match="valueMissing" className="mt-1 text-xs text-red-600">
@@ -117,7 +117,7 @@ export default function ContactForm() {
               required
               maxLength={2000}
               disabled={isSubmitting}
-              className="mt-1 w-full border-1 border-[#e5e5e5] px-3 py-2 text-black focus:outline-none focus:border-black resize-none h-32 text-sm disabled:opacity-50"
+              className="mt-1 w-full border-input px-3 py-2 text-black focus:outline-none focus:border-black resize-none h-32 text-sm disabled:opacity-50"
             />
           </Form.Control>
           <Form.Message match="valueMissing" className="mt-1 text-xs text-red-600">
@@ -135,7 +135,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full px-4 py-2 cursor-pointer hover:bg-neutral-200 hover:border-black hover:underline transition-all duration-300 border-1 border-[#e5e5e5] text-black text-base disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full px-4 py-2 cursor-pointer hover-subtle border-input text-black text-base disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? t('sections.contact.form.sending') : t('sections.contact.form.send')}
           </button>
