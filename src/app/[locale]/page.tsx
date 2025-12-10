@@ -106,11 +106,10 @@ export default function Home() {
               <Section.Card>
                 <Section.Header>{t('sections.projectsTitle')}</Section.Header>
                 <Section.Body>
-                  {projects.map((project, index) => (
+                  {projects.map((project) => (
                     <ProjectCard
                       key={project.id}
                       project={project}
-                      isLast={index === projects.length - 1}
                     />
                   ))}
                 </Section.Body>
@@ -133,9 +132,9 @@ export default function Home() {
                     <Section.Card className="h-full flex">
                       <Section.Body className="w-full h-full flex">
                         <Link href="/resume.pdf" className="flex justify-center items-center w-full hover-subtle h-full">
-                          <p className="inline-flex items-center p-6 font-jbmono text-xl uppercase">
-                            {t('sections.resume')}
+                          <p className="inline-flex gap-1.5 items-center p-6 font-jbmono text-xl uppercase">
                             <ExternalLink className="w-4" />
+                            {t('sections.resume')}
                           </p>
                         </Link>
                       </Section.Body>

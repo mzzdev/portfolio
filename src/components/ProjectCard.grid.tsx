@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Project } from "@/data/projects";
 
@@ -12,41 +12,32 @@ export default function ProjectCardGrid({ project }: ProjectCardGridProps) {
   const t = useTranslations('Home');
 
   return (
-    <Link
-      href={project.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group flex flex-col border border-neutral-200 hover:bg-neutral-200 transition-all duration-300 hover:duration-0 overflow-hidden h-full"
-    >
+    <div className="group flex flex-col border border-neutral-200 hover:bg-neutral-200 transition-all duration-300 hover:duration-0 overflow-hidden h-full">
       <div className="relative w-full aspect-video overflow-hidden bg-neutral-50">
         <Image
           src={project.image}
           alt={t(project.titleKey)}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-        
-        {project.featured && (
-          <div className="absolute top-3 right-3 bg-black text-white text-xs px-3 py-1 font-semibold uppercase tracking-wide">
-            Featured
-          </div>
-        )}
       </div>
 
       <div className="p-6 flex-1 flex flex-col">
-        <div className="flex items-start justify-between gap-2 mb-3">
-          <h3 className="text-lg font-semibold uppercase tracking-tight group-hover:underline">
+        <div className="flex items-center gap-2 mb-3">
+          <h3 className="text-lg font-semibold uppercase tracking-tight">
             {t(project.titleKey)}
           </h3>
-          <ExternalLink className="w-5 h-5 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:duration-0" />
+          <span className="text-xs text-neutral-500 normal-case font-normal tracking-normal">
+            {project.year}
+          </span>
         </div>
 
         <p className="text-sm text-neutral-600 mb-4 flex-1 leading-relaxed normal-case font-normal tracking-normal">
           {t(project.descriptionKey)}
         </p>
 
-        <div className="flex flex-wrap gap-2 mt-auto">
+        <div className="flex flex-wrap gap-2 mb-4">
           {project.tags.map((tag) => (
             <span
               key={tag}
@@ -56,7 +47,30 @@ export default function ProjectCardGrid({ project }: ProjectCardGridProps) {
             </span>
           ))}
         </div>
+
+        <div className="flex flex-wrap gap-2 mt-auto">
+          <Link
+            href={project.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 bg-black text-white hover:bg-neutral-800 transition-colors duration-200 font-medium uppercase tracking-wide"
+          >
+            <Github className="w-3.5 h-3.5" />
+            {t('sections.projects.buttons.repo')}
+          </Link>
+          {project.demoLink && (
+            <Link
+              href={project.demoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-100 transition-colors duration-200 font-medium uppercase tracking-wide"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              {t('sections.projects.buttons.demo')}
+            </Link>
+          )}
+        </div>
       </div>
-    </Link>
+    </div>
   );
 }

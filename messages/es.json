@@ -9,9 +9,25 @@
         "bio3": "Actualmente trabajando como desarrollador full-stack @ "
       },
       "projects": {
+        "buttons": {
+          "demo": "Demo",
+          "repo": "Repo"
+        },
         "portfolio": {
-          "title": "Sitio Web del Portfolio",
-          "description": "Mi portfolio personal (este sitio web) mostrando mis proyectos y habilidades."
+          "title": "Portfolio (mzzdev.com)",
+          "description": "Un sitio web personal que presenta mis proyectos, experiencia y habilidades."
+        },
+        "jex": {
+          "title": "Jex",
+          "description": "Una aplicación web full-stack para gestionar y compartir fragmentos de código con resaltado de sintaxis y categorización."
+        },
+        "opium": {
+          "title": "Prototipo UI de Opium Shop",
+          "description": "Un prototipo de interfaz para un e-commerce, demostrando principios de diseño moderno y experiencia de usuario."
+        },
+        "meld": {
+          "title": "Meld",
+          "description": "Una muestra de desarrollo web moderno construido con Next.js, Tailwind y librerías 3D."
         }
       },
       "contact": {
@@ -41,7 +57,7 @@
       "i2": "Construido con Next.js."
     },
     "title": "mzz",
-    "copyright": "Todos los derechos reservados."
+    "copyright": "Todos los derechos reservados"
   },
   "NavMenu": {
     "title": "mzz",

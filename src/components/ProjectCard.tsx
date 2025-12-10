@@ -1,64 +1,111 @@
-import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Project } from "@/data/projects";
+import { Button } from "./ui/button";
+import * as Dialog from "@radix-ui/react-dialog";
+import { useState } from "react";
 
 interface ProjectCardProps {
   project: Project;
-  isLast?: boolean;
 }
 
-export default function ProjectCard({ project, isLast = false }: ProjectCardProps) {
+export default function ProjectCard({ project }: ProjectCardProps) {
   const t = useTranslations('Home');
+  const [open, setOpen] = useState(false);
 
   return (
-    <Link
-      href={project.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`group block hover:bg-neutral-200 transition-all duration-300 hover:duration-0 ${isLast ? '' : 'border-b border-neutral-200'}`}
-    >
-      <div className="flex flex-col sm:flex-row items-start gap-4 p-6 h-full">
-        <div className="relative w-full sm:w-24 h-24 sm:h-20 flex-shrink-0 border border-neutral-200 overflow-hidden bg-neutral-50 rounded-sm">
-          <Image
-            src={project.image}
-            alt={t(project.titleKey)}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-            sizes="(max-width: 640px) 100vw, 96px"
-          />
+    <div className="flex flex-col sm:flex-row items-start gap-4 p-6 border-b border-neutral-200 last:border-none">
+      <div className="md:hidden relative w-full aspect-video border border-neutral-200">
+        <Image
+          src={project.image}
+          alt={t(project.titleKey)}
+          fill
+          className="object-cover"
+          sizes="100vw"
+          draggable={false}
+        />
+      </div>
+
+      <div className="hidden md:block">
+        <Dialog.Root open={open} onOpenChange={setOpen}>
+          <Dialog.Trigger asChild>
+            <div className="relative w-40 aspect-video flex-shrink-0 border border-neutral-200 transition-colors cursor-pointer hover-subtle hover:border-black">
+              <Image
+                src={project.image}
+                alt={t(project.titleKey)}
+                fill
+                className="object-cover"
+                draggable={false}
+              />
+            </div>
+          </Dialog.Trigger>
+
+          <Dialog.Portal>
+            <Dialog.Overlay className="fixed inset-0 bg-black/20 backdrop-blur-md z-50" />
+            <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[75vw] -translate-x-1/2 -translate-y-1/2 outline-none">
+              <Dialog.Title className="sr-only">{t(project.titleKey)}</Dialog.Title>
+              <Image
+                src={project.image}
+                alt={t(project.titleKey)}
+                width={1920}
+                height={1080}
+                className="object-contain w-full h-full border border-black"
+                draggable={false}
+              />
+            </Dialog.Content>
+          </Dialog.Portal>
+        </Dialog.Root>
+      </div>
+
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-2 mb-2">
+          <h3 className="text-base-upper font-semibold">
+            {t(project.titleKey)}
+          </h3>
+          <span className="text-xs text-neutral-500">
+            {project.year}
+          </span>
         </div>
 
-        <div className="flex-1 min-w-0 w-full">
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex-1 min-w-0">
-              <h3 className="text-base-upper font-semibold mb-2 group-hover:underline">
-                {t(project.titleKey)}
-              </h3>
-              
-              <p className="text-sm text-neutral-600 mb-3 leading-relaxed normal-case font-normal tracking-normal">
-                {t(project.descriptionKey)}
-              </p>
-              
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs px-2.5 py-1 bg-neutral-100 text-neutral-700 border border-neutral-200 font-medium normal-case tracking-normal"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
+        <p className="text-sm text-neutral-500 mb-3 leading-relaxed">
+          {t(project.descriptionKey)}
+        </p>
 
-            <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:duration-0">
-              <ExternalLink className="w-5 h-5" />
-            </div>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+          <div className="flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-xs px-2.5 py-1 bg-neutral-100 text-neutral-700 border border-neutral-200"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex gap-2 sm:ml-auto">
+            <Button
+              variant="outline"
+              className="px-4 py-2 hover-subtle-black cursor-pointer rounded-none uppercase bg-black text-white text-base inline-flex items-center gap-1.5"
+              onClick={() => window.open(project.githubLink, '_blank', 'noopener,noreferrer')}
+            >
+              <Github className="w-3.5 h-3.5" />
+              {t('sections.projects.buttons.repo')}
+            </Button>
+            {project.demoLink && (
+              <Button
+                variant="outline"
+                className="px-4 py-2 hover-subtle cursor-pointer rounded-none uppercase bg-white text-black text-base inline-flex items-center gap-1.5"
+                onClick={() => window.open(project.demoLink, '_blank', 'noopener,noreferrer')}
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                {t('sections.projects.buttons.demo')}
+              </Button>
+            )}
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

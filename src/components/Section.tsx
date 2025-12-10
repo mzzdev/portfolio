@@ -1,5 +1,3 @@
-import { Separator } from "@/components/ui/separator"
-
 interface SectionProps {
   id: string
   className?: string
@@ -42,10 +40,9 @@ Section.Card = function SectionCard({ className = '', children }: SectionCardPro
 Section.Header = function SectionHeader({ children }: SectionHeaderProps) {
   return (
     <>
-      <h2 className="font-jbmono text-xl uppercase p-6 pointer-events-none">
+      <h2 className="font-jbmono text-xl border-bottom-standard uppercase p-6">
         {children}
       </h2>
-      <Separator className="bg-black" />
     </>
   );
 };

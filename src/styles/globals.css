@@ -32,6 +32,10 @@ body {
   @apply hover:bg-neutral-200 hover:underline transition-all duration-300 hover:duration-0;
 }
 
+.hover-subtle-black {
+  @apply hover:bg-neutral-600 hover:underline transition-all duration-300 hover:duration-0;
+}
+
 .border-standard {
   @apply border-[1px] border-black;
 }

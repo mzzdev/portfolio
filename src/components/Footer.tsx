@@ -6,8 +6,8 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
   const t = useTranslations('Footer');
 
   return (
-    <footer ref={footerRef} className="bg-neutral-100 text-black pt-8 pb-4 w-full h-auto fixed bottom-0 z-0">
-      <div className="md:w-4xl w-auto mx-[5vw] md:mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 pointer-events-none" id="contact">
+    <footer ref={footerRef} className="bg-neutral-100 text-black pt-6 pb-2 w-full h-auto fixed bottom-0 z-0">
+      <div className="md:w-4xl w-auto mx-[5vw] md:mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8" id="contact">
         <FooterSection title={t('social')}>
           <FooterLink href="https://linkedin.com" text="LinkedIn" />
           <FooterLink href="https://github.com/mzzdev" text="GitHub" />
@@ -20,14 +20,15 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
         </FooterSection>
       </div>
 
-      <div className="mt-6 text-center flex flex-col gap-3">
-        <div>
-          <a href="mailto:pablo@mzzdev.com" className="hover:underline font-bold text-xl inline-block">
+      <div className="mt-4 text-center">
+        <Link href="mailto:pablo@mzzdev.com" className="hover:underline font-bold text-xl inline-block mb-4">
             pablo@mzzdev.com
-          </a>
-        </div>
-        <p className="text-neutral-500 text-sm pointer-events-none">
-          {'\u00A9'} {new Date().getFullYear()} {t('title')} - Pablo Belló. {t('copyright')}
+        </Link>
+        <p className="text-neutral-400 text-sm">
+          {'\u00A9'} {new Date().getFullYear()} {t('title')} - Pablo Belló
+        </p>
+        <p className="text-neutral-400 text-sm">
+           {t('copyright')}
         </p>
       </div>
     </footer>

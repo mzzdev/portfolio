@@ -9,9 +9,25 @@
         "bio3": "目前担任全栈开发人员 @ "
       },
       "projects": {
+        "buttons": {
+          "demo": "演示",
+          "repo": "仓库"
+        },
         "portfolio": {
-          "title": "作品集网站",
-          "description": "我的个人作品集（本网站）展示我的项目和技能。"
+          "title": "作品集 (mzzdev.com)",
+          "description": "一个展示我的项目、经验和技能的个人网站。"
+        },
+        "jex": {
+          "title": "Jex",
+          "description": "一个用于管理和共享代码片段的全栈Web应用程序，具有语法高亮和分类功能。"
+        },
+        "opium": {
+          "title": "Opium Shop UI 原型",
+          "description": "电子商务的UI原型，展示现代设计原则和用户体验。"
+        },
+        "meld": {
+          "title": "Meld",
+          "description": "使用Next.js、Tailwind和3D库构建的现代Web开发展示。"
         }
       },
       "contact": {

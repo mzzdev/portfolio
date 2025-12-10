@@ -9,9 +9,25 @@
         "bio3": "Derzeit tätig als Full-Stack-Entwickler @ "
       },
       "projects": {
+        "buttons": {
+          "demo": "Demo",
+          "repo": "Repo"
+        },
         "portfolio": {
-          "title": "Portfolio-Website",
-          "description": "Mein persönliches Portfolio (diese Website) zeigt meine Projekte und Fähigkeiten."
+          "title": "Portfolio (mzzdev.com)",
+          "description": "Eine persönliche Website, die meine Projekte, Erfahrung und Fähigkeiten präsentiert."
+        },
+        "jex": {
+          "title": "Jex",
+          "description": "Eine Full-Stack-Webanwendung zum Verwalten und Teilen von Code-Snippets mit Syntaxhervorhebung und Kategorisierung."
+        },
+        "opium": {
+          "title": "Opium Shop UI-Prototyp",
+          "description": "Ein UI-Prototyp für einen E-Commerce, der moderne Designprinzipien und Benutzererfahrung demonstriert."
+        },
+        "meld": {
+          "title": "Meld",
+          "description": "Eine Präsentation moderner Webentwicklung, erstellt mit Next.js, Tailwind und 3D-Bibliotheken."
         }
       },
       "contact": {
