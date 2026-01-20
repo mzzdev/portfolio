@@ -76,7 +76,7 @@ export default function NavMenu() {
       transition={{ duration: 0.3 }}
       className="fixed top-0 z-50 font-lexend tracking-wide select-none w-full"
     >
-      <Menubar key={menuKey} className="items-center border-bottom-standard px-4 justify-between">
+      <Menubar key={menuKey} className="items-center border-b border-neutral-300 card-shadow px-4 justify-between">
         <div className="flex items-center">
           <MenubarMenu>
             <MenubarTrigger className="hover:bg-neutral-200 text-base group">
@@ -88,7 +88,7 @@ export default function NavMenu() {
               {sections.map((sectionId) => (
                 <MenubarItem 
                   key={sectionId} 
-                  className="MenubarItem px-4 py-3 rounded-none cursor-pointer hover-subtle"
+                  className="menubar-item"
                   onClick={() => scrollToSection(sectionId)}
                 >
                   <span className="text-base-upper font-bold">

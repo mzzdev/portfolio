@@ -1,63 +1,71 @@
 {
-  "Home": {
-    "sections": {
-      "projectsTitle": "Projets",
-      "about": {
-        "title": "À propos de moi",
-        "bio1": "Pablo Belló conçoit et développe des applications web, des interfaces utilisateur et des solutions full-stack.",
-        "bio2": "Basé en Espagne, il travaille également à distance.",
-        "bio3": "Travaille actuellement en tant que développeur full-stack @ "
+  "About": {
+    "title": "À propos de moi",
+    "description": "Je suis un développeur full-stack avec plus de 2 ans d'expérience dans les applications web. Je travaille avec Java et React, développant des projets de la conception au déploiement. J'ai un intérêt particulier pour le design d'interface et l'UX. Je travaille depuis l'Espagne en collaboration avec des équipes à distance.",
+    "techStackTitle": "Technologies avec lesquelles je travaille",
+    "journeyTitle": "Parcours",
+    "workAt": "chez",
+    "location": "Espagne",
+    "journey": {
+      "teknei": {
+        "period": "2024 - Présent",
+        "role": "Développeur Java Full-Stack"
       },
-      "projects": {
-        "buttons": {
-          "demo": "Démo",
-          "repo": "Repo"
-        },
-        "portfolio": {
-          "title": "Portfolio (mzzdev.com)",
-          "description": "Un site web personnel qui présente mes projets, mon expérience et mes compétences."
-        },
-        "jex": {
-          "title": "Jex",
-          "description": "Une application web full-stack pour gérer et partager des extraits de code avec coloration syntaxique et catégorisation."
-        },
-        "opium": {
-          "title": "Prototype UI Opium Shop",
-          "description": "Un prototype d'interface pour un e-commerce, démontrant les principes de design moderne et l'expérience utilisateur."
-        },
-        "meld": {
-          "title": "Meld",
-          "description": "Une vitrine du développement web moderne construite avec Next.js, Tailwind et des bibliothèques 3D."
-        }
-      },
-      "contact": {
-        "title": "Contact",
-        "form": {
-          "name": "Nom / Entreprise",
-          "message": "Message",
-          "send": "ENVOYER",
-          "sending": "ENVOI...",
-          "nameError": "Veuillez entrer un nom",
-          "emailError": "Veuillez entrer un e-mail",
-          "emailMismatchError": "Veuillez fournir un e-mail valide",
-          "messageError": "Veuillez entrer un message",
-          "sendError": "Erreur réseau. Veuillez réessayer.",
-          "sendSuccess1": "Message reçu !",
-          "sendSuccess2": "Merci de nous avoir contacté. Je vous répondrai dès que possible."
-        }
-      },
-      "resume": "CV"
+      "education": {
+        "period": "2022 - 2024",
+        "role": "Diplôme Supérieur en Développement d'Applications Web"
+      }
     }
+  },
+  "Projects": {
+    "title": "Projets",
+    "buttons": {
+      "demo": "Démo",
+      "repo": "Repo"
+    },
+    "portfolio": {
+      "title": "Portfolio (mzzdev.com)",
+      "description": "Un site web personnel qui présente mes projets, mon expérience et mes compétences."
+    },
+    "jex": {
+      "title": "Jex",
+      "description": "Une application web full-stack pour gérer et partager des extraits de code avec coloration syntaxique et catégorisation."
+    },
+    "opium": {
+      "title": "Prototype UI Opium Shop",
+      "description": "Un prototype d'interface pour un e-commerce, démontrant les principes de design moderne et l'expérience utilisateur."
+    },
+    "meld": {
+      "title": "Meld",
+      "description": "Une vitrine du développement web moderne construite avec Next.js, Tailwind et des bibliothèques 3D."
+    }
+  },
+  "Contact": {
+    "title": "Contact",
+    "form": {
+      "name": "Nom / Entreprise",
+      "message": "Message",
+      "send": "ENVOYER",
+      "sending": "ENVOI...",
+      "nameError": "Veuillez entrer un nom",
+      "emailError": "Veuillez entrer un e-mail",
+      "emailMismatchError": "Veuillez fournir un e-mail valide",
+      "messageError": "Veuillez entrer un message",
+      "sendError": "Erreur réseau. Veuillez réessayer.",
+      "sendSuccess1": "Message reçu !",
+      "sendSuccess2": "Merci de nous avoir contacté. Je vous répondrai dès que possible."
+    },
+    "resume": "CV"
   },
   "Footer": {
     "social": "Réseaux sociaux",
     "disclaimer": {
       "title": "Avertissement",
       "i1": "Conçu et développé par Pablo Belló.",
-      "i2": "Créé avec Next.js."
+      "i2": "Copie ou distribution sans autorisation interdite."
     },
     "title": "mzz",
-    "copyright": "Tous droits réservés."
+    "copyright": "Tous droits réservés"
   },
   "NavMenu": {
     "title": "mzz",

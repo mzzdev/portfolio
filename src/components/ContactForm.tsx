@@ -5,7 +5,7 @@ import { Check } from "lucide-react"
 import { Button } from "./ui/button";
 
 export default function ContactForm() {
-  const t = useTranslations('Home');
+  const t = useTranslations('Contact');
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
@@ -33,12 +33,12 @@ export default function ContactForm() {
       })
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ error: t('sections.contact.form.sendError') }))
-        throw new Error(errorData.error || t('sections.contact.form.sendError'))
+        const errorData = await response.json().catch(() => ({ error: t('form.sendError') }))
+        throw new Error(errorData.error || t('form.sendError'))
       }
 
       const result = await response.json()
-      setMessage({ type: 'success', text: result.message || t('sections.contact.form.sendSuccess1') })
+      setMessage({ type: 'success', text: result.message || t('form.sendSuccess1') })
       setIsSuccess(true)
 
       const form = event.currentTarget
@@ -49,7 +49,7 @@ export default function ContactForm() {
     } catch (error) {
       setMessage({
         type: 'error',
-        text: error instanceof Error ? error.message : t('sections.contact.form.sendError')
+        text: error instanceof Error ? error.message : t('form.sendError')
       })
     } finally {
       setIsSubmitting(false)
@@ -62,9 +62,9 @@ export default function ContactForm() {
         <div className="w-full">
           <div className="bg-neutral-100 text-black border border-neutral-200 p-8 text-center normal-case space-y-4">
             <div className="text-4xl mb-4 flex items-center justify-center"><Check /></div>
-            <h3 className="text-lg">{t('sections.contact.form.sendSuccess1')}</h3>
+            <h3 className="text-lg">{t('form.sendSuccess1')}</h3>
             <p className="text-sm text-neutral-800">
-              {t('sections.contact.form.sendSuccess2')}
+              {t('form.sendSuccess2')}
             </p>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function ContactForm() {
         <Form.Root className="space-y-6 w-full" onSubmit={handleSubmit}>
           <Form.Field name="name" className="w-full mb-4">
             <Form.Label className="block text-sm text-black">
-              {t('sections.contact.form.name')}
+              {t('form.name')}
             </Form.Label>
             <Form.Control asChild>
               <input
@@ -83,7 +83,7 @@ export default function ContactForm() {
               />
             </Form.Control>
             <Form.Message match="valueMissing" className="mt-1 text-xs text-red-600">
-              * {t('sections.contact.form.nameError')}
+              * {t('form.nameError')}
             </Form.Message>
           </Form.Field>
 
@@ -101,16 +101,16 @@ export default function ContactForm() {
               />
             </Form.Control>
             <Form.Message match="valueMissing" className="mt-1 text-xs text-red-600">
-              * {t('sections.contact.form.emailError')}
+              * {t('form.emailError')}
             </Form.Message>
             <Form.Message match="typeMismatch" className="mt-1 text-xs text-red-600">
-              * {t('sections.contact.form.emailMismatchError')}
+              * {t('form.emailMismatchError')}
             </Form.Message>
           </Form.Field>
 
           <Form.Field name="message" className="w-full">
             <Form.Label className="block text-sm text-black">
-              {t('sections.contact.form.message')}
+              {t('form.message')}
             </Form.Label>
             <Form.Control asChild>
               <textarea
@@ -122,7 +122,7 @@ export default function ContactForm() {
               />
             </Form.Control>
             <Form.Message match="valueMissing" className="mt-1 text-xs text-red-600">
-              * {t('sections.contact.form.messageError')}
+              * {t('form.messageError')}
             </Form.Message>
           </Form.Field>
 
@@ -139,7 +139,7 @@ export default function ContactForm() {
               disabled={isSubmitting}
               className="w-full py-2 hover-subtle shadow-none cursor-pointer rounded-none border-input uppercase text-black text-base disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? t('sections.contact.form.sending') : t('sections.contact.form.send')}
+              {isSubmitting ? t('form.sending') : t('form.send')}
             </Button>
 
           </Form.Submit>

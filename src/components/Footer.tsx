@@ -21,13 +21,13 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
       </div>
 
       <div className="mt-4 text-center">
-        <Link href="mailto:pablo@mzzdev.com" className="hover:underline font-bold text-xl inline-block mb-4">
+        <Link href="mailto:pablo@mzzdev.com" className="hover:underline font-bold text-xl inline-block mb-8">
             pablo@mzzdev.com
         </Link>
-        <p className="text-neutral-400 text-sm">
-          {'\u00A9'} {new Date().getFullYear()} {t('title')} - Pablo Belló
+        <p className="text-neutral-400 font-normal text-xs">
+          {'\u00A9'} {new Date().getFullYear()} {t('title')} {'('}Pablo Belló{')'}
         </p>
-        <p className="text-neutral-400 text-sm">
+        <p className="text-neutral-400 font-normal text-xs">
            {t('copyright')}
         </p>
       </div>
@@ -38,8 +38,8 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
 function FooterSection({ title, children }: { title: string, children: React.ReactNode }) {
   return (
     <div className="uppercase">
-      <h3 className="text-xl font-bold mb-4 border-b border-black pb-1">{title}</h3>
-      <div className="flex flex-col text-base">
+      <h3 className="text-base font-bold mb-4 border-bottom-standard pb-1">{title}</h3>
+      <div className="flex flex-col text-sm">
         {children}
       </div>
     </div>
@@ -48,7 +48,7 @@ function FooterSection({ title, children }: { title: string, children: React.Rea
 
 function FooterLink({ href, text }: { href: string, text: string }) {
   return (
-    <Link href={href} className="group flex justify-between items-center py-1 hover-subtle pointer-events-auto text-base">
+    <Link href={href} className="group flex justify-between items-center py-1 hover-subtle pointer-events-auto" target="_blank" rel="noopener noreferrer">
       <span className="block">{text}</span>
       <div className="pr-1 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:duration-0">
         <ArrowRight className="w-5" />

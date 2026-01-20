@@ -1,60 +1,68 @@
 {
-  "Home": {
-    "sections": {
-      "projectsTitle": "Proyectos",
-      "about": {
-        "title": "Sobre mí",
-        "bio1": "Pablo Belló diseña y desarrolla aplicaciones web, interfaces de usuario y soluciones full-stack.",
-        "bio2": "Aunque vive en España, también trabaja de forma remota.",
-        "bio3": "Actualmente trabajando como desarrollador full-stack @ "
+  "About": {
+    "title": "Sobre mí",
+    "description": "Soy un desarrollador full-stack con +2 años de experiencia en aplicaciones web. Trabajo con Java y React, desarrollando proyectos desde el diseño hasta el despliegue. Tengo especial interés por el diseño de interfaces y UX. Trabajo desde España colaborando con equipos en remoto.",
+    "techStackTitle": "Stack con el que trabajo",
+    "journeyTitle": "Trayectoria",
+    "workAt": "en",
+    "location": "España",
+    "journey": {
+      "teknei": {
+        "period": "2024 - Presente",
+        "role": "Desarrollador Java Full-Stack"
       },
-      "projects": {
-        "buttons": {
-          "demo": "Demo",
-          "repo": "Repo"
-        },
-        "portfolio": {
-          "title": "Portfolio (mzzdev.com)",
-          "description": "Un sitio web personal que presenta mis proyectos, experiencia y habilidades."
-        },
-        "jex": {
-          "title": "Jex",
-          "description": "Una aplicación web full-stack para gestionar y compartir fragmentos de código con resaltado de sintaxis y categorización."
-        },
-        "opium": {
-          "title": "Prototipo UI de Opium Shop",
-          "description": "Un prototipo de interfaz para un e-commerce, demostrando principios de diseño moderno y experiencia de usuario."
-        },
-        "meld": {
-          "title": "Meld",
-          "description": "Una muestra de desarrollo web moderno construido con Next.js, Tailwind y librerías 3D."
-        }
-      },
-      "contact": {
-        "title": "Contacto",
-        "form": {
-          "name": "Nombre / Empresa",
-          "message": "Mensaje",
-          "send": "ENVIAR",
-          "sending": "ENVIANDO...",
-          "nameError": "Por favor, introduce un nombre",
-          "emailError": "Por favor, introduce un email",
-          "emailMismatchError": "Por favor, proporciona un email válido",
-          "messageError": "Por favor, introduce un mensaje",
-          "sendError": "Error de red. Por favor, inténtalo de nuevo.",
-          "sendSuccess1": "¡Mensaje recibido!",
-          "sendSuccess2": "Gracias por ponerte en contacto. Te responderé lo antes posible."
-        }
-      },
-      "resume": "Currículum"
+      "education": {
+        "period": "2022 - 2024",
+        "role": "Grado Superior en Desarrollo de Aplicaciones Web"
+      }
     }
+  },
+  "Projects": {
+    "title": "Proyectos",
+    "buttons": {
+      "demo": "Demo",
+      "repo": "Repo"
+    },
+    "portfolio": {
+      "title": "Portfolio (mzzdev.com)",
+      "description": "Mi web personal donde muestro proyectos, experiencia y habilidades."
+    },
+    "jex": {
+      "title": "Jex",
+      "description": "App full-stack para guardar y compartir snippets de código con resaltado de sintaxis y etiquetas."
+    },
+    "opium": {
+      "title": "Prototipo UI de Opium Shop",
+      "description": "Prototipo de interfaz para e-commerce explorando patrones de diseño moderno y UX."
+    },
+    "meld": {
+      "title": "Meld",
+      "description": "Muestra de desarrollo web moderno con Next.js, Tailwind y librerías 3D."
+    }
+  },
+  "Contact": {
+    "title": "Contacto",
+    "form": {
+      "name": "Nombre / Empresa",
+      "message": "Mensaje",
+      "send": "ENVIAR",
+      "sending": "ENVIANDO...",
+      "nameError": "Por favor, introduce un nombre",
+      "emailError": "Por favor, introduce un email",
+      "emailMismatchError": "Por favor, proporciona un email válido",
+      "messageError": "Por favor, introduce un mensaje",
+      "sendError": "Error de red. Por favor, inténtalo de nuevo.",
+      "sendSuccess1": "¡Mensaje recibido!",
+      "sendSuccess2": "Gracias por ponerte en contacto. Te responderé lo antes posible."
+    },
+    "resume": "Currículum"
   },
   "Footer": {
     "social": "Social",
     "disclaimer": {
       "title": "Aviso legal",
       "i1": "Diseñado y desarrollado por Pablo Belló.",
-      "i2": "Construido con Next.js."
+      "i2": "Prohibida su copia o distribución sin autorización."
     },
     "title": "mzz",
     "copyright": "Todos los derechos reservados"

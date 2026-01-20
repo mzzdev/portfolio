@@ -174,8 +174,7 @@ portfolio/
 │   │   └── globals.css            # Global styles
 │   └── middleware.ts              # Next.js middleware for i18n
 ├── messages/                      # Translation files
-│   ├── en-US.json
-│   ├── en-GB.json
+│   ├── en.json
 │   ├── es.json
 │   ├── de.json
 │   ├── fr.json
@@ -197,8 +196,7 @@ The portfolio supports 6 languages with automatic browser language detection:
 
 | Language | Code | File |
 |----------|------|------|
-| English (US) | `en-US` | `messages/en-US.json` |
-| English (UK) | `en-GB` | `messages/en-GB.json` |
+| English | `en` | `messages/en.json` |
 | Spanish | `es` | `messages/es.json` |
 | German | `de` | `messages/de.json` |
 | French | `fr` | `messages/fr.json` |
@@ -207,12 +205,12 @@ The portfolio supports 6 languages with automatic browser language detection:
 ### Adding a New Language
 
 1. Create a new JSON file in the `messages/` directory (e.g., `messages/it.json`)
-2. Copy the structure from `messages/en-US.json` and translate all values
+2. Copy the structure from `messages/en.json` and translate all values
 3. Update `src/i18n/routing.ts` to include the new locale:
    ```typescript
    export const routing = defineRouting({
-     locales: ['en-US', 'en-GB', 'es', 'de', 'fr', 'zh', 'it'],
-     defaultLocale: 'en-US'
+     locales: ['en', 'es', 'de', 'fr', 'zh', 'it'],
+     defaultLocale: 'en'
    });
    ```
 

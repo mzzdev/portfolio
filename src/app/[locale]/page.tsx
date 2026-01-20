@@ -11,12 +11,15 @@ import Footer from "@/components/Footer"
 import NavMenu from "@/components/NavMenu"
 import ContactForm from "@/components/ContactForm"
 import ProjectCard from "@/components/ProjectCard"
+import AboutSection from "@/components/AboutSection"
 import { projects } from "@/data/projects"
 import Image from 'next/image'
 import ProjectCardGrid from "@/components/ProjectCard.grid"
 
 export default function Home() {
-  const t = useTranslations('Home');
+  const tAbout = useTranslations('About');
+  const tProjects = useTranslations('Projects');
+  const tContact = useTranslations('Contact');
 
   const placeholderRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
@@ -58,40 +61,19 @@ export default function Home() {
             </div>
           </section>
 
-          <div className="bg-white relative z-10 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]">
+          <div className="bg-white relative z-10 border-b border-neutral-300 shadow-[0px_8px_8px_-8px_rgba(0,_0,_0,_0.075)]">
             <Section id="about">
               <Section.Card>
-                <Section.Header>{t('sections.about.title')}</Section.Header>
-                <Section.Body className="flex flex-col md:flex-row min-h-[25vh] md:h-[25vh] w-full px-6 py-4 text-base-upper">
-                  <ul className="text-base leading-tight">
-                    <li className="mb-4 sm:mb-6">
-                      <span className="select-none">* </span>
-                      {t('sections.about.bio1')}
-                    </li>
-                    <li className="mb-4 sm:mb-6">
-                      <span className="select-none">* </span>
-                      {t('sections.about.bio2')}
-                    </li>
-                    <li className="mb-4 sm:mb-6">
-                      <span className="select-none">* </span>
-                      {t('sections.about.bio3')}
-                      <Link
-                        href="https://teknei.com"
-                        target="_blank"
-                        className="hover-subtle"
-                      >
-                        Teknei
-                      </Link>
-                      .
-                    </li>
-                  </ul>
+                <Section.Header>{tAbout('title')}</Section.Header>
+                <Section.Body>
+                  <AboutSection />
                 </Section.Body>
               </Section.Card>
             </Section>
 
             {/* <Section id="projects">
               <Section.Card>
-                <Section.Header>{t('sections.projectsTitle')}</Section.Header>
+                <Section.Header>{tProjects('title')}</Section.Header>
                 <Section.Body className="p-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {projects.map((project) => (
@@ -104,7 +86,7 @@ export default function Home() {
 
             <Section id="projects">
               <Section.Card>
-                <Section.Header>{t('sections.projectsTitle')}</Section.Header>
+                <Section.Header>{tProjects('title')}</Section.Header>
                 <Section.Body>
                   {projects.map((project) => (
                     <ProjectCard
@@ -120,7 +102,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row gap-4">
                 <Section id="contact" className="w-full md:w-1/2">
                   <Section.Card className="flex flex-col h-full">
-                    <Section.Header>{t('sections.contact.title')}</Section.Header>
+                    <Section.Header>{tContact('title')}</Section.Header>
                     <Section.Body className="flex-1">
                       <ContactForm />
                     </Section.Body>
@@ -134,7 +116,7 @@ export default function Home() {
                         <Link href="/resume.pdf" className="flex justify-center items-center w-full hover-subtle h-full">
                           <p className="inline-flex gap-1.5 items-center p-6 font-jbmono text-xl uppercase">
                             <ExternalLink className="w-4" />
-                            {t('sections.resume')}
+                            {tContact('resume')}
                           </p>
                         </Link>
                       </Section.Body>

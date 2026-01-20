@@ -9,14 +9,14 @@ interface ProjectCardGridProps {
 }
 
 export default function ProjectCardGrid({ project }: ProjectCardGridProps) {
-  const t = useTranslations('Home');
+  const t = useTranslations('Projects');
 
   return (
     <div className="group flex flex-col border border-neutral-200 hover:bg-neutral-200 transition-all duration-300 hover:duration-0 overflow-hidden h-full">
       <div className="relative w-full aspect-video overflow-hidden bg-neutral-50">
         <Image
           src={project.image}
-          alt={t(project.titleKey)}
+          alt={t(`${project.id}.title`)}
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 50vw"
@@ -26,7 +26,7 @@ export default function ProjectCardGrid({ project }: ProjectCardGridProps) {
       <div className="p-6 flex-1 flex flex-col">
         <div className="flex items-center gap-2 mb-3">
           <h3 className="text-lg font-semibold uppercase tracking-tight">
-            {t(project.titleKey)}
+            {t(`${project.id}.title`)}
           </h3>
           <span className="text-xs text-neutral-500 normal-case font-normal tracking-normal">
             {project.year}
@@ -34,7 +34,7 @@ export default function ProjectCardGrid({ project }: ProjectCardGridProps) {
         </div>
 
         <p className="text-sm text-neutral-600 mb-4 flex-1 leading-relaxed normal-case font-normal tracking-normal">
-          {t(project.descriptionKey)}
+          {t(`${project.id}.description`)}
         </p>
 
         <div className="flex flex-wrap gap-2 mb-4">
@@ -56,7 +56,7 @@ export default function ProjectCardGrid({ project }: ProjectCardGridProps) {
             className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 bg-black text-white hover:bg-neutral-800 transition-colors duration-200 font-medium uppercase tracking-wide"
           >
             <Github className="w-3.5 h-3.5" />
-            {t('sections.projects.buttons.repo')}
+            {t('buttons.repo')}
           </Link>
           {project.demoLink && (
             <Link
@@ -66,7 +66,7 @@ export default function ProjectCardGrid({ project }: ProjectCardGridProps) {
               className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-100 transition-colors duration-200 font-medium uppercase tracking-wide"
             >
               <ExternalLink className="w-3.5 h-3.5" />
-              {t('sections.projects.buttons.demo')}
+              {t('buttons.demo')}
             </Link>
           )}
         </div>

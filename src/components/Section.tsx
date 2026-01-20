@@ -31,7 +31,7 @@ export default function Section({ id, className = '', children }: SectionProps) 
 
 Section.Card = function SectionCard({ className = '', children }: SectionCardProps) {
   return (
-    <div className={`w-full border-standard bg-white card-shadow ${className}`}>
+    <div className={`w-full border-standard bg-white ${className}`}>
       {children}
     </div>
   );

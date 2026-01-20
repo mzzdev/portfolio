@@ -32,16 +32,20 @@ body {
   @apply hover:bg-neutral-200 hover:underline transition-all duration-300 hover:duration-0;
 }
 
+.menubar-item {
+  @apply px-4 py-3 rounded-none cursor-pointer hover:bg-neutral-200 hover:underline transition-all duration-300 hover:duration-0 border-b border-neutral-200 last:border-0;
+}
+
 .hover-subtle-black {
   @apply hover:bg-neutral-600 hover:underline transition-all duration-300 hover:duration-0;
 }
 
 .border-standard {
-  @apply border-[1px] border-black;
+  @apply border-[1px] border-black/50;
 }
 
 .border-bottom-standard {
-  @apply border-b-[1px] border-black;
+  @apply border-b-[1px] border-black/50;
 }
 
 .border-input {

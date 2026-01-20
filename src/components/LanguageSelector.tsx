@@ -1,11 +1,10 @@
 import { MenubarItem } from "@/components/ui/menubar";
-import { US, GB, ES, DE, FR, CN } from "country-flag-icons/react/3x2";
+import { GB, ES, DE, FR, CN } from "country-flag-icons/react/3x2";
 import { useRouter, usePathname } from "@/i18n/routing";
 import { markManualLanguageSelection } from "@/lib/languageDetection";
 
 const languages = [
-  { locale: "en-US", Flag: US, nativeName: "English (US)" },
-  { locale: "en-GB", Flag: GB, nativeName: "English (UK)" },
+  { locale: "en", Flag: GB, nativeName: "English" },
   { locale: "es", Flag: ES, nativeName: "Español" },
   { locale: "de", Flag: DE, nativeName: "Deutsch" },
   { locale: "fr", Flag: FR, nativeName: "Français" },
@@ -26,7 +25,7 @@ export function LanguageMenuItems() {
       {languages.map(({ locale, Flag, nativeName }) => (
         <MenubarItem
           key={locale}
-          className="px-4 py-3 rounded-none cursor-pointer hover-subtle focus:bg-neutral-200"
+          className="menubar-item"
           onClick={() => handleLocaleChange(locale)}
         >
           <div className="flex items-center space-x-2">
