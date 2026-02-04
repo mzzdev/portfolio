@@ -57,16 +57,14 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="flex-row justify-between px-6 py-4 items-center text-base-upper h-full">
+    <div className="flex-row justify-between p-6 items-center text-base-upper h-full">
       {isSuccess ? (
-        <div className="w-full">
-          <div className="bg-neutral-100 text-black border border-neutral-200 p-8 text-center normal-case space-y-4">
-            <div className="text-4xl mb-4 flex items-center justify-center"><Check /></div>
-            <h3 className="text-lg">{t('form.sendSuccess1')}</h3>
-            <p className="text-sm text-neutral-800">
-              {t('form.sendSuccess2')}
-            </p>
-          </div>
+        <div className="bg-neutral-100 text-black border border-neutral-200 text-center normal-case space-y-4 flex flex-col items-center justify-center h-full">
+          <div className="text-4xl mb-4 flex items-center justify-center"><Check /></div>
+          <h3 className="text-lg">{t('form.sendSuccess1')}</h3>
+          <p className="text-sm text-neutral-800">
+            {t('form.sendSuccess2')}
+          </p>
         </div>
       ) : (
         <Form.Root className="space-y-6 w-full" onSubmit={handleSubmit}>
