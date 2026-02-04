@@ -46,14 +46,14 @@ export default function AboutSection() {
           </div>
         </div>
 
-        <div className="pt-6 border-t border-neutral-200 flex items-center gap-2 text-sm text-neutral-600">
-          <MapPin className="w-4 h-4" />
+        <div className="pt-6 border-t border-neutral-200 flex items-center gap-4 text-base">
+          <MapPin className="w-5 text-neutral-600" />
           {t('location')}
         </div>
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-base-upper font-semibold border-b border-neutral-200 pb-2">
+        <h3 className="text-base-upper font-semibold">
           {t('techStackTitle')}
         </h3>
 
@@ -62,7 +62,7 @@ export default function AboutSection() {
             <p className="text-xs uppercase font-semibold text-neutral-500 mb-2">{category}</p>
             <div className="flex flex-wrap gap-2">
               {technologies.map((tech) => (
-                <span key={tech} className="text-xs px-2.5 py-1 bg-neutral-100 text-neutral-700 border border-neutral-200 hover-subtle cursor-default">
+                <span key={tech} className="text-xs px-2.5 py-1 bg-neutral-100 text-neutral-700 border border-neutral-200">
                   {tech}
                 </span>
               ))}

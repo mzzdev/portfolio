@@ -1,7 +1,7 @@
 {
   "About": {
-    "title": "Sobre mí",
-    "description": "Soy un desarrollador full-stack con +2 años de experiencia en aplicaciones web. Trabajo con Java y React, desarrollando proyectos desde el diseño hasta el despliegue. Tengo especial interés por el diseño de interfaces y UX. Trabajo desde España colaborando con equipos en remoto.",
+    "title": "Acerca",
+    "description": "Desarrollador full-stack con +2 años de experiencia creando aplicaciones web en entornos reales de negocio. Especializado en React y Java, combinando backend sólido con interfaces usables y estéticas. Enfoque en diseño experimental centrado en el usuario y experiencias de alta calidad.",
     "techStackTitle": "Stack con el que trabajo",
     "journeyTitle": "Trayectoria",
     "workAt": "en",
@@ -24,12 +24,8 @@
       "repo": "Repo"
     },
     "portfolio": {
-      "title": "Portfolio (mzzdev.com)",
-      "description": "Mi web personal donde muestro proyectos, experiencia y habilidades."
-    },
-    "jex": {
-      "title": "Jex",
-      "description": "App full-stack para guardar y compartir snippets de código con resaltado de sintaxis y etiquetas."
+      "title": "Portfolio",
+      "description": "Web de diseño para mostrar proyectos, experiencia y habilidades."
     },
     "opium": {
       "title": "Prototipo UI de Opium Shop",
@@ -38,6 +34,10 @@
     "meld": {
       "title": "Meld",
       "description": "Muestra de desarrollo web moderno con Next.js, Tailwind y librerías 3D."
+    },
+    "jex": {
+      "title": "Jex",
+      "description": "Herramienta para guardar y compartir código con resaltado de sintaxis y etiquetas."
     }
   },
   "Contact": {
@@ -70,7 +70,7 @@
   "NavMenu": {
     "title": "mzz",
     "index": {
-      "about": "Sobre mí",
+      "about": "Acerca",
       "projects": "Proyectos",
       "contact": "Contacto"
     }

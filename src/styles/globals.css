@@ -33,7 +33,7 @@ body {
 }
 
 .menubar-item {
-  @apply px-4 py-3 rounded-none cursor-pointer hover:bg-neutral-200 hover:underline transition-all duration-300 hover:duration-0 border-b border-neutral-200 last:border-0;
+  @apply p-2 rounded-none cursor-pointer hover:bg-neutral-200 hover:underline transition-all duration-300 hover:duration-0 border-b border-neutral-200 last:border-0;
 }
 
 .hover-subtle-black {

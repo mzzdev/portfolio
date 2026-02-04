@@ -1,14 +1,11 @@
 import { MenubarItem } from "@/components/ui/menubar";
-import { GB, ES, DE, FR, CN } from "country-flag-icons/react/3x2";
+import { GB, ES } from "country-flag-icons/react/3x2";
 import { useRouter, usePathname } from "@/i18n/routing";
 import { markManualLanguageSelection } from "@/lib/languageDetection";
 
 const languages = [
   { locale: "en", Flag: GB, nativeName: "English" },
   { locale: "es", Flag: ES, nativeName: "Español" },
-  { locale: "de", Flag: DE, nativeName: "Deutsch" },
-  { locale: "fr", Flag: FR, nativeName: "Français" },
-  { locale: "zh", Flag: CN, nativeName: "中文" },
 ] as const;
 
 export function LanguageMenuItems() {

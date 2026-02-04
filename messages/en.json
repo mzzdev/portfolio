@@ -1,7 +1,7 @@
 {
   "About": {
-    "title": "About me",
-    "description": "I am a full-stack developer with 2+ years of experience building web applications. I work with Java and React, handling projects end-to-end from design to deployment. Passionate about interface design and UX. Based in Spain, collaborating with remote teams.",
+    "title": "About",
+    "description": "Full-stack developer with 2+ of experience building web applications in real-world business environments. Specialized in React and Java, combining a strong backend with clean, usable, and aesthetic interfaces. Focused on experimental, user-centered design and high-quality digital experiences.",
     "techStackTitle": "Tech I work with",
     "journeyTitle": "Journey",
     "workAt": "@",
@@ -24,12 +24,8 @@
       "repo": "Repo"
     },
     "portfolio": {
-      "title": "Portfolio (mzzdev.com)",
-      "description": "My personal site showcasing projects, experience, and skills."
-    },
-    "jex": {
-      "title": "Jex",
-      "description": "A full-stack app for managing and sharing code snippets with syntax highlighting and tags."
+      "title": "Portfolio",
+      "description": "Design site to showcase projects, experience, and skills."
     },
     "opium": {
       "title": "Opium Shop UI Prototype",
@@ -38,6 +34,10 @@
     "meld": {
       "title": "Meld",
       "description": "Modern web dev showcase built with Next.js, Tailwind, and 3D libraries."
+    },
+    "jex": {
+      "title": "Jex",
+      "description": "Tool for saving and sharing code with syntax highlighting and tags."
     }
   },
   "Contact": {

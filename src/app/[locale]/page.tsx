@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from "react"
+import { useParams } from 'next/navigation'
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { motion } from "framer-motion"
@@ -14,12 +15,15 @@ import ProjectCard from "@/components/ProjectCard"
 import AboutSection from "@/components/AboutSection"
 import { projects } from "@/data/projects"
 import Image from 'next/image'
-import ProjectCardGrid from "@/components/ProjectCard.grid"
 
 export default function Home() {
   const tAbout = useTranslations('About');
   const tProjects = useTranslations('Projects');
   const tContact = useTranslations('Contact');
+
+  const params = useParams() as { locale?: string } | null
+  const locale = params?.locale ?? 'en'
+  const resumeHref = locale === 'es' ? '/resume-es.pdf' : '/resume-en.pdf'
 
   const placeholderRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
@@ -71,19 +75,6 @@ export default function Home() {
               </Section.Card>
             </Section>
 
-            {/* <Section id="projects">
-              <Section.Card>
-                <Section.Header>{tProjects('title')}</Section.Header>
-                <Section.Body className="p-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {projects.map((project) => (
-                      <ProjectCardGrid key={project.id} project={project} />
-                    ))}
-                  </div>
-                </Section.Body>
-              </Section.Card>
-            </Section> */}
-
             <Section id="projects">
               <Section.Card>
                 <Section.Header>{tProjects('title')}</Section.Header>
@@ -113,7 +104,7 @@ export default function Home() {
                   <Section id="resume" className="flex-1">
                     <Section.Card className="h-full flex">
                       <Section.Body className="w-full h-full flex">
-                        <Link href="/resume.pdf" className="flex justify-center items-center w-full hover-subtle h-full">
+                        <Link href={resumeHref} target="_blank" rel="noopener noreferrer" className="flex justify-center items-center w-full hover-subtle h-full">
                           <p className="inline-flex gap-1.5 items-center p-6 font-jbmono text-xl uppercase">
                             <ExternalLink className="w-4" />
                             {tContact('resume')}

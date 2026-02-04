@@ -9,7 +9,7 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
     <footer ref={footerRef} className="bg-neutral-100 text-black pt-6 pb-2 w-full h-auto fixed bottom-0 z-0">
       <div className="md:w-4xl w-auto mx-[5vw] md:mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8" id="contact">
         <FooterSection title={t('social')}>
-          <FooterLink href="https://linkedin.com" text="LinkedIn" />
+          <FooterLink href="https://linkedin.com/in/pablo-bell%C3%B3" text="LinkedIn" />
           <FooterLink href="https://github.com/mzzdev" text="GitHub" />
           <FooterLink href="mailto:pablo@mzzdev.com" text="Email" />
         </FooterSection>

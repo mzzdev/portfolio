@@ -11,7 +11,8 @@ import { useTranslations } from 'next-intl'
 import { LanguageMenuItems } from './LanguageSelector'
 import { Globe } from 'lucide-react'
 
-const EXCLUDED_SECTIONS = ['hero', 'placeholder', 'signature']
+const MENU_ITEMS = ['about', 'projects', 'contact']
+
 
 export default function NavMenu() {
   const t = useTranslations('NavMenu');
@@ -22,11 +23,7 @@ export default function NavMenu() {
   const navbarRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const allSections = Array.from(document.querySelectorAll('section[id]'))
-      .map(section => section.id)
-      .filter(id => id && !EXCLUDED_SECTIONS.includes(id))
-    
-    setSections(allSections)
+    setSections(MENU_ITEMS)
   }, [])
 
   useEffect(() => {
@@ -65,7 +62,8 @@ export default function NavMenu() {
   }
 
   const getSectionLabel = (sectionId: string): string => {
-    return sectionId.charAt(0).toUpperCase() + sectionId.slice(1)
+    const label = t(`index.${sectionId}`)
+    return label || (sectionId.charAt(0) + sectionId.slice(1))
   }
 
   return (
@@ -84,7 +82,7 @@ export default function NavMenu() {
                 &#10033;
               </span>
             </MenubarTrigger>
-            <MenubarContent className="ml-1 mt-3 p-0 border-standard rounded-none shadow-none">
+            <MenubarContent className="ml-1 mt-3 p-0 border border-neutral-300 rounded-none shadow-none">
               {sections.map((sectionId) => (
                 <MenubarItem 
                   key={sectionId} 
@@ -108,7 +106,7 @@ export default function NavMenu() {
           <MenubarTrigger className="hover:bg-neutral-200 text-base">
             <Globe className="w-4" />
           </MenubarTrigger>
-          <MenubarContent className="mr-4 mt-3 p-0 border-standard rounded-none shadow-none">
+          <MenubarContent className="mr-4 mt-3 p-0 border border-neutral-300 rounded-none shadow-none">
             <LanguageMenuItems />
           </MenubarContent>
         </MenubarMenu>

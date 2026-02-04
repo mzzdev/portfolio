@@ -40,7 +40,7 @@ Section.Card = function SectionCard({ className = '', children }: SectionCardPro
 Section.Header = function SectionHeader({ children }: SectionHeaderProps) {
   return (
     <>
-      <h2 className="font-jbmono text-xl border-bottom-standard uppercase p-6">
+      <h2 className="flex justify-center text-lg uppercase border-bottom-standard py-4">
         {children}
       </h2>
     </>

@@ -17,14 +17,6 @@ export const projects: Project[] = [
     year: "2025",
   },
   {
-    id: "jex",
-    image: "/projects/jex.webp",
-    githubLink: "https://github.com/mzzdev/jex",
-    demoLink: "https://jex.mzzdev.com",
-    tags: ["Next.js", "PostgreSQL"],
-    year: "2025",
-  },
-  {
     id: "opium",
     image: "/projects/opium.webp",
     githubLink: "https://github.com/mzzdev/opium-shop-front",
@@ -39,5 +31,13 @@ export const projects: Project[] = [
     demoLink: "https://meld-mu.vercel.app/",
     tags: ["Next.js", "Three.js"],
     year: "2024",
-  }
+  },
+  {
+    id: "jex",
+    image: "/projects/jex.webp",
+    githubLink: "https://github.com/mzzdev/jex",
+    demoLink: "https://jex.mzzdev.com",
+    tags: ["Next.js", "PostgreSQL"],
+    year: "[WIP]",
+  },
 ];
