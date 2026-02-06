@@ -31,6 +31,8 @@ export default function ContactForm() {
     setMessage(null)
   }
 
+  const showResult = !!resultConfig;
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setIsSubmitting(true)
@@ -77,103 +79,115 @@ export default function ContactForm() {
   }
 
   return (
-    <div
-      className="flex-row justify-between p-6 flex items-center text-base-upper h-full"
-    >
-      {resultConfig ? (
-        <div className="text-center normal-case flex flex-col items-center justify-center p-8 space-y-4 border bg-neutral-100 text-black border-neutral-200">
-          <div className="text-4xl mb-1 flex items-center justify-center">{resultConfig.icon}</div>
-          <h3 className="text-base leading-tight">{resultConfig.title}</h3>
-          {resultConfig.body && (
-            <p className="text-sm text-neutral-800">
-              {resultConfig.body}
-            </p>
-          )}
-          <Button
-            variant="outline"
-            className="px-2 py-1 cursor-pointer rounded-none uppercase text-sm hover-subtle bg-white text-black"
-            onClick={handleResetView}
-          >
-            {tnf('homeButton')}
-          </Button>
-        </div>
-      ) : (
-        <Form.Root className="space-y-2 w-full" onSubmit={handleSubmit}>
-          <Form.Field name="name">
-            <Form.Label className="contactLabel">
-              {t('form.name')}
-            </Form.Label>
-            <Form.Control asChild>
-              <input
-                name="name"
-                required
-                disabled={isSubmitting}
-                className="contactInput"
-              />
-            </Form.Control>
-            <div className="contactErrorSlot">
-              <Form.Message match="valueMissing" className="block">
-                * {t('form.nameError')}
-              </Form.Message>
-            </div>
-          </Form.Field>
-
-          <Form.Field name="email">
-            <Form.Label className="contactLabel">
-              Email
-            </Form.Label>
-            <Form.Control asChild>
-              <input
-                name="email"
-                type="email"
-                required
-                disabled={isSubmitting}
-                className="contactInput"
-              />
-            </Form.Control>
-            <div className="contactErrorSlot">
-              <Form.Message match="valueMissing" className="block">
-                * {t('form.emailError')}
-              </Form.Message>
-              <Form.Message match="typeMismatch" className="block">
-                * {t('form.emailMismatchError')}
-              </Form.Message>
-            </div>
-          </Form.Field>
-
-          <Form.Field name="message">
-            <Form.Label className="contactLabel">
-              {t('form.message')}
-            </Form.Label>
-            <Form.Control asChild>
-              <textarea
-                name="message"
-                required
-                maxLength={2000}
-                disabled={isSubmitting}
-                className="contactInput h-32"
-              />
-            </Form.Control>
-            <div className="contactErrorSlot">
-              <Form.Message match="valueMissing" className="block">
-                * {t('form.messageError')}
-              </Form.Message>
-            </div>
-          </Form.Field>
-
-          <Form.Submit asChild>
+    <div className="grid grid-cols-1 grid-rows-1 p-6 items-center text-base-upper h-full w-full">
+      <div
+        className={`
+          col-start-1 row-start-1 w-full text-center normal-case flex flex-col items-center justify-center 
+          p-8 space-y-4 border bg-neutral-100 text-black border-neutral-200
+          ${showResult ? 'opacity-100 z-10 visible' : 'opacity-0 -z-10 invisible'}
+        `}
+        aria-hidden={!showResult}
+      >
+        {resultConfig && (
+          <>
+            <div className="text-4xl mb-1 flex items-center justify-center">{resultConfig.icon}</div>
+            <h3 className="text-base leading-tight">{resultConfig.title}</h3>
+            {resultConfig.body && (
+              <p className="text-sm text-neutral-800">
+                {resultConfig.body}
+              </p>
+            )}
             <Button
-              type="submit"
               variant="outline"
-              disabled={isSubmitting}
-              className="w-full py-2 hover-subtle shadow-none cursor-pointer rounded-none border-input uppercase text-black text-base disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-2 py-1 cursor-pointer rounded-none uppercase text-sm hover-subtle bg-white text-black"
+              onClick={handleResetView}
             >
-              {isSubmitting ? t('form.sending') : t('form.send')}
+              {tnf('homeButton')}
             </Button>
+          </>
+        )}
+      </div>
 
-          </Form.Submit>
-        </Form.Root>
-      )}
+      <Form.Root
+        className={`space-y-2 w-full col-start-1 row-start-1 ${!showResult ? 'opacity-100 z-10 visible' : 'opacity-0 -z-10 invisible'}`}
+        onSubmit={handleSubmit}
+        aria-hidden={showResult}
+      >
+        <Form.Field name="name">
+          <Form.Label className="contactLabel">
+            {t('form.name')}
+          </Form.Label>
+          <Form.Control asChild>
+            <input
+              name="name"
+              required
+              disabled={isSubmitting}
+              className="contactInput"
+            />
+          </Form.Control>
+          <div className="contactErrorSlot">
+            <Form.Message match="valueMissing" className="block">
+              * {t('form.nameError')}
+            </Form.Message>
+          </div>
+        </Form.Field>
+
+        <Form.Field name="email">
+          <Form.Label className="contactLabel">
+            Email
+          </Form.Label>
+          <Form.Control asChild>
+            <input
+              name="email"
+              type="email"
+              required
+              pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$"
+              disabled={isSubmitting}
+              className="contactInput"
+            />
+          </Form.Control>
+          <div className="contactErrorSlot">
+            <Form.Message match="valueMissing" className="block">
+              * {t('form.emailError')}
+            </Form.Message>
+            <Form.Message match="patternMismatch" className="block">
+              * {t('form.emailMismatchError')}
+            </Form.Message>
+          </div>
+        </Form.Field>
+
+        <Form.Field name="message">
+          <Form.Label className="contactLabel">
+            {t('form.message')}
+          </Form.Label>
+          <Form.Control asChild>
+            <textarea
+              name="message"
+              required
+              maxLength={2000}
+              disabled={isSubmitting}
+              className="contactInput h-32"
+            />
+          </Form.Control>
+          <div className="contactErrorSlot">
+            <Form.Message match="valueMissing" className="block">
+              * {t('form.messageError')}
+            </Form.Message>
+          </div>
+        </Form.Field>
+
+        <Form.Submit asChild>
+          <Button
+            type="submit"
+            variant="outline"
+            disabled={isSubmitting}
+            className="w-full py-2 hover-subtle shadow-none cursor-pointer rounded-none border-input uppercase text-black text-base disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? t('form.sending') : t('form.send')}
+          </Button>
+
+        </Form.Submit>
+      </Form.Root>
     </div>
   )
 }
