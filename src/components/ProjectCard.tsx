@@ -13,6 +13,7 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   const t = useTranslations('Projects');
   const [open, setOpen] = useState(false);
+  const isDisabled = project.disabled === true;
 
   return (
     <div className="flex flex-col sm:flex-row items-start gap-4 p-6 border-b border-neutral-200 last:border-none">
@@ -84,26 +85,28 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             ))}
           </div>
 
-          <div className="flex gap-2 sm:ml-auto">
-            <Button
-              variant="outline"
-              className="px-4 py-2 hover-subtle-black cursor-pointer rounded-none uppercase bg-black text-white text-base inline-flex items-center gap-1.5"
-              onClick={() => window.open(project.githubLink, '_blank', 'noopener,noreferrer')}
-            >
-              <Github className="w-3.5 h-3.5" />
-              {t('buttons.repo')}
-            </Button>
-            {project.demoLink && (
+          {!isDisabled && (
+            <div className="flex gap-2 sm:ml-auto">
               <Button
                 variant="outline"
-                className="px-4 py-2 hover-subtle cursor-pointer rounded-none uppercase bg-white text-black text-base inline-flex items-center gap-1.5"
-                onClick={() => window.open(project.demoLink, '_blank', 'noopener,noreferrer')}
+                className="px-4 py-2 hover-subtle-black cursor-pointer rounded-none uppercase bg-black text-white text-base inline-flex items-center gap-1.5"
+                onClick={() => window.open(project.githubLink, '_blank', 'noopener,noreferrer')}
               >
-                <ExternalLink className="w-3.5 h-3.5" />
-                {t('buttons.demo')}
+                <Github className="w-3.5 h-3.5" />
+                {t('buttons.repo')}
               </Button>
-            )}
-          </div>
+              {project.demoLink && (
+                <Button
+                  variant="outline"
+                  className="px-4 py-2 hover-subtle cursor-pointer rounded-none uppercase bg-white text-black text-base inline-flex items-center gap-1.5"
+                  onClick={() => window.open(project.demoLink, '_blank', 'noopener,noreferrer')}
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  {t('buttons.demo')}
+                </Button>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

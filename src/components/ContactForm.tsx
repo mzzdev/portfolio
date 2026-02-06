@@ -1,15 +1,35 @@
 import { useState } from "react"
 import { useTranslations } from "next-intl"
 import * as Form from "@radix-ui/react-form"
-import { Check } from "lucide-react"
+import { Check, X } from "lucide-react"
 import { Button } from "./ui/button";
 
 export default function ContactForm() {
   const t = useTranslations('Contact');
+  const tnf = useTranslations('NotFoundPage');
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
   const [isSuccess, setIsSuccess] = useState(false)
+
+  const resultConfig = isSuccess
+    ? {
+      icon: <Check />,
+      title: t('form.sendSuccess1'),
+      body: t('form.sendSuccess2'),
+    }
+    : message?.type === 'error'
+      ? {
+        icon: <X />,
+        title: t('form.sendError'),
+        body: message?.text !== t('form.sendError') ? message?.text : '',
+      }
+      : null
+
+  const handleResetView = () => {
+    setIsSuccess(false)
+    setMessage(null)
+  }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -57,19 +77,30 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="flex-row justify-between p-6 items-center text-base-upper h-full">
-      {isSuccess ? (
-        <div className="bg-neutral-100 text-black border border-neutral-200 text-center normal-case space-y-4 flex flex-col items-center justify-center h-full">
-          <div className="text-4xl mb-4 flex items-center justify-center"><Check /></div>
-          <h3 className="text-lg">{t('form.sendSuccess1')}</h3>
-          <p className="text-sm text-neutral-800">
-            {t('form.sendSuccess2')}
-          </p>
+    <div
+      className="flex-row justify-between p-6 flex items-center text-base-upper h-full"
+    >
+      {resultConfig ? (
+        <div className="text-center normal-case flex flex-col items-center justify-center p-8 space-y-4 border bg-neutral-100 text-black border-neutral-200">
+          <div className="text-4xl mb-1 flex items-center justify-center">{resultConfig.icon}</div>
+          <h3 className="text-base leading-tight">{resultConfig.title}</h3>
+          {resultConfig.body && (
+            <p className="text-sm text-neutral-800">
+              {resultConfig.body}
+            </p>
+          )}
+          <Button
+            variant="outline"
+            className="px-2 py-1 cursor-pointer rounded-none uppercase text-sm hover-subtle bg-white text-black"
+            onClick={handleResetView}
+          >
+            {tnf('homeButton')}
+          </Button>
         </div>
       ) : (
-        <Form.Root className="space-y-6 w-full" onSubmit={handleSubmit}>
-          <Form.Field name="name" className="w-full mb-4">
-            <Form.Label className="block text-sm text-black">
+        <Form.Root className="space-y-2 w-full" onSubmit={handleSubmit}>
+          <Form.Field name="name">
+            <Form.Label className="contactLabel">
               {t('form.name')}
             </Form.Label>
             <Form.Control asChild>
@@ -77,16 +108,18 @@ export default function ContactForm() {
                 name="name"
                 required
                 disabled={isSubmitting}
-                className="mt-1 w-full border-input px-3 py-2 text-black focus:outline-none focus:border-black resize-none text-sm disabled:opacity-50"
+                className="contactInput"
               />
             </Form.Control>
-            <Form.Message match="valueMissing" className="mt-1 text-xs text-red-600">
-              * {t('form.nameError')}
-            </Form.Message>
+            <div className="contactErrorSlot">
+              <Form.Message match="valueMissing" className="block">
+                * {t('form.nameError')}
+              </Form.Message>
+            </div>
           </Form.Field>
 
-          <Form.Field name="email" className="w-full mb-4">
-            <Form.Label className="block text-sm text-black">
+          <Form.Field name="email">
+            <Form.Label className="contactLabel">
               Email
             </Form.Label>
             <Form.Control asChild>
@@ -95,19 +128,21 @@ export default function ContactForm() {
                 type="email"
                 required
                 disabled={isSubmitting}
-                className="mt-1 w-full border-input px-3 py-2 text-black focus:outline-none focus:border-black resize-none text-sm disabled:opacity-50"
+                className="contactInput"
               />
             </Form.Control>
-            <Form.Message match="valueMissing" className="mt-1 text-xs text-red-600">
-              * {t('form.emailError')}
-            </Form.Message>
-            <Form.Message match="typeMismatch" className="mt-1 text-xs text-red-600">
-              * {t('form.emailMismatchError')}
-            </Form.Message>
+            <div className="contactErrorSlot">
+              <Form.Message match="valueMissing" className="block">
+                * {t('form.emailError')}
+              </Form.Message>
+              <Form.Message match="typeMismatch" className="block">
+                * {t('form.emailMismatchError')}
+              </Form.Message>
+            </div>
           </Form.Field>
 
-          <Form.Field name="message" className="w-full">
-            <Form.Label className="block text-sm text-black">
+          <Form.Field name="message">
+            <Form.Label className="contactLabel">
               {t('form.message')}
             </Form.Label>
             <Form.Control asChild>
@@ -116,19 +151,15 @@ export default function ContactForm() {
                 required
                 maxLength={2000}
                 disabled={isSubmitting}
-                className="mt-1 w-full border-input px-3 py-2 text-black focus:outline-none focus:border-black resize-none h-32 text-sm disabled:opacity-50"
+                className="contactInput h-32"
               />
             </Form.Control>
-            <Form.Message match="valueMissing" className="mt-1 text-xs text-red-600">
-              * {t('form.messageError')}
-            </Form.Message>
-          </Form.Field>
-
-          {message && message.type === 'error' && (
-            <div className="text-sm p-3 rounded bg-red-50 text-red-800 border border-red-200">
-              {message.text}
+            <div className="contactErrorSlot">
+              <Form.Message match="valueMissing" className="block">
+                * {t('form.messageError')}
+              </Form.Message>
             </div>
-          )}
+          </Form.Field>
 
           <Form.Submit asChild>
             <Button

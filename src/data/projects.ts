@@ -5,6 +5,7 @@ export interface Project {
   demoLink?: string;
   tags: string[];
   year: string;
+  disabled?: boolean;
 }
 
 export const projects: Project[] = [
@@ -15,6 +16,7 @@ export const projects: Project[] = [
     demoLink: "https://mzzdev.com",
     tags: ["Next.js"],
     year: "2025",
+    disabled: true,
   },
   {
     id: "opium",
@@ -29,7 +31,7 @@ export const projects: Project[] = [
     image: "/projects/meld.webp",
     githubLink: "https://github.com/mzzdev/meld",
     demoLink: "https://meld-mu.vercel.app/",
-    tags: ["Next.js", "Three.js"],
+    tags: ["Three.js", "Next.js"],
     year: "2024",
   },
   {
@@ -37,7 +39,8 @@ export const projects: Project[] = [
     image: "/projects/jex.webp",
     githubLink: "https://github.com/mzzdev/jex",
     demoLink: "https://jex.mzzdev.com",
-    tags: ["Next.js", "PostgreSQL"],
+    tags: ["PostgreSQL", "Next.js"],
     year: "[WIP]",
+    disabled: true,
   },
 ];

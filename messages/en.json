@@ -51,7 +51,7 @@
       "emailError": "Please enter your email",
       "emailMismatchError": "Please enter a valid email",
       "messageError": "Please enter a message",
-      "sendError": "Something went wrong. Please try again.",
+      "sendError": "Something went wrong. Please try again later.",
       "sendSuccess1": "Message sent!",
       "sendSuccess2": "Thanks for reaching out. I'll get back to you soon."
     },

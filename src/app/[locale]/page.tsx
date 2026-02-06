@@ -90,8 +90,8 @@ export default function Home() {
             </Section>
 
             <div className="w-auto md:w-4xl mx-[5vw] md:mx-auto pb-4">
-              <div className="flex flex-col md:flex-row gap-4">
-                <Section id="contact" className="w-full md:w-1/2">
+              <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:grid-rows-2 md:gap-4">
+                <Section id="contact" className="w-full md:row-span-2">
                   <Section.Card className="flex flex-col h-full">
                     <Section.Header>{tContact('title')}</Section.Header>
                     <Section.Body className="flex-1">
@@ -100,28 +100,26 @@ export default function Home() {
                   </Section.Card>
                 </Section>
 
-                <div className="flex flex-col gap-4 w-full md:w-1/2">
-                  <Section id="resume" className="flex-1">
-                    <Section.Card className="h-full flex">
-                      <Section.Body className="w-full h-full flex">
-                        <Link href={resumeHref} target="_blank" rel="noopener noreferrer" className="flex justify-center items-center w-full hover-subtle h-full">
-                          <p className="inline-flex gap-1.5 items-center p-6 font-jbmono text-xl uppercase">
-                            <ExternalLink className="w-4" />
-                            {tContact('resume')}
-                          </p>
-                        </Link>
-                      </Section.Body>
-                    </Section.Card>
-                  </Section>
+                <Section id="resume" className="flex-1">
+                  <Section.Card className="h-32 md:h-full flex overflow-hidden">
+                    <Section.Body className="w-full h-full flex">
+                      <Link href={resumeHref} target="_blank" rel="noopener noreferrer" className="flex justify-center items-center w-full hover-subtle h-full">
+                        <p className="inline-flex gap-1.5 items-center p-6 font-jbmono text-xl uppercase">
+                          <ExternalLink className="w-4" />
+                          {tContact('resume')}
+                        </p>
+                      </Link>
+                    </Section.Body>
+                  </Section.Card>
+                </Section>
 
-                  <Section id="signature" className="flex-1">
-                    <Section.Card className="h-full flex">
-                      <Section.Body className="flex justify-center items-center w-full h-full">
-                        <Image src="sig.svg" alt="Signature" width={100} height={100} className="w-1/2 p-6 select-none" draggable="false" />
-                      </Section.Body>
-                    </Section.Card>
-                  </Section>
-                </div>
+                <Section id="signature" className="flex-1">
+                  <Section.Card className="h-32 md:h-full flex overflow-hidden">
+                    <Section.Body className="flex justify-center items-center w-full h-full">
+                      <Image src="sig.svg" alt="Signature" width={100} height={100} className="w-1/2 p-6 select-none" draggable="false" />
+                    </Section.Body>
+                  </Section.Card>
+                </Section>
               </div>
             </div>
           </div>

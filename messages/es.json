@@ -51,8 +51,8 @@
       "emailError": "Por favor, introduce un email",
       "emailMismatchError": "Por favor, proporciona un email válido",
       "messageError": "Por favor, introduce un mensaje",
-      "sendError": "Error de red. Por favor, inténtalo de nuevo.",
-      "sendSuccess1": "¡Mensaje recibido!",
+      "sendError": "Error al enviar. Prueba de nuevo más tarde.",
+      "sendSuccess1": "¡Mensaje enviado!",
       "sendSuccess2": "Gracias por ponerte en contacto. Te responderé lo antes posible."
     },
     "resume": "Currículum"

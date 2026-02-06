@@ -55,3 +55,15 @@ body {
 .card-shadow {
   @apply shadow-[0px_0px_8px_0px_rgba(0,_0,_0,_0.075)];
 }
+
+.contactInput {
+  @apply w-full border-1 border-[#e5e5e5] focus:border-black px-3 py-2 my-1 text-neutral-800 focus:outline-none resize-none text-sm disabled:opacity-50;
+}
+
+.contactLabel {
+  @apply block text-sm text-black;
+}
+
+.contactErrorSlot {
+  @apply min-h-[1.5em] text-xs text-red-600;
+}
