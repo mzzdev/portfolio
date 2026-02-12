@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { JetBrains_Mono, Lexend_Mega } from "next/font/google";
 import "@/styles/globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { LanguageDetector } from "@/components/LanguageDetector";
+import { routing } from "@/i18n/routing";
 
 const jbmono = JetBrains_Mono({
   subsets: ["latin"],
@@ -18,13 +20,26 @@ const siteName = "pablo belló";
 const siteDescription = "pablo belló portfolio - mzzdev";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mzzdev.com";
 
+const supportedLocales = routing.locales;
+const defaultLocale = routing.defaultLocale;
+const languages = Object.fromEntries(
+  supportedLocales.map((locale) => [locale, `/${locale}`]),
+);
+
+function resolveLocale(locale?: string): string {
+  return locale && supportedLocales.includes(locale as any) ? locale : defaultLocale;
+}
+
+type LocaleParams = Promise<{ locale?: string }>;
+
 export async function generateMetadata({
   params,
 }: {
-  params: { locale?: string };
+  params: LocaleParams;
 }): Promise<Metadata> {
-  const locale = params?.locale ?? "en";
-  const isEs = locale === "es";
+  const { locale } = await params;
+  const safeLocale = resolveLocale(locale);
+  const alternateLocales = supportedLocales.filter((l) => l !== safeLocale);
 
   return {
     metadataBase: new URL(siteUrl),
@@ -48,11 +63,8 @@ export async function generateMetadata({
       "mzz project",
     ],
     alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        en: "/en",
-        es: "/es",
-      },
+      canonical: `/${safeLocale}`,
+      languages,
     },
     icons: {
       icon: [
@@ -75,9 +87,9 @@ export async function generateMetadata({
     },
     openGraph: {
       type: "website",
-      locale: isEs ? "es_ES" : "en_US",
-      alternateLocale: [isEs ? "en_US" : "es_ES"],
-      url: `/${locale}`,
+      locale: safeLocale,
+      alternateLocale: alternateLocales,
+      url: `/${safeLocale}`,
       siteName,
       title: siteName,
       description: siteDescription,
@@ -90,16 +102,22 @@ export async function generateMetadata({
   };
 }
 
-export default async function LocaleLayout({ children, params }: any) {
+type LocaleLayoutProps = {
+  children: ReactNode;
+  params: LocaleParams;
+};
+
+export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
   const { locale } = await params;
-  const messages = await getMessages({ locale });
+  const safeLocale = resolveLocale(locale);
+  const messages = await getMessages({ locale: safeLocale });
 
   return (
-    <html lang={locale}>
+    <html lang={safeLocale}>
       
       <body className={`${jbmono.className} ${lexend.variable}`}>
         <NextIntlClientProvider messages={messages}>
-          <LanguageDetector currentLocale={locale} />
+          <LanguageDetector currentLocale={safeLocale} />
           {children}
         </NextIntlClientProvider>
       </body>
