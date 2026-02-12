@@ -16,7 +16,6 @@ export const projects: Project[] = [
     demoLink: "https://mzzdev.com",
     tags: ["Next.js"],
     year: "2025",
-    disabled: true,
   },
   {
     id: "opium",
