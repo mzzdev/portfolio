@@ -1,7 +1,7 @@
 {
   "About": {
     "title": "About",
-    "description": "Full-stack developer with 2+ of experience building web applications in real-world business environments. Specialized in React and Java, combining a strong backend with clean, usable, and aesthetic interfaces. Focused on experimental, user-centered design and high-quality digital experiences.",
+    "description": "Full-stack developer with 2+ years of experience building web applications in real-world business environments. Specialized in React and Java, I combine a strong backend with clean, usable, and aesthetic interfaces. Focused on experimental, high-quality, user-centered design.",
     "techStackTitle": "Tech I work with",
     "journeyTitle": "Journey",
     "workAt": "@",
@@ -13,7 +13,7 @@
       },
       "education": {
         "period": "2022 - 2024",
-        "role": "Web Development Degree"
+        "role": "Higher Vocational Diploma in Web Application Development"
       }
     }
   },
@@ -25,19 +25,19 @@
     },
     "portfolio": {
       "title": "Portfolio",
-      "description": "Design site to showcase projects, experience, and skills."
+      "description": "Personal website with my projects, experience, and skills."
     },
     "opium": {
       "title": "Opium Shop UI Prototype",
-      "description": "E-commerce UI prototype exploring modern design patterns and user experience."
+      "description": "UI prototype for an online store."
     },
     "meld": {
       "title": "Meld",
-      "description": "Modern web dev showcase built with Next.js, Tailwind, and 3D libraries."
+      "description": "Showcase website using 3D libraries."
     },
     "jex": {
       "title": "Jex",
-      "description": "Tool for saving and sharing code with syntax highlighting and tags."
+      "description": "App to save and share code snippets with syntax highlighting and tags."
     }
   },
   "Contact": {

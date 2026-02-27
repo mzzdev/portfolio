@@ -1,25 +1,22 @@
 import type { MetadataRoute } from "next";
-
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://mzzdev.com").replace(
-  /\/$/,
-  "",
-);
+import { DEFAULT_LOCALE, SITE_URL, SUPPORTED_LOCALES, localePath } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  return [
-    {
-      url: `${siteUrl}/en`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: `${siteUrl}/es`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-  ];
+  const homeEntry: MetadataRoute.Sitemap[number] = {
+    url: SITE_URL,
+    lastModified,
+    changeFrequency: "weekly",
+    priority: 1,
+  };
+
+  const localeEntries: MetadataRoute.Sitemap = SUPPORTED_LOCALES.map((locale) => ({
+    url: `${SITE_URL}${localePath(locale)}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: locale === DEFAULT_LOCALE ? 0.9 : 0.8,
+  }));
+
+  return [homeEntry, ...localeEntries];
 }

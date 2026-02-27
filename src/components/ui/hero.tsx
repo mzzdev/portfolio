@@ -6,10 +6,24 @@ export const Hero = () => {
   const [viewBox, setViewBox] = useState("0 0 1000 300");
 
   useEffect(() => {
-    if (textRef.current) {
+    const updateViewBox = () => {
+      if (!textRef.current) {
+        return;
+      }
+
       const bbox = textRef.current.getBBox();
-      setViewBox(`0 ${bbox.y - 5} ${bbox.width + 10} ${bbox.height + 10}`);
-    }
+      const padding = 10;
+      setViewBox(
+        `${bbox.x - padding} ${bbox.y - padding} ${bbox.width + padding * 2} ${bbox.height + padding * 2}`,
+      );
+    };
+
+    updateViewBox();
+
+    const fonts = document.fonts;
+    fonts?.ready.then(updateViewBox);
+
+    window.addEventListener("resize", updateViewBox);
 
     let rafId: number;
     let lastUpdate = 0;
@@ -20,15 +34,19 @@ export const Hero = () => {
         lastUpdate = now;
         const seed = Math.floor(Math.random() * 999) + 1;
         const bf = (3.5 + (Math.random() - 0.5) * 0.18).toFixed(3);
-        
+
         noiseRef.current.setAttribute("seed", String(seed));
         noiseRef.current.setAttribute("baseFrequency", bf);
       }
       rafId = requestAnimationFrame(loop);
     };
-    
+
     rafId = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(rafId);
+
+    return () => {
+      window.removeEventListener("resize", updateViewBox);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
@@ -36,7 +54,7 @@ export const Hero = () => {
       viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"
       className="select-none w-full max-h-[30vh] block"
-      preserveAspectRatio="xMinYMid meet"
+      preserveAspectRatio="xMidYMid meet"
     >
       <defs>
         <filter id="grainFilter" x="-50%" y="-50%" width="200%" height="200%" colorInterpolationFilters="sRGB">

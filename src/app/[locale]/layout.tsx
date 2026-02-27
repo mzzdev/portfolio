@@ -5,7 +5,15 @@ import "@/styles/globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { LanguageDetector } from "@/components/LanguageDetector";
-import { routing } from "@/i18n/routing";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  SUPPORTED_LOCALES,
+  localeAlternates,
+  localePath,
+  resolveLocale,
+} from "@/lib/site";
 
 const jbmono = JetBrains_Mono({
   subsets: ["latin"],
@@ -16,20 +24,6 @@ const lexend = Lexend_Mega({
   variable: "--font-lexend",
 });
 
-const siteName = "pablo belló";
-const siteDescription = "pablo belló portfolio - mzzdev";
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mzzdev.com";
-
-const supportedLocales = routing.locales;
-const defaultLocale = routing.defaultLocale;
-const languages = Object.fromEntries(
-  supportedLocales.map((locale) => [locale, `/${locale}`]),
-);
-
-function resolveLocale(locale?: string): string {
-  return locale && supportedLocales.includes(locale as any) ? locale : defaultLocale;
-}
-
 type LocaleParams = Promise<{ locale?: string }>;
 
 export async function generateMetadata({
@@ -39,32 +33,32 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const safeLocale = resolveLocale(locale);
-  const alternateLocales = supportedLocales.filter((l) => l !== safeLocale);
+  const alternateLocales = SUPPORTED_LOCALES.filter((l) => l !== safeLocale);
 
   return {
-    metadataBase: new URL(siteUrl),
+    metadataBase: new URL(SITE_URL),
     title: {
-      default: siteName,
-      template: `%s | ${siteName}`,
+      default: SITE_NAME,
+      template: `%s | ${SITE_NAME}`,
     },
-    description: siteDescription,
+    description: SITE_DESCRIPTION,
     appleWebApp: {
-      title: siteName,
+      title: SITE_NAME,
     },
-    applicationName: siteName,
-    creator: siteName,
-    publisher: siteName,
-    authors: [{ name: siteName }],
+    applicationName: SITE_NAME,
+    creator: SITE_NAME,
+    publisher: SITE_NAME,
+    authors: [{ name: SITE_NAME }],
     keywords: [
       "pablo belló",
       "pablo bello",
       "mzzdev",
       "portfolio",
-      "mzz project",
+      "mzz",
     ],
     alternates: {
-      canonical: `/${safeLocale}`,
-      languages,
+      canonical: localePath(safeLocale),
+      languages: localeAlternates(),
     },
     icons: {
       icon: [
@@ -89,15 +83,15 @@ export async function generateMetadata({
       type: "website",
       locale: safeLocale,
       alternateLocale: alternateLocales,
-      url: `/${safeLocale}`,
-      siteName,
-      title: siteName,
-      description: siteDescription,
+      url: localePath(safeLocale),
+      siteName: SITE_NAME,
+      title: SITE_NAME,
+      description: SITE_DESCRIPTION,
     },
     twitter: {
       card: "summary",
-      title: siteName,
-      description: siteDescription,
+      title: SITE_NAME,
+      description: SITE_DESCRIPTION,
     },
   };
 }

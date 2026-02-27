@@ -9,7 +9,7 @@ export default function AboutSection() {
   return (
     <div className="p-6 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8">
       <div className="space-y-6">
-        <p className="text-base leading-relaxed">
+        <p className="text-base leading-relaxed text-justify">
           {t('description')}
         </p>
 

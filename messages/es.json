@@ -1,7 +1,7 @@
 {
   "About": {
     "title": "Acerca",
-    "description": "Desarrollador full-stack con +2 años de experiencia creando aplicaciones web en entornos reales de negocio. Especializado en React y Java, combinando backend sólido con interfaces usables y estéticas. Enfoque en diseño experimental centrado en el usuario y experiencias de alta calidad.",
+    "description": "Desarrollador full-stack con más de 2 años de experiencia en la creación de aplicaciones web en entornos empresariales reales. Especializado en React y Java, combino un backend potente con interfaces limpias, usables y estéticas. Me centro en el diseño experimental, de alta calidad y centrado en el usuario.",
     "techStackTitle": "Stack con el que trabajo",
     "journeyTitle": "Trayectoria",
     "workAt": "en",
@@ -25,19 +25,19 @@
     },
     "portfolio": {
       "title": "Portfolio",
-      "description": "Web de diseño para mostrar proyectos, experiencia y habilidades."
+      "description": "Sitio personal con mis proyectos, experiencia y habilidades."
     },
     "opium": {
       "title": "Prototipo UI de Opium Shop",
-      "description": "Prototipo de interfaz para e-commerce explorando patrones de diseño moderno y UX."
+      "description": "Prototipo de interfaz para una tienda online."
     },
     "meld": {
       "title": "Meld",
-      "description": "Muestra de desarrollo web moderno con Next.js, Tailwind y librerías 3D."
+      "description": "Sitio web de muestra que utiliza bibliotecas 3D."
     },
     "jex": {
       "title": "Jex",
-      "description": "Herramienta para guardar y compartir código con resaltado de sintaxis y etiquetas."
+      "description": "App para guardar y compartir fragmentos de código con resaltado de sintaxis y etiquetas."
     }
   },
   "Contact": {

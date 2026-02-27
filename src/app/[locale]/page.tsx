@@ -51,6 +51,7 @@ export default function Home() {
       <NavMenu />
 
       <main className="bg-white relative z-10">
+        <h1 className="sr-only">Pablo Belló Portfolio</h1>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
