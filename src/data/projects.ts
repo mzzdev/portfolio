@@ -1,6 +1,12 @@
+import type { StaticImageData } from "next/image";
+import portfolioImg from "../../public/projects/portfolio.webp";
+import opiumImg from "../../public/projects/opium.webp";
+import meldImg from "../../public/projects/meld.webp";
+import jexImg from "../../public/projects/jex.webp";
+
 export interface Project {
   id: string;
-  image: string;
+  image: StaticImageData;
   githubLink: string;
   demoLink?: string;
   tags: string[];
@@ -11,7 +17,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "portfolio",
-    image: "/projects/portfolio.webp",
+    image: portfolioImg,
     githubLink: "https://github.com/mzzdev/portfolio",
     demoLink: "https://mzzdev.com",
     tags: ["Next.js"],
@@ -19,7 +25,7 @@ export const projects: Project[] = [
   },
   {
     id: "opium",
-    image: "/projects/opium.webp",
+    image: opiumImg,
     githubLink: "https://github.com/mzzdev/opium-shop-front",
     demoLink: "https://mzzdev.github.io/opium-shop-front/",
     tags: ["CSS"],
@@ -27,7 +33,7 @@ export const projects: Project[] = [
   },
   {
     id: "meld",
-    image: "/projects/meld.webp",
+    image: meldImg,
     githubLink: "https://github.com/mzzdev/meld",
     demoLink: "https://meld-mu.vercel.app/",
     tags: ["Three.js", "Next.js"],
@@ -35,7 +41,7 @@ export const projects: Project[] = [
   },
   {
     id: "jex",
-    image: "/projects/jex.webp",
+    image: jexImg,
     githubLink: "https://github.com/mzzdev/jex",
     demoLink: "https://jex.mzzdev.com",
     tags: ["PostgreSQL", "Next.js"],

@@ -21,8 +21,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <Image
           src={project.image}
           alt={t(`${project.id}.title`)}
-          width={1920}
-          height={1080}
+          fill
+          sizes="(max-width: 768px) calc(90vw - 3rem), 0px"
           className="object-cover"
           draggable={false}
         />
@@ -35,8 +35,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               <Image
                 src={project.image}
                 alt={t(`${project.id}.title`)}
-                width={1920}
-                height={1080}
+                fill
+                sizes="160px"
                 className="object-cover"
                 draggable={false}
               />
@@ -45,15 +45,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
           <Dialog.Portal>
             <Dialog.Overlay className="fixed inset-0 bg-black/20 backdrop-blur-md z-50" />
-            <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[75vw] -translate-x-1/2 -translate-y-1/2 outline-none">
+            <Dialog.Content className="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 outline-none">
               <Dialog.Title className="sr-only">{t(`${project.id}.title`)}</Dialog.Title>
               <Dialog.Description className="sr-only">{t(`${project.id}.description`)}</Dialog.Description>
               <Image
                 src={project.image}
                 alt={t(`${project.id}.title`)}
-                width={1920}
-                height={1080}
-                className="object-contain w-full h-full border border-black"
+                sizes="75vw"
+                className="max-w-[75vw] max-h-[90vh] w-auto h-auto border border-black"
                 draggable={false}
               />
             </Dialog.Content>

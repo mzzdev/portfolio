@@ -25,7 +25,7 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
             pablo@mzzdev.com
         </Link>
         <p className="text-neutral-400 font-normal text-xs">
-          {'\u00A9'} {new Date().getFullYear()} {t('title')} {'('}Pablo Belló{')'}
+          {'\u00A9'} {new Date().getFullYear()} {t('title')}
         </p>
         <p className="text-neutral-400 font-normal text-xs">
            {t('copyright')}
