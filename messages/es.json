@@ -1,4 +1,11 @@
 {
+  "Meta": {
+    "title": "Pablo Belló | mzzdev",
+    "description": "Pablo Belló (mzzdev), desarrollador full-stack en España, especializado en React, Next.js y Java. Descubre mis proyectos, currículum y formas de contacto."
+  },
+  "Home": {
+    "heading": "Pablo Belló | mzzdev"
+  },
   "About": {
     "title": "Acerca",
     "description": "Desarrollador full-stack con más de 2 años de experiencia en la creación de aplicaciones web en entornos empresariales reales. Especializado en React y Java, combino un backend potente con interfaces limpias, usables y estéticas. Me centro en el diseño experimental, de alta calidad y centrado en el usuario.",
@@ -53,7 +60,8 @@
       "messageError": "Por favor, introduce un mensaje",
       "sendError": "Error al enviar. Prueba de nuevo más tarde.",
       "sendSuccess1": "¡Mensaje enviado!",
-      "sendSuccess2": "Gracias por ponerte en contacto. Te responderé lo antes posible."
+      "sendSuccess2": "Gracias por ponerte en contacto. Te responderé lo antes posible.",
+      "back": "Volver"
     },
     "resume": "Currículum"
   },
@@ -62,7 +70,7 @@
     "disclaimer": {
       "title": "Aviso legal",
       "i1": "Diseñado y desarrollado por Pablo Belló.",
-      "i2": "Prohibida su copia o distribución sin autorización."
+      "i2": "El código está disponible para su uso con permiso."
     },
     "title": "mzz",
     "copyright": "Todos los derechos reservados"

@@ -28,6 +28,7 @@ export const Hero = () => {
     let rafId: number;
     let lastUpdate = 0;
     const seedInterval = 60;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const loop = (now: number) => {
       if (noiseRef.current && now - lastUpdate > seedInterval) {
@@ -41,7 +42,9 @@ export const Hero = () => {
       rafId = requestAnimationFrame(loop);
     };
 
-    rafId = requestAnimationFrame(loop);
+    if (!prefersReducedMotion) {
+      rafId = requestAnimationFrame(loop);
+    }
 
     return () => {
       window.removeEventListener("resize", updateViewBox);
@@ -55,6 +58,7 @@ export const Hero = () => {
       xmlns="http://www.w3.org/2000/svg"
       className="select-none w-full max-h-[30vh] block"
       preserveAspectRatio="xMidYMid meet"
+      aria-hidden="true"
     >
       <defs>
         <filter id="grainFilter" x="-50%" y="-50%" width="200%" height="200%" colorInterpolationFilters="sRGB">

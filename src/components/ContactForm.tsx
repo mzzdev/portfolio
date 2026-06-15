@@ -6,7 +6,6 @@ import { Button } from "./ui/button";
 
 export default function ContactForm() {
   const t = useTranslations('Contact');
-  const tnf = useTranslations('NotFoundPage');
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
@@ -38,7 +37,8 @@ export default function ContactForm() {
     setIsSubmitting(true)
     setMessage(null)
 
-    const formData = new FormData(event.currentTarget)
+    const form = event.currentTarget
+    const formData = new FormData(form)
     const data = {
       name: formData.get('name') as string,
       email: formData.get('email') as string,
@@ -62,11 +62,7 @@ export default function ContactForm() {
       const result = await response.json()
       setMessage({ type: 'success', text: result.message || t('form.sendSuccess1') })
       setIsSuccess(true)
-
-      const form = event.currentTarget
-      if (form) {
-        form.reset()
-      }
+      form.reset()
 
     } catch (error) {
       setMessage({
@@ -102,7 +98,7 @@ export default function ContactForm() {
               className="px-2 py-1 cursor-pointer rounded-none uppercase text-sm hover-subtle bg-white text-black"
               onClick={handleResetView}
             >
-              {tnf('homeButton')}
+              {t('form.back')}
             </Button>
           </>
         )}
@@ -120,6 +116,7 @@ export default function ContactForm() {
           <Form.Control asChild>
             <input
               name="name"
+              autoComplete="name"
               required
               disabled={isSubmitting}
               className="contactInput"
@@ -139,6 +136,7 @@ export default function ContactForm() {
           <Form.Control asChild>
             <input
               name="email"
+              autoComplete="email"
               type="email"
               required
               pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$"

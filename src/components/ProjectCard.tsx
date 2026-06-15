@@ -21,9 +21,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <Image
           src={project.image}
           alt={t(`${project.id}.title`)}
-          fill
+          width={1920}
+          height={1080}
           className="object-cover"
-          sizes="100vw"
           draggable={false}
         />
       </div>
@@ -31,11 +31,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       <div className="hidden md:block">
         <Dialog.Root open={open} onOpenChange={setOpen}>
           <Dialog.Trigger asChild>
-            <div className="relative w-40 aspect-video flex-shrink-0 border border-neutral-200 transition-colors cursor-pointer hover-subtle hover:border-black">
+            <div className="relative w-40 aspect-video shrink-0 border border-neutral-200 transition-colors cursor-pointer hover-subtle hover:border-black">
               <Image
                 src={project.image}
                 alt={t(`${project.id}.title`)}
-                fill
+                width={1920}
+                height={1080}
                 className="object-cover"
                 draggable={false}
               />
@@ -46,6 +47,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <Dialog.Overlay className="fixed inset-0 bg-black/20 backdrop-blur-md z-50" />
             <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[75vw] -translate-x-1/2 -translate-y-1/2 outline-none">
               <Dialog.Title className="sr-only">{t(`${project.id}.title`)}</Dialog.Title>
+              <Dialog.Description className="sr-only">{t(`${project.id}.description`)}</Dialog.Description>
               <Image
                 src={project.image}
                 alt={t(`${project.id}.title`)}

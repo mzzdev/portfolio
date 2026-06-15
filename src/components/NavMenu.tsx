@@ -14,17 +14,12 @@ import { Globe } from 'lucide-react'
 const MENU_ITEMS = ['about', 'projects', 'contact']
 
 
-export default function NavMenu() {
+export default function NavMenu({ onSwitchLocale }: { onSwitchLocale: (locale: string) => void }) {
   const t = useTranslations('NavMenu');
   const [showNavbar, setShowNavbar] = useState(true)
   const [menuKey, setMenuKey] = useState(0)
-  const [sections, setSections] = useState<string[]>([])
   const lastScrollY = useRef(0)
   const navbarRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    setSections(MENU_ITEMS)
-  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,11 +56,6 @@ export default function NavMenu() {
     }
   }
 
-  const getSectionLabel = (sectionId: string): string => {
-    const label = t(`index.${sectionId}`)
-    return label || (sectionId.charAt(0) + sectionId.slice(1))
-  }
-
   return (
     <motion.div
       ref={navbarRef}
@@ -83,14 +73,14 @@ export default function NavMenu() {
               </span>
             </MenubarTrigger>
             <MenubarContent className="ml-1 mt-3 p-0 border border-neutral-300 rounded-none shadow-none">
-              {sections.map((sectionId) => (
+              {MENU_ITEMS.map((sectionId) => (
                 <MenubarItem 
                   key={sectionId} 
                   className="menubar-item"
                   onClick={() => scrollToSection(sectionId)}
                 >
                   <span className="text-base-upper font-bold">
-                    {getSectionLabel(sectionId)}
+                    {t(`index.${sectionId}`)}
                   </span>
                 </MenubarItem>
               ))}
@@ -107,7 +97,7 @@ export default function NavMenu() {
             <Globe className="w-4" />
           </MenubarTrigger>
           <MenubarContent className="mr-4 mt-3 p-0 border border-neutral-300 rounded-none shadow-none">
-            <LanguageMenuItems />
+            <LanguageMenuItems onSelect={onSwitchLocale} />
           </MenubarContent>
         </MenubarMenu>
       </Menubar>

@@ -1,10 +1,11 @@
 'use client'
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useTransition } from "react"
 import { useParams } from 'next/navigation'
+import { useRouter, usePathname } from '@/i18n/routing'
 import Link from "next/link"
 import { useTranslations } from "next-intl"
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 import { ExternalLink } from "lucide-react"
 import Section from "@/components/Section"
 import { Hero } from "@/components/ui/hero"
@@ -17,6 +18,7 @@ import { projects } from "@/data/projects"
 import Image from 'next/image'
 
 export default function Home() {
+  const tHome = useTranslations('Home');
   const tAbout = useTranslations('About');
   const tProjects = useTranslations('Projects');
   const tContact = useTranslations('Contact');
@@ -24,6 +26,17 @@ export default function Home() {
   const params = useParams() as { locale?: string } | null
   const locale = params?.locale ?? 'en'
   const resumeHref = locale === 'es' ? '/resume-es.pdf' : '/resume-en.pdf'
+
+  const router = useRouter()
+  const pathname = usePathname()
+  const [isSwitchingLocale, startLocaleTransition] = useTransition()
+
+  const switchLocale = (nextLocale: string) => {
+    if (nextLocale === locale) return
+    startLocaleTransition(() => {
+      router.replace(pathname, { locale: nextLocale, scroll: false })
+    })
+  }
 
   const placeholderRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
@@ -47,11 +60,15 @@ export default function Home() {
   }, [])
 
   return (
-    <>
-      <NavMenu />
+    <div
+      className="transition-opacity duration-500 ease-[cubic-bezier(.19,1,.22,1)] motion-reduce:transition-none"
+      style={{ opacity: isSwitchingLocale ? 0 : 1 }}
+      aria-busy={isSwitchingLocale}
+    >
+      <NavMenu onSwitchLocale={switchLocale} />
 
       <main className="bg-white relative z-10">
-        <h1 className="sr-only">Pablo Belló Portfolio</h1>
+        <h1 className="sr-only">{tHome('heading')}</h1>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -66,7 +83,7 @@ export default function Home() {
             </div>
           </section>
 
-          <div className="bg-white relative z-10 border-b border-neutral-300 shadow-[0px_8px_8px_-8px_rgba(0,_0,_0,_0.075)]">
+          <div className="bg-white relative z-10 border-b border-neutral-300 shadow-[0px_8px_8px_-8px_rgba(0,0,0,0.075)]">
             <Section id="about">
               <Section.Card>
                 <Section.Header>{tAbout('title')}</Section.Header>
@@ -117,7 +134,7 @@ export default function Home() {
                 <Section id="signature" className="flex-1">
                   <Section.Card className="h-32 md:h-full flex overflow-hidden">
                     <Section.Body className="flex justify-center items-center w-full h-full">
-                      <Image src="sig.svg" alt="Signature" width={100} height={100} className="w-1/2 p-6 select-none" draggable="false" />
+                      <Image src="/sig.svg" alt="Signature" width={100} height={100} className="w-1/2 p-6 select-none" draggable="false" />
                     </Section.Body>
                   </Section.Card>
                 </Section>
@@ -129,6 +146,6 @@ export default function Home() {
 
       <div id="placeholder" ref={placeholderRef} className="relative"></div>
       <Footer footerRef={footerRef} />
-    </>
+    </div>
   );
 }

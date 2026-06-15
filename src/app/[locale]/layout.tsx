@@ -3,12 +3,12 @@ import type { ReactNode } from "react";
 import { JetBrains_Mono, Lexend_Mega } from "next/font/google";
 import "@/styles/globals.css";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
-import { LanguageDetector } from "@/components/LanguageDetector";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import {
-  SITE_DESCRIPTION,
+  SITE_HANDLE,
   SITE_NAME,
   SITE_URL,
+  SOCIAL_LINKS,
   SUPPORTED_LOCALES,
   localeAlternates,
   localePath,
@@ -26,6 +26,10 @@ const lexend = Lexend_Mega({
 
 type LocaleParams = Promise<{ locale?: string }>;
 
+export function generateStaticParams() {
+  return SUPPORTED_LOCALES.map((locale) => ({ locale }));
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -34,27 +38,34 @@ export async function generateMetadata({
   const { locale } = await params;
   const safeLocale = resolveLocale(locale);
   const alternateLocales = SUPPORTED_LOCALES.filter((l) => l !== safeLocale);
+  const t = await getTranslations({ locale: safeLocale, namespace: "Meta" });
+  const title = t("title");
+  const description = t("description");
 
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: SITE_NAME,
+      default: title,
       template: `%s | ${SITE_NAME}`,
     },
-    description: SITE_DESCRIPTION,
+    description,
     appleWebApp: {
-      title: SITE_NAME,
+      title: SITE_HANDLE,
     },
-    applicationName: SITE_NAME,
+    applicationName: SITE_HANDLE,
     creator: SITE_NAME,
     publisher: SITE_NAME,
-    authors: [{ name: SITE_NAME }],
+    authors: [{ name: SITE_NAME, url: SITE_URL }],
     keywords: [
-      "pablo belló",
-      "pablo bello",
+      "Pablo Belló",
+      "Pablo Bello",
       "mzzdev",
-      "portfolio",
       "mzz",
+      "full-stack developer",
+      "portfolio",
+      "React",
+      "Next.js",
+      "Java",
     ],
     alternates: {
       canonical: localePath(safeLocale),
@@ -62,7 +73,7 @@ export async function generateMetadata({
     },
     icons: {
       icon: [
-        { url: "/favicon.ico" },
+        { url: "/logo.svg", type: "image/svg+xml" },
         { url: "/favicon-48x48.png", type: "image/png", sizes: "48x48" },
         { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
       ],
@@ -84,15 +95,69 @@ export async function generateMetadata({
       locale: safeLocale,
       alternateLocale: alternateLocales,
       url: localePath(safeLocale),
-      siteName: SITE_NAME,
-      title: SITE_NAME,
-      description: SITE_DESCRIPTION,
+      siteName: SITE_HANDLE,
+      title,
+      description,
+      images: [
+        {
+          url: "/og.png",
+          width: 1200,
+          height: 630,
+          alt: `${SITE_NAME} — ${SITE_HANDLE}`,
+        },
+      ],
     },
     twitter: {
-      card: "summary",
-      title: SITE_NAME,
-      description: SITE_DESCRIPTION,
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og.png"],
     },
+  };
+}
+
+function buildJsonLd(locale: string, description: string) {
+  const personId = `${SITE_URL}/#person`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": personId,
+        name: SITE_NAME,
+        alternateName: [SITE_HANDLE, "mzz", "Pablo Bello"],
+        url: SITE_URL,
+        image: `${SITE_URL}/og.png`,
+        description,
+        jobTitle: "Full-Stack Developer",
+        email: `mailto:${SOCIAL_LINKS.email}`,
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "ES",
+        },
+        knowsAbout: [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Java",
+          "Spring Boot",
+          "PostgreSQL",
+          "Oracle",
+        ],
+        sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.linkedin],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: SITE_HANDLE,
+        alternateName: [`${SITE_NAME} Portfolio`, SITE_NAME],
+        description,
+        inLanguage: SUPPORTED_LOCALES,
+        publisher: { "@id": personId },
+      },
+    ],
   };
 }
 
@@ -104,14 +169,19 @@ type LocaleLayoutProps = {
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
   const { locale } = await params;
   const safeLocale = resolveLocale(locale);
+  setRequestLocale(safeLocale);
   const messages = await getMessages({ locale: safeLocale });
+  const t = await getTranslations({ locale: safeLocale, namespace: "Meta" });
+  const jsonLd = buildJsonLd(safeLocale, t("description"));
 
   return (
-    <html lang={safeLocale}>
-      
+    <html lang={safeLocale} data-scroll-behavior="smooth">
       <body className={`${jbmono.className} ${lexend.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <NextIntlClientProvider messages={messages}>
-          <LanguageDetector currentLocale={safeLocale} />
           {children}
         </NextIntlClientProvider>
       </body>

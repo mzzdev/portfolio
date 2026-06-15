@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -9,14 +9,14 @@ export default function NotFoundPage() {
   const t = useTranslations("NotFoundPage");
   return (
     <main className="flex flex-col min-h-screen items-center justify-center cursor-default bg-white">
-      <div className="absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_10%,black)]" />
+      <div className="absolute inset-0 flex items-center justify-center bg-white mask-[radial-gradient(ellipse_at_center,transparent_10%,black)]" />
 
       <motion.p
         initial={{ filter: "blur(5px)", opacity: 0, y: 100 }}
         whileInView={{ filter: "blur(0)", opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="overflow-hidden absolute inset-0 z-[1] flex items-center justify-center text-[45vw] font-mono font-bold tracking-widest bg-clip-text text-transparent bg-linear-to-b from-neutral-200 to-white select-none"
+        className="overflow-hidden absolute inset-0 z-1 flex items-center justify-center text-[45vw] font-mono font-bold tracking-widest bg-clip-text text-transparent bg-linear-to-b from-neutral-200 to-white select-none"
       >
         404
       </motion.p>

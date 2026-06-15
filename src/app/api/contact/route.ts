@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+let resend: Resend | null = null
+
+function getResend(): Resend {
+  resend ??= new Resend(process.env.RESEND_API_KEY)
+  return resend
+}
 
 const attempts = new Map<string, { count: number; resetTime: number }>()
 const RATE_LIMIT_WINDOW = 15 * 60 * 1000
@@ -9,6 +14,13 @@ const MAX_ATTEMPTS = 3
 
 function checkRateLimit(ip: string): boolean {
   const now = Date.now()
+
+  for (const [key, value] of attempts) {
+    if (now > value.resetTime) {
+      attempts.delete(key)
+    }
+  }
+
   const userAttempts = attempts.get(ip)
 
   if (!userAttempts || now > userAttempts.resetTime) {
@@ -73,7 +85,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const { data, error } = await resend.emails.send({
+    const { data, error } = await getResend().emails.send({
       from: `mzzdev <noreply@${process.env.RESEND_DOMAIN}>`,
       to: [process.env.CONTACT_EMAIL!],
       subject: `[Portfolio] Nueva notificación de contacto - ${sanitizedName}`,

@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
-import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
+import { SITE_HANDLE, SITE_NAME } from "@/lib/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: SITE_NAME,
-    short_name: SITE_NAME,
-    description: SITE_DESCRIPTION,
+    name: `${SITE_NAME} — ${SITE_HANDLE}`,
+    short_name: SITE_HANDLE,
+    description: `${SITE_NAME}'s portfolio`,
     start_url: "/",
     scope: "/",
     id: "/",

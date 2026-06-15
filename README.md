@@ -1,56 +1,17 @@
-# Portfolio Website
+# mzzdev.com
 
-<div align="center">
-  
-  ![Next.js](https://img.shields.io/badge/Next.js-15.3.1-black?style=for-the-badge&logo=next.js)
-  ![React](https://img.shields.io/badge/React-19.1.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)
-  ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-  ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.3-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+My personal portfolio. Live at [mzzdev.com](https://mzzdev.com).
 
-  **A design focused, multilingual portfolio built with Next.js**
+Built with Next.js, React, TypeScript and Tailwind. English and Spanish via next-intl, with browser language detection that respects a manual override. The contact form sends through Resend from my own domain, with rate limiting on the API route. Deployed behind Cloudflare; I handle the domain, DNS and SSL setup myself.
 
-  [View Demo](https://mzzdev.com)
+Some details I care about:
 
-</div>
-
----
-
-## About
-
-Personal portfolio website to showcase projects, skills, and experience. It focuses on performance, SEO, accessibility, and a clean responsive UI with animations and a contact form. Interface design was a top priority, with careful attention to layout, typography, spacing, and motion.
-
-This project was also used to strengthen my deployment skills with Cloudflare. I handled the full setup myself, including domain configuration, DNS, SSL, and deployment.
-
-## Highlights
-
-- 🌍 Multilingual UI with automatic language detection
-- 🎨 Design-first UI with a strong focus on visual hierarchy and motion
-- 📱 Fully responsive and accessibility-minded
-- 📨 Contact form using domain-based email
-- 🐳 Docker-ready
-- 🔎 SEO-friendly
-
-## Tech Stack
-
-- **Framework**: Next.js 15.3.1
-- **UI**: React 19.1.0, Tailwind CSS 4.1.3, Framer Motion 11.3.19, Radix UI
-- **Language**: TypeScript 5
-- **i18n**: next-intl 3.17.2
-- **Email**: Resend 6.1.0
+- Design-first: I care as much about how something looks, reads and feels as whether it works.
+- UI design is experimental, but never at the cost of usability or accessibility. I may change it in the future, tough.
+- A solid, clean backend, details polished until they feel effortless.
 
 ## License
 
-**© 2025 mzz - Pablo Belló. All rights reserved.**
+© 2026 Pablo Belló (mzz). All rights reserved.
 
-This code is publicly available for viewing and evaluation purposes only.
-You may NOT:
-- Copy, modify, or distribute this code
-- Use this code for commercial purposes
-- Use this code in your own projects
-
-If you're interested in using any part of this project, please contact me.
-
-<div align="center">
-  <p>Made with ❤️ by Pablo Belló</p>
-  <p>© 2025 mzz - Pablo Belló. All rights reserved.</p>
-</div>
+The code is public so you can read it, not reuse it. If you want to use part of it, [ask me](mailto:pablo@mzzdev.com).
