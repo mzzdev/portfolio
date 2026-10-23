@@ -15,13 +15,13 @@ import {
   resolveLocale,
 } from "@/lib/site";
 
-const jbmono = JetBrains_Mono({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-jbmono",
+  variable: "--font-jetbrains-mono",
 });
-const lexend = Lexend_Mega({
+const lexendMega = Lexend_Mega({
   subsets: ["latin"],
-  variable: "--font-lexend",
+  variable: "--font-lexend-mega",
 });
 
 type LocaleParams = Promise<{ locale?: string }>;
@@ -175,8 +175,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const jsonLd = buildJsonLd(safeLocale, t("description"));
 
   return (
-    <html lang={safeLocale} data-scroll-behavior="smooth">
-      <body className={`${jbmono.className} ${lexend.variable}`}>
+    <html
+      lang={safeLocale}
+      data-scroll-behavior="smooth"
+      className={`${jetbrainsMono.variable} ${lexendMega.variable}`}
+    >
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

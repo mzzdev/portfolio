@@ -1,23 +1,31 @@
 @import 'tailwindcss';
+@import './tokens.css';
 
-@custom-variant dark (&:is(.dark *));
+@layer base {
+  *,
+  ::before,
+  ::after,
+  ::backdrop {
+    border-color: var(--border);
+  }
 
-@theme {
-  --font-lexend: var(--font-lexend);
-  --font-jbmono: var(--font-jbmono);
-}
+  html {
+    @apply scroll-smooth;
+  }
 
-::selection {
-  color: white;
-  background-color: black;
-}
+  body {
+    @apply overflow-y-scroll bg-background font-mono font-semibold leading-tight tracking-tight text-foreground antialiased;
+  }
 
-html {
-  @apply scroll-smooth;
-}
+  ::selection {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
 
-body {
-  @apply antialiased leading-tight font-semibold tracking-tight overflow-y-scroll;
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
 }
 
 .unloadTransition {

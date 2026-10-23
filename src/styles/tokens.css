@@ -1,0 +1,107 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.371 0 0);
+  --accent: oklch(0.922 0 0);
+
+  --primary: oklch(0 0 0);
+  --primary-foreground: oklch(1 0 0);
+  --primary-hover: oklch(0.439 0 0);
+
+  --destructive: oklch(0.577 0.245 27.325);
+
+  --border: oklch(0.922 0 0);
+  --border-strong: oklch(0 0 0 / 0.5);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0 0 0);
+  --overlay: oklch(0 0 0 / 0.2);
+
+  --duration-fast: 200ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-overlay: var(--overlay);
+
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-display: var(--font-lexend-mega), ui-sans-serif, sans-serif;
+}
+
+@theme {
+  --font-wordmark: Helvetica, Arial, sans-serif;
+
+  --spacing-gutter: 5vw;
+  --spacing-card: 1.5rem;
+  --spacing-section: 1rem;
+  --container-page: 56rem;
+
+  --radius-*: initial;
+
+  --shadow-raised: 0 0 8px 0 rgb(0 0 0 / 0.075);
+  --shadow-edge: 0 8px 8px -8px rgb(0 0 0 / 0.075);
+
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@utility container-page {
+  margin-inline: max(var(--spacing-gutter), calc((100% - var(--container-page)) / 2));
+}
+
+@utility type-display {
+  @apply font-display tracking-wide lowercase;
+}
+
+@utility type-heading {
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
+  text-transform: uppercase;
+}
+
+@utility type-title {
+  font-size: var(--text-base);
+  line-height: var(--leading-tight);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+@utility type-overline {
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility interactive {
+  transition-property: color, background-color, border-color, text-decoration-color, opacity;
+  transition-timing-function: var(--default-transition-timing-function);
+  transition-duration: var(--duration-base);
+
+  &:hover {
+    transition-duration: 0s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 0s;
+  }
+}

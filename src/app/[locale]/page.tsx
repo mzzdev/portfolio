@@ -122,7 +122,7 @@ export default function Home() {
                   <Section.Card className="h-32 md:h-full flex overflow-hidden">
                     <Section.Body className="w-full h-full flex">
                       <Link href={resumeHref} target="_blank" rel="noopener noreferrer" className="flex justify-center items-center w-full hover-subtle h-full">
-                        <p className="inline-flex gap-1.5 items-center p-6 font-jbmono text-xl uppercase">
+                        <p className="inline-flex gap-1.5 items-center p-6 text-xl uppercase">
                           <ExternalLink className="w-4" />
                           {tContact('resume')}
                         </p>

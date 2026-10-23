@@ -62,7 +62,7 @@ export default function NavMenu({ onSwitchLocale }: { onSwitchLocale: (locale: s
       initial={{ y: 0, opacity: 0 }}
       animate={{ y: showNavbar ? 0 : -100, opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className="fixed top-0 z-50 font-lexend tracking-wide select-none w-full"
+      className="fixed top-0 z-50 type-display select-none w-full"
     >
       <Menubar key={menuKey} className="items-center border-b border-neutral-300 card-shadow px-4 justify-between">
         <div className="flex items-center">
@@ -79,9 +79,7 @@ export default function NavMenu({ onSwitchLocale }: { onSwitchLocale: (locale: s
                   className="menubar-item"
                   onClick={() => scrollToSection(sectionId)}
                 >
-                  <span className="text-base-upper font-bold">
-                    {t(`index.${sectionId}`)}
-                  </span>
+                  {t(`index.${sectionId}`)}
                 </MenubarItem>
               ))}
             </MenubarContent>

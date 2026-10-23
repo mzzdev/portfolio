@@ -17,9 +17,7 @@ export function LanguageMenuItems({ onSelect }: { onSelect: (locale: string) => 
         >
           <div className="flex items-center space-x-2">
             <Flag className="w-4 h-auto" />
-            <span className="text-base-upper font-bold">
-              {nativeName}
-            </span>
+            <span>{nativeName}</span>
           </div>
         </MenubarItem>
       ))}
