@@ -31,7 +31,7 @@ function MenubarTrigger({
     <MenubarPrimitive.Trigger
       data-slot="menubar-trigger"
       className={cn(
-        "interactive flex cursor-pointer select-none items-center px-3 py-1 text-base outline-hidden hover:bg-accent focus-visible:bg-accent data-[state=open]:bg-primary data-[state=open]:text-primary-foreground",
+        "interactive flex h-8 cursor-pointer select-none items-center px-3 py-1 text-base outline-hidden hover:bg-accent focus-visible:bg-accent data-[state=open]:bg-primary data-[state=open]:text-primary-foreground",
         className
       )}
       {...props}
@@ -42,8 +42,8 @@ function MenubarTrigger({
 function MenubarContent({
   className,
   align = "start",
-  alignOffset = -4,
-  sideOffset = 8,
+  alignOffset = 0,
+  sideOffset = 20,
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Content>) {
   return (

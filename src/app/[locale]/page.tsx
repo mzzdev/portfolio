@@ -3,18 +3,19 @@
 import { useEffect, useRef, useTransition } from "react"
 import { useParams } from 'next/navigation'
 import { useRouter, usePathname } from '@/i18n/routing'
-import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { motion } from "motion/react"
 import { ExternalLink } from "lucide-react"
-import Section from "@/components/Section"
-import { Hero } from "@/components/ui/hero"
+import { Hero } from "@/components/Hero"
 import Footer from "@/components/Footer"
 import NavMenu from "@/components/NavMenu"
 import ContactForm from "@/components/ContactForm"
 import ProjectCard from "@/components/ProjectCard"
 import AboutSection from "@/components/AboutSection"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { TextLink } from "@/components/ui/text-link"
 import { projects } from "@/data/projects"
+import { duration } from "@/lib/motion"
 import Image from 'next/image'
 
 export default function Home() {
@@ -47,7 +48,7 @@ export default function Home() {
         placeholderRef.current.style.height = `${footerRef.current.offsetHeight}px`
       }
     }
-    const handleUnload = () => document.body.classList.add('unloadTransition')
+    const handleUnload = () => document.body.classList.add('page-exit')
 
     handleResize()
     window.addEventListener('resize', handleResize)
@@ -61,83 +62,83 @@ export default function Home() {
 
   return (
     <div
-      className="transition-opacity duration-500 ease-[cubic-bezier(.19,1,.22,1)] motion-reduce:transition-none"
+      className="transition-opacity duration-(--duration-slow) ease-out-expo motion-reduce:transition-none"
       style={{ opacity: isSwitchingLocale ? 0 : 1 }}
       aria-busy={isSwitchingLocale}
     >
       <NavMenu onSwitchLocale={switchLocale} />
 
-      <main className="bg-white relative z-10">
+      <main className="bg-background relative z-10">
         <h1 className="sr-only">{tHome('heading')}</h1>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: .6 }}
+          transition={{ duration: duration.slow }}
         >
           <section
             id="hero"
             className="h-screen select-none sticky top-0 z-0 flex items-center justify-center"
           >
-            <div className="w-full md:w-4xl md:mx-auto mx-[5vw]">
+            <div className="container-page w-full">
               <Hero />
             </div>
           </section>
 
-          <div className="bg-white relative z-10 border-b border-neutral-300 shadow-[0px_8px_8px_-8px_rgba(0,0,0,0.075)]">
-            <Section id="about">
-              <Section.Card>
-                <Section.Header>{tAbout('title')}</Section.Header>
-                <Section.Body>
-                  <AboutSection />
-                </Section.Body>
-              </Section.Card>
-            </Section>
+          <div className="bg-background relative z-10 border-b border-border shadow-edge">
+            <div className="container-page flex flex-col gap-section pb-section">
+              <section id="about">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>{tAbout('title')}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <AboutSection />
+                  </CardContent>
+                </Card>
+              </section>
 
-            <Section id="projects">
-              <Section.Card>
-                <Section.Header>{tProjects('title')}</Section.Header>
-                <Section.Body>
-                  {projects.map((project) => (
-                    <ProjectCard
-                      key={project.id}
-                      project={project}
-                    />
-                  ))}
-                </Section.Body>
-              </Section.Card>
-            </Section>
+              <section id="projects">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>{tProjects('title')}</CardTitle>
+                  </CardHeader>
+                  <CardContent inset={false}>
+                    {projects.map((project) => (
+                      <ProjectCard
+                        key={project.id}
+                        project={project}
+                      />
+                    ))}
+                  </CardContent>
+                </Card>
+              </section>
 
-            <div className="w-auto md:w-4xl mx-[5vw] md:mx-auto pb-4">
-              <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:grid-rows-2 md:gap-4">
-                <Section id="contact" className="w-full md:row-span-2">
-                  <Section.Card className="flex flex-col h-full">
-                    <Section.Header>{tContact('title')}</Section.Header>
-                    <Section.Body className="flex-1">
+              <div className="flex flex-col gap-section md:grid md:grid-cols-2 md:grid-rows-2">
+                <section id="contact" className="md:row-span-2">
+                  <Card className="flex flex-col h-full">
+                    <CardHeader>
+                      <CardTitle>{tContact('title')}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-1">
                       <ContactForm />
-                    </Section.Body>
-                  </Section.Card>
-                </Section>
+                    </CardContent>
+                  </Card>
+                </section>
 
-                <Section id="resume" className="flex-1">
-                  <Section.Card className="h-32 md:h-full flex overflow-hidden">
-                    <Section.Body className="w-full h-full flex">
-                      <Link href={resumeHref} target="_blank" rel="noopener noreferrer" className="flex justify-center items-center w-full hover-subtle h-full">
-                        <p className="inline-flex gap-1.5 items-center p-6 text-xl uppercase">
-                          <ExternalLink className="w-4" />
-                          {tContact('resume')}
-                        </p>
-                      </Link>
-                    </Section.Body>
-                  </Section.Card>
-                </Section>
+                <section id="resume" className="flex-1">
+                  <Card className="h-32 md:h-full flex overflow-hidden">
+                    <TextLink href={resumeHref} external className="flex justify-center w-full h-full gap-1.5 p-card text-xl uppercase">
+                      <ExternalLink className="size-4" />
+                      {tContact('resume')}
+                    </TextLink>
+                  </Card>
+                </section>
 
-                <Section id="signature" className="flex-1">
-                  <Section.Card className="h-32 md:h-full flex overflow-hidden">
-                    <Section.Body className="flex justify-center items-center w-full h-full">
-                      <Image src="/sig.svg" alt="Signature" width={100} height={100} className="w-1/2 p-6 select-none" draggable="false" />
-                    </Section.Body>
-                  </Section.Card>
-                </Section>
+                <section id="signature" className="flex-1">
+                  <Card className="h-32 md:h-full flex justify-center items-center overflow-hidden">
+                    <Image src="/sig.svg" alt="Signature" width={100} height={100} className="w-1/2 p-6 select-none" draggable="false" />
+                  </Card>
+                </section>
               </div>
             </div>
           </div>

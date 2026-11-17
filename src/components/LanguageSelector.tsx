@@ -12,13 +12,10 @@ export function LanguageMenuItems({ onSelect }: { onSelect: (locale: string) => 
       {languages.map(({ locale, Flag, nativeName }) => (
         <MenubarItem
           key={locale}
-          className="menubar-item"
           onClick={() => onSelect(locale)}
         >
-          <div className="flex items-center space-x-2">
-            <Flag className="w-4 h-auto" />
-            <span>{nativeName}</span>
-          </div>
+          <Flag className="w-4 h-auto" />
+          <span>{nativeName}</span>
         </MenubarItem>
       ))}
     </>

@@ -77,6 +77,8 @@
   },
   "NavMenu": {
     "title": "mzz",
+    "menu": "Menú",
+    "language": "Idioma",
     "index": {
       "about": "Acerca",
       "projects": "Proyectos",

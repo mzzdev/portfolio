@@ -3,6 +3,11 @@ import { useTranslations } from "next-intl"
 import * as Form from "@radix-ui/react-form"
 import { Check, X } from "lucide-react"
 import { Button } from "./ui/button";
+import { Field, FieldError } from "./ui/field";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
+import { Textarea } from "./ui/textarea";
+import { cn } from "@/lib/utils";
 
 export default function ContactForm() {
   const t = useTranslations('Contact');
@@ -75,27 +80,26 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="grid grid-cols-1 grid-rows-1 p-6 items-center text-base-upper h-full w-full">
+    <div className="grid grid-cols-1 grid-rows-1 items-center uppercase h-full w-full">
       <div
-        className={`
-          col-start-1 row-start-1 w-full text-center normal-case flex flex-col items-center justify-center 
-          p-8 space-y-4 border bg-neutral-100 text-black border-neutral-200
-          ${showResult ? 'opacity-100 z-10 visible' : 'opacity-0 -z-10 invisible'}
-        `}
+        className={cn(
+          "col-start-1 row-start-1 w-full text-center normal-case flex flex-col items-center justify-center p-8 space-y-4 border border-border bg-muted",
+          showResult ? "opacity-100 z-10 visible" : "opacity-0 -z-10 invisible"
+        )}
         aria-hidden={!showResult}
       >
         {resultConfig && (
           <>
-            <div className="text-4xl mb-1 flex items-center justify-center">{resultConfig.icon}</div>
-            <h3 className="text-base leading-tight">{resultConfig.title}</h3>
+            <div className="mb-1 flex items-center justify-center">{resultConfig.icon}</div>
+            <h3>{resultConfig.title}</h3>
             {resultConfig.body && (
-              <p className="text-sm text-neutral-800">
+              <p className="text-sm">
                 {resultConfig.body}
               </p>
             )}
             <Button
               variant="outline"
-              className="px-2 py-1 cursor-pointer rounded-none uppercase text-sm hover-subtle bg-white text-black"
+              size="sm"
               onClick={handleResetView}
             >
               {t('form.back')}
@@ -105,73 +109,80 @@ export default function ContactForm() {
       </div>
 
       <Form.Root
-        className={`space-y-2 w-full col-start-1 row-start-1 ${!showResult ? 'opacity-100 z-10 visible' : 'opacity-0 -z-10 invisible'}`}
+        className={cn(
+          "space-y-2 w-full col-start-1 row-start-1",
+          showResult ? "opacity-0 -z-10 invisible" : "opacity-100 z-10 visible"
+        )}
         onSubmit={handleSubmit}
         aria-hidden={showResult}
       >
-        <Form.Field name="name">
-          <Form.Label className="contactLabel">
-            {t('form.name')}
-          </Form.Label>
-          <Form.Control asChild>
-            <input
-              name="name"
-              autoComplete="name"
-              required
-              disabled={isSubmitting}
-              className="contactInput"
-            />
-          </Form.Control>
-          <div className="contactErrorSlot">
-            <Form.Message match="valueMissing" className="block">
-              * {t('form.nameError')}
-            </Form.Message>
-          </div>
+        <Form.Field name="name" asChild>
+          <Field>
+            <Form.Label asChild>
+              <Label>{t('form.name')}</Label>
+            </Form.Label>
+            <Form.Control asChild>
+              <Input
+                name="name"
+                autoComplete="name"
+                required
+                disabled={isSubmitting}
+              />
+            </Form.Control>
+            <FieldError>
+              <Form.Message match="valueMissing" className="block">
+                * {t('form.nameError')}
+              </Form.Message>
+            </FieldError>
+          </Field>
         </Form.Field>
 
-        <Form.Field name="email">
-          <Form.Label className="contactLabel">
-            Email
-          </Form.Label>
-          <Form.Control asChild>
-            <input
-              name="email"
-              autoComplete="email"
-              type="email"
-              required
-              pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$"
-              disabled={isSubmitting}
-              className="contactInput"
-            />
-          </Form.Control>
-          <div className="contactErrorSlot">
-            <Form.Message match="valueMissing" className="block">
-              * {t('form.emailError')}
-            </Form.Message>
-            <Form.Message match="patternMismatch" className="block">
-              * {t('form.emailMismatchError')}
-            </Form.Message>
-          </div>
+        <Form.Field name="email" asChild>
+          <Field>
+            <Form.Label asChild>
+              <Label>Email</Label>
+            </Form.Label>
+            <Form.Control asChild>
+              <Input
+                name="email"
+                autoComplete="email"
+                type="email"
+                required
+                pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$"
+                disabled={isSubmitting}
+              />
+            </Form.Control>
+            <FieldError>
+              <Form.Message match="valueMissing" className="block">
+                * {t('form.emailError')}
+              </Form.Message>
+              <Form.Message match="patternMismatch" className="block">
+                * {t('form.emailMismatchError')}
+              </Form.Message>
+            </FieldError>
+          </Field>
         </Form.Field>
 
-        <Form.Field name="message">
-          <Form.Label className="contactLabel">
-            {t('form.message')}
-          </Form.Label>
-          <Form.Control asChild>
-            <textarea
-              name="message"
-              required
-              maxLength={2000}
-              disabled={isSubmitting}
-              className="contactInput h-32"
-            />
-          </Form.Control>
-          <div className="contactErrorSlot">
-            <Form.Message match="valueMissing" className="block">
-              * {t('form.messageError')}
-            </Form.Message>
-          </div>
+        <Form.Field name="message" asChild>
+          <Field>
+            <Form.Label asChild>
+              <Label>{t('form.message')}</Label>
+            </Form.Label>
+            <Form.Control asChild>
+              <Textarea
+                name="message"
+                required
+                maxLength={2000}
+                disabled={isSubmitting}
+                className="h-32"
+              />
+            </Form.Control>
+            <FieldError>
+              <Form.Message match="valueMissing" className="block">
+                * {t('form.messageError')}
+              </Form.Message>
+            </FieldError>
+          </Field>
         </Form.Field>
 
         <Form.Submit asChild>
@@ -179,11 +190,10 @@ export default function ContactForm() {
             type="submit"
             variant="outline"
             disabled={isSubmitting}
-            className="w-full py-2 hover-subtle shadow-none cursor-pointer rounded-none border-input uppercase text-black text-base disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full"
           >
             {isSubmitting ? t('form.sending') : t('form.send')}
           </Button>
-
         </Form.Submit>
       </Form.Root>
     </div>

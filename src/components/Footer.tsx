@@ -1,17 +1,18 @@
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
+import { TextLink } from "@/components/ui/text-link";
+import { SOCIAL_LINKS } from "@/lib/site";
 
 export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElement> }) {
   const t = useTranslations('Footer');
 
   return (
-    <footer ref={footerRef} className="bg-neutral-100 text-black pt-6 pb-2 w-full h-auto fixed bottom-0 z-0">
-      <div className="md:w-4xl w-auto mx-[5vw] md:mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8" id="contact">
+    <footer ref={footerRef} className="bg-muted pt-6 pb-2 w-full h-auto fixed bottom-0 z-0">
+      <div className="container-page grid grid-cols-1 lg:grid-cols-2 gap-8">
         <FooterSection title={t('social')}>
-          <FooterLink href="https://linkedin.com/in/pablo-bell%C3%B3" text="LinkedIn" />
-          <FooterLink href="https://github.com/mzzdev" text="GitHub" />
-          <FooterLink href="mailto:pablo@mzzdev.com" text="Email" />
+          <FooterLink href={SOCIAL_LINKS.linkedin} text="LinkedIn" />
+          <FooterLink href={SOCIAL_LINKS.github} text="GitHub" />
+          <FooterLink href={`mailto:${SOCIAL_LINKS.email}`} text="Email" />
         </FooterSection>
 
         <FooterSection title={t('disclaimer.title')}>
@@ -21,13 +22,13 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
       </div>
 
       <div className="mt-4 text-center">
-        <Link href="mailto:pablo@mzzdev.com" className="hover:underline font-bold text-xl inline-block mb-8">
-            pablo@mzzdev.com
-        </Link>
-        <p className="text-neutral-400 font-normal text-xs">
-          {'\u00A9'} {new Date().getFullYear()} {t('title')}
+        <TextLink href={`mailto:${SOCIAL_LINKS.email}`} variant="subtle" className="font-bold text-xl mb-8">
+          {SOCIAL_LINKS.email}
+        </TextLink>
+        <p className="text-muted-foreground font-normal text-xs">
+          {'©'} {new Date().getFullYear()} {t('title')}
         </p>
-        <p className="text-neutral-400 font-normal text-xs">
+        <p className="text-muted-foreground font-normal text-xs">
            {t('copyright')}
         </p>
       </div>
@@ -38,7 +39,7 @@ export default function Footer({ footerRef }: { footerRef: React.Ref<HTMLDivElem
 function FooterSection({ title, children }: { title: string, children: React.ReactNode }) {
   return (
     <div className="uppercase">
-      <h3 className="text-base font-bold mb-4 border-bottom-standard pb-1">{title}</h3>
+      <h3 className="type-title mb-4 border-b border-border-strong pb-1">{title}</h3>
       <div className="flex flex-col text-sm">
         {children}
       </div>
@@ -48,11 +49,9 @@ function FooterSection({ title, children }: { title: string, children: React.Rea
 
 function FooterLink({ href, text }: { href: string, text: string }) {
   return (
-    <Link href={href} className="group flex justify-between items-center py-1 hover-subtle pointer-events-auto" target="_blank" rel="noopener noreferrer">
-      <span className="block">{text}</span>
-      <div className="pr-1 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:duration-0">
-        <ArrowRight className="w-5" />
-      </div>
-    </Link>
+    <TextLink href={href} external className="group flex justify-between py-1.5">
+      <span>{text}</span>
+      <ArrowRight className="interactive mr-1 size-5 opacity-0 group-hover:opacity-100 group-hover:duration-0" />
+    </TextLink>
   );
 }

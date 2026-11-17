@@ -91,7 +91,7 @@ export const Hero = () => {
             y="0"
             textAnchor="start"
             dominantBaseline="hanging"
-            className="tracking-tighter font-bold font-[helvetica] text-[12.5rem]"
+            className="tracking-tighter font-bold font-wordmark text-[12.5rem]"
           >
             pablo belló
           </text>
@@ -102,7 +102,7 @@ export const Hero = () => {
         y="-100%"
         width="300%"
         height="300%"
-        fill="#333"
+        className="fill-foreground"
         filter="url(#grainFilter)"
         clipPath="url(#textClip)"
       />

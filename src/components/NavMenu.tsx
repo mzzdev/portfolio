@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 import {
   Menubar,
@@ -10,6 +10,7 @@ import {
 import { useTranslations } from 'next-intl'
 import { LanguageMenuItems } from './LanguageSelector'
 import { Globe } from 'lucide-react'
+import { duration } from '@/lib/motion'
 
 const MENU_ITEMS = ['about', 'projects', 'contact']
 
@@ -43,7 +44,7 @@ export default function NavMenu({ onSwitchLocale }: { onSwitchLocale: (locale: s
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     const navbarHeight = navbarRef.current?.offsetHeight || 0
-    
+
     if (element) {
       const elementPosition = element.getBoundingClientRect().top + window.scrollY
       const vhOffset = window.innerHeight * 0.01
@@ -61,40 +62,37 @@ export default function NavMenu({ onSwitchLocale }: { onSwitchLocale: (locale: s
       ref={navbarRef}
       initial={{ y: 0, opacity: 0 }}
       animate={{ y: showNavbar ? 0 : -100, opacity: 1 }}
-      transition={{ duration: 0.3 }}
-      className="fixed top-0 z-50 type-display select-none w-full"
+      transition={{ duration: duration.base }}
+      className="fixed top-0 z-50 select-none w-full"
     >
-      <Menubar key={menuKey} className="items-center border-b border-neutral-300 card-shadow px-4 justify-between">
-        <div className="flex items-center">
-          <MenubarMenu>
-            <MenubarTrigger className="hover:bg-neutral-200 text-base group">
-              <span className="inline-block transition-transform duration-200 group-data-[state=open]:rotate-90">
-                &#10033;
-              </span>
-            </MenubarTrigger>
-            <MenubarContent className="ml-1 mt-3 p-0 border border-neutral-300 rounded-none shadow-none">
-              {MENU_ITEMS.map((sectionId) => (
-                <MenubarItem 
-                  key={sectionId} 
-                  className="menubar-item"
-                  onClick={() => scrollToSection(sectionId)}
-                >
-                  {t(`index.${sectionId}`)}
-                </MenubarItem>
-              ))}
-            </MenubarContent>
-          </MenubarMenu>
-        </div>
+      <Menubar key={menuKey} className="justify-between px-4">
+        <MenubarMenu>
+          <MenubarTrigger aria-label={t('menu')} className="group">
+            <span className="inline-block transition-transform duration-(--duration-fast) group-data-[state=open]:rotate-90">
+              &#10033;
+            </span>
+          </MenubarTrigger>
+          <MenubarContent>
+            {MENU_ITEMS.map((sectionId) => (
+              <MenubarItem
+                key={sectionId}
+                onClick={() => scrollToSection(sectionId)}
+              >
+                {t(`index.${sectionId}`)}
+              </MenubarItem>
+            ))}
+          </MenubarContent>
+        </MenubarMenu>
 
-        <p onClick={() => window.scrollTo({ top: 0 })} className="cursor-pointer text-base ml-4">
+        <button type="button" onClick={() => window.scrollTo({ top: 0 })} className="cursor-pointer text-base ml-4">
           {t('title')}
-        </p>
+        </button>
 
         <MenubarMenu>
-          <MenubarTrigger className="hover:bg-neutral-200 text-base">
-            <Globe className="w-4" />
+          <MenubarTrigger aria-label={t('language')}>
+            <Globe className="size-4" />
           </MenubarTrigger>
-          <MenubarContent className="mr-4 mt-3 p-0 border border-neutral-300 rounded-none shadow-none">
+          <MenubarContent align="end">
             <LanguageMenuItems onSelect={onSwitchLocale} />
           </MenubarContent>
         </MenubarMenu>

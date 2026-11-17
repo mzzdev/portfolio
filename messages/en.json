@@ -77,6 +77,8 @@
   },
   "NavMenu": {
     "title": "mzz",
+    "menu": "Menu",
+    "language": "Language",
     "index": {
       "about": "About",
       "projects": "Projects",
